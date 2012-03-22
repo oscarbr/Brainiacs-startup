@@ -1,3 +1,3 @@
-public void test( String s ){
+public void test( Int i ){
 
 }
