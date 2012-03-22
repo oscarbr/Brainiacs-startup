@@ -1,8 +1,8 @@
-Requirements and Analysis Document for NNN
+Requirements and Analysis Document for Chalmers Bookstore
 
 Table of Contents
 
-Requirements and Analysis Document for NNN
+Requirements and Analysis Document for Chalmers Bookstore
     1 Introduction
         1.1 Purpose of application
         1.2 General characteristics of application
@@ -21,10 +21,15 @@ Requirements and Analysis Document for NNN
             2.3.6 Verification
             2.3.7 Packaging and installation
             2.3.8 Legal
-        2.4 Application models 2.4.1 Scenarios 2.4.2 Use case model Use cases priority 2.4.3 Static model 2.4.4 Dynamic model 2.4.5 User interface
-        2.4 Test cases
-        2.5 Possible future directions
-        2.6 References
+        2.4 Application models 
+	    2.4.1 Scenarios
+	    2.4.2 Use case model Use cases priority 
+	    2.4.3 Static model
+	    2.4.4 Dynamic model
+	    2.4.5 User interface
+        2.5 Test cases
+        2.6 Possible future directions
+        2.7 References
     APPENDIX
  Use cases GUI Object model Dynamic model 
 
