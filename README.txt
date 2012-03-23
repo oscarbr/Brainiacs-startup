@@ -1,4 +1,4 @@
-﻿1. Chalmers bookstore project
+1. Chalmers bookstore project
 
 En app för att köpa och sälja begagnade böcker på Chalmers. Det finns många köpare och säljare men inte en direkt plattform. Här kommer vi in, en enkel app för att lägga upp sina begagnade böcker till försäljning. Funktion för att fota boken. Kunna lägga attribut till boken exempelvis: program, kurs, årskurs, författare osv. samt valfria kommentarer. Alternativt även möjlighet för andra att kommentera på din artikel. Det skall vara enklare än att lägga upp på Blocket eller Tradera då det är en specifikt avsedd marknad och du vet ungefär vem du handlar med och byte av bok och pengar kan ske personligen. Om en databas med olika böcker för olika kurser finns att tillgå kommer denna att användas för att kategorisera vilken bok som ligger uppe till försäljning. Detta kan också underlätta sökfunktioner och liknande. Annars kan sökning göras på andra attribut, exempelvis: titel, program, år och läsperiod för att hitta rätt bok.
 
@@ -19,7 +19,7 @@ Eftersom vi kan komma att använda oss av kod som är copyleftad i vårt projekt
 
 3. Krav
 
-Det finns flera intressenter till vår applikation. Från användarsidan finns det till exempel: studenter på Chalmers tekniska högskola som vill köpa och sälja böcker, studienämnder och andra student-organisationer, Cremona bokhandel, andra bokhandlare, lärare etc. 
+Det finns flera intressenter till vår applikation. Från användarsidan finns det till exempel: studenter på Chalmers tekniska högskola som vill köpa och sälja böcker (här behöver vi göra skillnad på krav från köpare respektive säljare), studienämnder och andra student-organisationer, Cremona bokhandel, andra bokhandlare, lärare etc. 
 
 Från utvecklarsidan finns det till exempel:
 Handledare, utvecklare, testare, beta-testare etc. 
@@ -34,3 +34,45 @@ Precondition: A person is authorized to add a new book to the market
 Basic path: A person is writing in a name for the book, there must be more than 10 characters and less than 150 characters. 
 Exception path: The person uploading a book should get a message: “a book needs a title”
 Post condition: A new book is uploaded to the market with a title
+
+
+-------------------SOFTWARE REQUIREMENTS DOCUMENT [VERY WORK IN PROGRESS]-------------------
+
+1 Introduction
+1.1 General description
+1.2 Scope of the product
+1.3 Definitions, acronyms and abbreviations
+
+2.1 Product perspective
+2.2 Product functions
+2.3 User characteristics
+2.4 General constraints
+
+3 Specific requirements
+3.1 Functional requirements
+3.2 Non-functional requirements
+3.3 Interface requirements
+
+
+
+
+
+Requirement ID 1 A book store that provides the possibility for a seller to register a book for sale and that this book is then marketed to potential buyers
+
+Requirement ID 1.1 The seller can register a book for sale
+
+Requirement ID 1.1.1 The seller can set a minimum price for the book
+Requirement ID 1.1.2 The seller can upload a picture of the book for sale
+Requirement ID 1.1.3 The seller have to set a title for the book
+Requirement ID 1.1.4 The seller 
+
+Requirement ID 1.2 The seller can take a book of off the market
+
+
+Requirement ID 2 A book store that provides the possibility for a buyer to search for and browse books and put him/her in touch with sellers
+
+Requirement ID 2.1 A buyer can search the database for available books
+
+Requirement ID 2.1.1 In a search a buyer can specify title
+Requirement ID 2.1.2 In a search a buyer can specify author
+Requirement ID 2.1.2 In a search a buyer can specify which course the book was used for
