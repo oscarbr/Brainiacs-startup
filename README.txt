@@ -60,9 +60,33 @@ Post condition: A new book is uploaded to the market with a title
 Requirement ID 1 A book store that provides the possibility for a seller to register a book for sale and that this book is then marketed to potential buyers
 
 Requirement ID 1.1 The seller can register a book for sale
+Use case: The seller can register a book for sale
+Trigger: A seller press the button for "uploading a book"
+Precondition: The seller is logged in
+Basic path: The seller presses the button for uploading a book and then gives the possibility to fill in title, edition of the book, actual course, quality of the book, minimum price, and contact details. 
+Exception path: The seller should get a exception if some of the required fields are not filled in. The seller should also have the possibility to quit the uploading process at any time through a cancel-button.
+Post condition: A new book is uploaded to the market.
+
 
 Requirement ID 1.1.1 The seller can set a minimum price for the book
+Use case: The seller can set a minimum price for the book
+Trigger: A seller are in the process of uploading a book
+Precondition: The seller is logged in
+Basic path: The seller presses the button for uploading a book and then needs to fill in the required field regarding price. 
+Exception path: The seller should get a exception if no character is typed into the price-filed.
+Post condition: A new book is uploaded to the market with a minimum price.
+
+
 Requirement ID 1.1.2 The seller can upload a picture of the book for sale
+Use case: The seller can upload a picture of the book for sale
+Trigger: A seller are in the process of uploading a book
+Precondition: The seller is logged in
+Basic path: The seller presses the button for uploading a book and then gives the possibility to upload a picture of the book. Either from the phones picture library or by taking a new photo with the phone-camera.
+Exception path: The seller should get a exception if the picture is too big to handle or in a wrong format. 
+Post condition: A new book is uploaded to the market with a picture showing the book.
+
+
+
 Requirement ID 1.1.3 The seller have to set a title for the book
 Requirement ID 1.1.4 The seller 
 
