@@ -88,9 +88,10 @@ Post condition: A new book is uploaded to the market with a picture showing the 
 
 
 Requirement ID 1.1.3 The seller have to set a title for the book
-Requirement ID 1.1.4 The seller 
+Requirement ID 1.1.4 The seller have to specify type of sell format: Auction or set price
 
 Requirement ID 1.2 The seller can take a book of off the market
+Requirement ID 1.2.1 The seller can specify what he/she sold the book for
 
 
 Requirement ID 2 A book store that provides the possibility for a buyer to search for and browse books and put him/her in touch with sellers
@@ -100,3 +101,8 @@ Requirement ID 2.1 A buyer can search the database for available books
 Requirement ID 2.1.1 In a search a buyer can specify title
 Requirement ID 2.1.2 In a search a buyer can specify author
 Requirement ID 2.1.2 In a search a buyer can specify which course the book was used for
+
+Requirement ID 2.2 A buyer can place a bid for a book out on auction
+Requirement ID 2.3 A buyer can reserve a book on a set-price auction
+ 
+
