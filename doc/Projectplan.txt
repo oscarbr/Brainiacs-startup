@@ -1,0 +1,50 @@
+﻿Project plan
+You are not expected to write the best project plan ever. Think of this document as a help to get you structured, and also to make it easier for us to follow your work. We do recommend that you spend some time on planning your project’s milestones.
+The following page is an ok starting point: http://en.wikipedia.org/wiki/Project_plan
+Here’s a brrief summar of what you need:
+At a minimum, a project plan answers basic questions about the project:
+1. Why? – What is the problem or value proposition addressed by the project? Why is it being sponsored?
+2. What? – What is the work that will be performed on the project? What are the major products/deliverables?
+3. Who? – Who will be involved and what will be their responsibilities within the project? How will they be organized?
+4. When? – What is the project timeline and when will particularly meaningful points, referred to asmilestones, be complete?
+Here’s an example project plan from Eclipse project: http://epf.eclipse.org/wikis/openup/practice.mgmt.risk_value_lifecycle.base/guidances/examples/project_plan_E5DC99B6.html
+
+
+
+
+1. Chalmers bookstore project
+
+En app för att köpa och sälja begagnade böcker på Chalmers. Det finns många köpare och säljare men inte en direkt plattform. Här kommer vi in, en enkel app för att lägga upp sina begagnade böcker till försäljning. Funktion för att fota boken. Kunna lägga attribut till boken exempelvis: program, kurs, årskurs, författare osv. samt valfria kommentarer. Alternativt även möjlighet för andra att kommentera på din artikel. Det skall vara enklare än att lägga upp på Blocket eller Tradera då det är en specifikt avsedd marknad och du vet ungefär vem du handlar med och byte av bok och pengar kan ske personligen. Om en databas med olika böcker för olika kurser finns att tillgå kommer denna att användas för att kategorisera vilken bok som ligger uppe till försäljning. Detta kan också underlätta sökfunktioner och liknande. Annars kan sökning göras på andra attribut, exempelvis: titel, program, år och läsperiod för att hitta rätt bok.
+
+Eventuell bonusfunktion: En koppling till Cremona för att man ska kunna göra prisjämförelser och möjliggöra köp därifrån om begagnad bok inte finns.
+Eventuell köpare och intressent: Studienämnder på de olika institutionerna på Chalmers
+
+1.1 Motivering av val
+Efter bollande och diskussioner kom vi fram till att både mentometer-knappen och Chalmers Bookstore kräver ganska mycket backbone och kommunikation med server. Detta blir därför inte en avgörande faktor för valet mellan dessa två. 
+
+1.2 Avgörande faktorer till förmån för Chalmers Bookstore
+1. Mer användning och relevans för målgruppen och intressenterna
+2. Chalmers Bokkstore har ett konkret värde för Studienämnden på Industriell ekonomi, vore kul att få göra den för dem. Vore kul att ha en riktig stake holder, studienämnder.
+3. Det finns redan flera bra alternativ för mentometer-knappen på marknaden.
+
+2. Motivering av licens
+
+Eftersom vi kan komma att använda oss av kod som är copyleftad i vårt projekt samt att vi vill använda Github för versionshantering, utgår vi från att en GPLv3-licens blir lämplig för vårt projekt. Vi ställer oss bakom alla fyra krav för fri mjukvara. Vi vill också ställa liknande krav på de som använder vår mjukvara och väljer därför bort LGPL. 
+
+3. Krav
+
+Det finns flera intressenter till vår applikation. Från användarsidan finns det till exempel: studenter på Chalmers tekniska högskola som vill köpa och sälja böcker (här behöver vi göra skillnad på krav från köpare respektive säljare), studienämnder och andra student-organisationer, Cremona bokhandel, andra bokhandlare, lärare etc. 
+
+Från utvecklarsidan finns det till exempel:
+Handledare, utvecklare, testare, beta-testare etc. 
+
+Vi ser studienämnder och de faktiska användarna av vår applikation som de två största kravställarna. Eftersom vi kommer hantera användare för vår programvara räknar vi med att många testfall kommer behövas.
+
+Example of requirement:
+Requirement ID 1.1.1 A book needs to have a title                
+Use case: A book needs to have a title
+Trigger: Adding a new book to the market
+Precondition: A person is authorized to add a new book to the market
+Basic path: A person is writing in a name for the book, there must be more than 10 characters and less than 150 characters. 
+Exception path: The person uploading a book should get a message: “a book needs a title”
+Post condition: A new book is uploaded to the market with a title
