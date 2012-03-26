@@ -39,23 +39,32 @@ Post condition: A new book is uploaded to the market with a title
 -------------------SOFTWARE REQUIREMENTS DOCUMENT [VERY WORK IN PROGRESS]-------------------
 
 1 Introduction
-1.1 General description
-1.2 Scope of the product
-1.3 Definitions, acronyms and abbreviations
-
-2.1 Product perspective
-2.2 Product functions
-2.3 User characteristics
-2.4 General constraints
-
-3 Specific requirements
-3.1 Functional requirements
-3.2 Non-functional requirements
-3.3 Interface requirements
-
-
-
-
+	1.1 Purpose of application
+	1.2 General characteristics of application
+	1.3 Scope of application
+	1.4 Objectives and success criteria of the project
+	1.5 Definitions, acronyms and abbreviations
+2 Proposed application
+	2.1 Overview
+	2.2 Functional requirements
+	2.3 Non-functional requirements
+		2.3.1 Usability
+		2.3.2 Reliability
+		2.3.3 Performance
+		2.3.4 Supportability
+		2.3.5 Implementation
+		2.3.6 Verification
+		2.3.7 Packaging and installation
+		2.3.8 Legal
+	2.4 Application models
+		2.4.1 Scenarios
+		2.4.2 Use case model Use cases priority
+		2.4.3 Static model
+		2.4.4 Dynamic model
+		2.4.5 User interface
+	2.5 Test cases
+	2.6 Possible future directions
+	2.7 References
 
 Requirement ID 1 A book store that provides the possibility for a seller to register a book for sale and that this book is then marketed to potential buyers
 
@@ -86,7 +95,7 @@ Exception path: The seller should get a exception if the picture is too big to h
 Post condition: A new book is uploaded to the market with a picture showing the book.
 
 
-
+Functional
 Requirement ID 1.1.3 The seller have to set a title for the book
 Requirement ID 1.1.4 The seller have to specify type of sell format: Auction or set price
 
