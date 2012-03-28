@@ -1,7 +1,0 @@
-.DS_Store*
-
-/bin
-/gen
-local.properties
-stats.sh
-
