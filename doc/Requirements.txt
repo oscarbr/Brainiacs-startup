@@ -1,79 +1,103 @@
-
-Example of requirement:
-Requirement ID 1.1.1 A book needs to have a title		
-Use case: A book needs to have a title
-Trigger: Adding a new book to the market
-Precondition: A person is authorized to add a new book to the market
-Basic path: A person is writing in a name for the book, there must be more than 10 characters and less than 150 characters. 
-Exception path: The person uploading a book should get a message: ìa book needs a titleî
-Post condition: A new book is uploaded to the market with a title
-
-
----------------------------------
-
-
 1 Introduction
-	1.1 Purpose of application
-	1.2 General characteristics of application
-	1.3 Scope of application
-	1.4 Objectives and success criteria of the project
-	1.5 Definitions, acronyms and abbreviations
-2 Proposed application
-	2.1 Overview
-	2.2 Functional requirements
-	2.3 Non-functional requirements
-		2.3.1 Usability
-		2.3.2 Reliability
-		2.3.3 Performance
-		2.3.4 Supportability
-		2.3.5 Implementation
-		2.3.6 Verification
-		2.3.7 Packaging and installation
-		2.3.8 Legal
-	2.4 Application models
-		2.4.1 Scenarios
-		2.4.2 Use case model Use cases priority
-		2.4.3 Static model
-		2.4.4 Dynamic model
-		2.4.5 User interface
-	2.5 Test cases
-	2.6 Possible future directions
-	2.7 References
+When attending courses at Chalmers you tend to need books. These books are expensive and mostly useful only under the course of the course. At this moment the authors of this document have at least 10 books at home, collecting dust. These could be useful to other students who are now taking the courses connected to those particular books. Wouldn‚Äôt it be swell if we could find those students and sell them our old books for a lower price than it would cost them to buy new once, preferably with minimum work effort? 
 
-
-
-1 Introduction
 
 1.1 Purpose of application
+A simple application for smartphones where students can gather to sell and buy used books needed at courses given at Chalmers (and possibly other Universities). Users can register books for sale and other users can search and find these books. The unique selling point compared to existing sites like blocket or tradera is the nische market. When buying from our application you know that the seller is close by and that you can set up a meeting to get the book the same day.
+
 
 1.1.1 Stakeholders
-There are several stakeholders.
+There are several stakeholders for our application.
 
 
+- Students (buyers and sellers)
+- Student organizations (SNI)
+- Book stores (Cremona in particular)
+- Teachers
+- Developers
+- Testers
+- Beta-testers
+- Supervisors
+- Maintanance
+- Server-side supplier
 
-Det finns flera intressenter till vår applikation. Från användarsidan finns det till exempel: studenter på Chalmers tekniska högskola som vill köpa och sälja böcker (här behöver vi göra skillnad på krav från köpare respektive säljare), studienämnder och andra student-organisationer, Cremona bokhandel, andra bokhandlare, lärare etc. 
 
-Från utvecklarsidan finns det till exempel:
-Handledare, utvecklare, testare, beta-testare etc. 
+We aim to sell our product to student organisations and therefore view them as our most important stakeholder along with, of course, the actual users of the application. Most of our requirements will be connected to them. Since we develop towards users we anticipate that a lot of test cases will be needed.
 
-Vi ser studienämnder och de faktiska användarna av vår applikation som de två största kravställarna. Eftersom vi kommer hantera användare för vår 
-programvara räknar vi med att många testfall kommer behövas.
 
 1.2 General characteristics of application
-No transactions are handled by the application. The application simply matches buyer with seller and provides the opportunity for market mechanisms to function in the interaction between the two parties.
+No transactions are handled by the application. The application simply matches buyer with seller and provides the opportunity for market mechanisms to function in the interaction between these two parties.
 
 
-	1.3 Scope of application
-	1.4 Objectives and success criteria of the project
-	1.5 Definitions, acronyms and abbreviations
+Functionality to add a plethora of attributes about the book and for users to search for books on these criterias. Also the ability to describe a book in general and to upload a photo of the book taken with the mobile camera.
+
+
+The ability for other users to comment on the book.
+
+
+Possible functions to add later:
+- Auctions
+- Connection to Cremona to compare price and to buy new books
+- A website connected to the application
+
+
+1.3 Scope of application
+There is no platform available for buying and selling books but exchanges happens anyway in other forums, for example ‚Äúbokbytarmingel‚Äù arranged by SNI. However this application aims to find more sellers and to build a natural platform where buyers can meet sellers without knowing each other.
+
+
+The application is to be sold to different student organisations who can then brand it and market it to their users. 
+
+
+An alternative market plan is to offer it for free to start with and to build a user base. When there is a bulk of users a small fee can be charged for adding books for sale.
+
+
+1.4 Objectives and success criteria of the project
+A objective for the application is to complete and fulfill all the requirements for the application. Another objective is to launch the application on time, according to the market plan. 
+
+
+Server side
+        Database
+                Books table
+                Users table
+        Server
+
+
+Client side
+        GUI
+        Communication layer
+        All logic layer (functional programming is to be used!)
+
+
+
+
+1.5 Definitions, acronyms and abbreviations
+
+
+
+
+
+
+
+
+
 
 2 Proposed application
+We propose a client-server application where users communicate with a database. Users can add and get information from the database and get contact information about other users. The application will be available for phones with Google‚Äôs Android Operating System. In the future we intend to port the application to work on phones with Apple‚Äôs iOS Operating System.  
+
+
 2.1 Overview
 
-2.2 Functional requirements
+
+
+
+
+
+2.2 Functional requirements for base functionality
+
 
 Requirement ID 1 
 A book store that provides the possibility for a seller to register a book for sale and that this book is then marketed to potential buyers
+
 
 Requirement ID 1.1 
 Use case: The seller can register a book for sale
@@ -83,6 +107,7 @@ Basic path: The seller presses the button for uploading a book and then gives th
 Exception path: The seller should get a exception if some of the required fields are not filled in. The seller should also have the possibility to quit the uploading process at any time through a cancel-button.
 Post condition: A new book is uploaded to the market.
 
+
 Requirement ID 1.1.1 
 Use case: The seller can set a minimum price for the book
 Trigger: A seller are in the process of uploading a book
@@ -91,163 +116,381 @@ Basic path: The seller presses the button for uploading a book and then needs to
 Exception path: The seller should get a exception if no character is typed into the price-filed.
 Post condition: A new book is uploaded to the market with a minimum price.
 
+
 Requirement ID 1.1.2 
 Use case: The seller can upload a picture of the book for sale
 Trigger: A seller are in the process of uploading a book
 Precondition: The seller is logged in
 Basic path: The seller presses the button for uploading a book and then gives the possibility to upload a picture of the book. Either from the phones picture library or by taking a new photo with the phone-camera.
 Exception path: The seller should get a exception if the picture is too big to handle or in a wrong format. 
-Post condition: A new book is uploaded to the market with a picture	showing the book.
+Post condition: A new book is uploaded to the market with a picture        showing the book.
+
 
 Requirement ID 1.1.3 
-The seller have to set a title for the book
+Use case: The seller have to set a title for the book
+Trigger: A seller press the button for "uploading a book"
+Precondition: The seller is logged in
+Basic path: The seller presses the button for uploading a book and then have to fill in a book title. The title must be more than 10 characters long and maximum of 200 characters.
+Exception path: The seller should get a exception message if a title is not filled in or the title have less than 10 characters (the 200 character limit should be implemented in the text box).
+Post condition: A book for upload have a title.
+
 
 Requirement ID 1.1.4 
-The seller can set a ISBN for the book for sale
+Use case: The seller can set a ISBN for the book for sale
+Trigger: A seller press the button for "uploading a book"
+Precondition: The seller is logged in
+Basic path: When uploading a book, the seller has the possibility to fill in ISBN-code for the book in a text box.
+Exception path: The seller should get a exception message if the number of characters in the ISBN-number is any other than 10 or 13 digits.
+Post condition: A uploaded book can have a ISBN-number.
+
 
 Requirement ID 1.1.5
-The seller can set a publishing year for the book for sale.
+Use case: The seller can set a publishing year for the book for sale.
+Trigger: A seller press the button for "uploading a book"
+Precondition: The seller is logged in
+Basic path: The seller types in the publishing year of the book, four digits. 
+Exception path: The seller should get a exception message if the filled in year is not a valid year (4 digits)
+Post condition: A uploaded book have a publishing year.
+
 
 Requirement ID 1.1.6
-The seller can set a course for which he/she used the book.
+Use case: The seller can set a course for which he/she used the book.
+Trigger: A seller press the button for "uploading a book"
+Precondition: The seller is logged in
+Basic path: The seller can fill in which course the book is used in.  
+Exception path: The seller have a possibility to not fill in the course, therefore no specific exception path.
+Post condition: A uploaded book have a connection to a course.
+
 
 Requirement ID 1.1.7
-The seller can add a comment about the book.
+Use case: The seller can add a comment about the book.
+Trigger: A seller press the button for "uploading a book"
+Precondition: The seller is logged in
+Basic path: The seller types in comments about a book in a text box.
+Exception path: -
+Post condition: A uploaded book might have comments.
 
-Requirement ID 1.1.8
-The seller can specify if he/she wants to have an auction, a buyout-price or both
 
 Requirement ID 1.2
-The seller can take a book off of the market
+Use case: The seller can update information about a book or take a book off of the market
+Trigger: A book is sold (not for sale any more) or not up to date.
+Precondition: The seller is logged in
+Basic path: The seller looks at his/hers uploaded books and press one of them. The seller then sees the information concerning the book and have the possibility to update information or delete the book from the market.
+Exception path: If a book is not deleted or updated within two months, the book will be deleted from the market. 
+Post condition: A book is updated with new information or deleted from the market. 
 
-Requirement ID 1.2.1
-	The seller can manually take a book off of the market
 
-Requirement ID 1.2.2
-If the time for an auction runs out the book is automatically taken off the market.
+
 
 Requirement ID 2 
 A book store that provides the possibility for a buyer to search for and browse books and put him/her in touch with sellers
 
+
 Requirement ID 2.1 
-A buyer can search the database for available books
+Use case: A buyer can search the database for available books
+Trigger: A buyer needs information about a specific book or course
+Precondition: a buyer is logged in. 
+Basic path: A buyer fills in a attribute in the search field and then gets the answers from the search presented in a list.
+Exception path: If the searched text does not match any attribute, the searcher should get a exception message ‚Äúyour search did not match any information at the market‚Äù 
+Post condition: The searcher finds the information he/she wants.
+
+
+
 
 Requirement ID 2.1.1 
-In a search a buyer can specify a book’s title
+Use case: In a search, a buyer can specify a book‚Äôs title
+Trigger: A buyer needs information about a specific book
+Precondition: a buyer is logged in. 
+Basic path: A buyer fills in a book title in the search field and then gets the answers from the search presented in a list.
+Exception path: If the searched text does not match any book titles, the searcher should get a exception message ‚Äúyour search did not match any information at the market‚Äù 
+Post condition: The searcher finds the information he/she wants.
+
+
+
 
 Requirement ID 2.1.2 
-In a search a buyer can specify a book’s author
+Use case: In a search, a buyer can specify a book‚Äôs author
+Trigger: A buyer needs information about a specific book
+Precondition: a buyer is logged in.  
+Basic path: A buyer fills in a author in the search field and then gets the answers from the search presented in a list.
+Exception path: If the searched text does not match any authors, the searcher should get a exception message ‚Äúyour search did not match any information at the market‚Äù 
+Post condition: The searcher finds the information he/she wants.
+
 
 Requirement ID 2.1.3 
-In a search a buyer can specify which course the book was used for
+Use case: In a search, a buyer can specify which course the book was used for
+Trigger: A buyer needs information about a specific course
+Precondition: a buyer is logged in. 
+Basic path: A buyer fills in a course in the search field and then gets the answers from the search presented in a list.
+Exception path: If the searched text does not match any authors, the searcher should get a exception message ‚Äúyour search did not match any information at the market‚Äù 
+Post condition: The searcher finds the information he/she wants.
+
+
+
 
 Requirement ID 2.1.4 
-A search can be sorted on any of the available attributes that a book can have. Originally it is sorted by price.
+Use case: A search can be sorted on any of the available attributes that a book can have. Originally it is sorted by price.
+Trigger: A buyer finds some atributes more important than others.
+Precondition: a buyer is logged in. 
+Basic path: a buyer searches for a book and then get the books presented in a list. The buyer then have the possibility to sort by other attributes, for example ‚Äúrecently added‚Äù, ‚Äúlatest edition‚Äù etc. 
+Post condition: The buyer finds a book with the right attributes.
+
+
+Requirement ID 2.2
+Use case: Buyer can upload a buy request (see ID 1)
+Trigger: A buyer needs a book which is not found at the market
+Precondition: a buyer is logged in. 
+Basic path: A buyer press the button ‚Äúadd buy request‚Äù and fills in the information concerning uploading a book.
+Exception path: The buyer needs to have a book title and/or course, otherwise the buyer will get an exception message and the buying request will not be conducted.
+Post condition: A buying request is uploaded to the market.
+
+
+
 
 Requirement ID 3 
-Buyer can upload a buy request (see ID 1)
+        User details
 
-Requirement ID 4 
-Users are identified by their phone number similar to the way the application WhatsApp works.
 
-Requirement ID 4.1
+Requirement ID 3.1 
+Use case: Users are identified by their phone number similar to the way the application WhatsApp works.
+Trigger: 
+Precondition: 
+Basic path: 
+Exception path: 
+Post condition: 
+
+
+
+
+Requirement ID 3.2
 Use case: User have to specify his/her name connected to the phonenumber
-	Trigger: On first startup the user have to set first and last name.
+        Trigger: On first startup the user have to set first and last name.
 Precondition: The application have never been started before or the user have never specified his/her name
-	Basic path: Application is downloaded and the started
+        Basic path: Application is downloaded and the started
 Exception path: The user can chose not to specify name but the application is the shut down
-	Postcondition: The user is sent to the starting menu.
+        Postcondition: The user is sent to the starting menu.
 
-Requirement ID 4.2
-	Users can specify additional information about themselves
 
-Requirement ID 4.2.1
-	Users can specify their e-mail
+Requirement ID 3.3
+        Use case: Users can specify additional information about themselves
+Trigger: 
+Precondition: 
+Basic path: 
+Exception path: 
+Post condition: 
 
-Requirement ID 4.2.2
-	Users can specify which year they enrolled
 
-Requirement ID 4.2.3
-	Users can specify what programme they belong to.
+Requirement ID 3.3.1
+        Use case: Users can specify their e-mail
+Trigger: 
+Precondition: 
+Basic path: 
+Exception path: 
+Post condition: 
 
-Requirement ID 4.3
-Statistic is logged and shown about how many books the user have sold (and how many he/she have bought)
 
-Requirement ID 5
-	Auction
+Requirement ID 3.3.2
+        Use case: Users can specify which year they enrolled
+Trigger: 
+Precondition: 
+Basic path: 
+Exception path: 
+Post condition: 
 
-Requirement ID 5.1
-	Use case: A book out for auction can have a reservation price
 
-Requirement ID 5.2
-	A book out for auction have an ending date
+Requirement ID 3.3.3
+        Use case: Users can specify what programme they belong to.
+Trigger: 
+Precondition: 
+Basic path: 
+Exception path: 
+Post condition: 
 
-Requirement ID 5.3
-Anyone can make a bid for a book out for auction except for the owner of the auction/book
 
-Requirement ID 5.3.1
-A bid have to exceed the previous bid with at least 10 kr and in even 10 kr intervals.
+Requirement ID 3.4
+Use case: Statistic is logged and shown about how many books the user have sold (and how many he/she have bought)
+Trigger: 
+Precondition: 
+Basic path: 
+Exception path: 
+Post condition: 
 
-Requirement ID 6.1
-A book on the market that is not on auction can be reserved for 5 minutes during which it is not visible to other buyers.
-
-Requirement ID 6.1.1
-	A user can only make one book reservation at the time.
-
-Requirement ID 6.1.2
-When a reservation is made the user making the reservation gets access to the buyer’s contact information
 
 Requirement ID X
-	Use case:
-	Trigger:
-	Precondition:
-	Basic path:
-	Exception path:
-	Postcondition:
+        Use case:
+        Trigger:
+        Precondition:
+        Basic path:
+        Exception path:
+        Postcondition:
 
-We need to add requirements towards 
 
-2.3 Non-functional requirements
+We need to add requirements towards... 
+
+
+
+
+2.3 Non-functional requirements for base-functionality
+
+
 2.3.1 Usability
-The system needs to be intuitive and work without a manual. The system needs to be always available.
+The system will have to be intuitive and a user should be able to work the system without the use of a manual.
+
+
+A user should be able to register a book for sale with ease. It should take no more than 5 minutes for a first time user to register a book for sale with the minimum amount of required information.
+
+
+A user should easily be able to find if the book he/she needs is available for sale. This can be done by doing an extensive search for the exact information by a book or by browsing different available books in different categories.
+
+
+The design should be minimalistic and easy on the eyes. 
+
 
 2.3.2 Reliability
-The will experience the most pressure during the first weeks of the four “läsperioder” during the Chalmers year. 
+The will experience the most pressure during the first weeks of the four ‚Äúl√§sperioder‚Äù during the Chalmers year. During this time there needs to be a very low probability of failure. 
+
+
+Since no actual transactions are handled by the application the severity of a failure has little economic effect on the users which would indicate a lower need for reliability. However the system needs to be stable in order to attract users.
+
+
+The system have to reliable in the sense that information about the users have to be kept safe. Information stored about user is always sensitive so the system will keep a minimum amount of information about the users.
+
 
 2.3.3 Performance
+Performance needs will vary over different periods. As stated under reliability, the system will experience the most pressure during the first few weeks of every period (‚Äúl√§speriod‚Äù). In the middle of these periods bandwidth and server capacity can be limited. A solution where bandwidth and server capacity is paid for depending on usage should be considered.   
+
+
 Users must be able to get an overview of the availability of books quickly. More detailed information like images can be allowed to take more time. 
 
+
 2.3.4 Supportability
+Maintenance, upgrades and changes have to be made during periods of low usage, that is not during the first few weeks of every period. This is to be done by professionals with insight into software engineering. However the documentation should allow for any such professional to do it, hence the life of the system is not dependent on the engagement of the creators.
 
 
 2.3.5 Implementation
 
 
+
+
 2.3.6 Verification
 A user is verified by its phone number and his/her name connected to that phone number. Name is given to the system by the user.
 
+
 2.3.7 Packaging and installation
+The application will be available through the application outlets available electronically and accessible directly through your phone. This includes, to begin with, Android-market and in future releases also via Appstore.
+
+
 Installation must be automatic and application needs to be executable once it is downloaded.
 
-2.3.8 Legal
-The application is to be sold to student organisations which in turn can market it with their brand. The application will be sold under GPLv3 license.
 
-2.4 Application models
-2.4.1 Scenarios
-2.4.2 Use case model Use cases priority
-2.4.3 Static model
-2.4.4 Dynamic model
-2.4.5 User interface
-2.5 Test cases
-2.6 Possible future directions
-2.7 References
+2.3.8 Legal
+The application is to be sold to student organisations which in turn can market it with their brand. The application will be sold under GPLv3 license and should be compatible with the requirements forced upon software under this license.
+
+
+2.4 Functional requirements for add-on functionality
+
+
+Requirement ID 4
+        Auction
+
+
+Requirement ID 4.1
+If the time for an auction runs out the book is automatically taken off the market.
+
+
+Requirement ID 4.2
+The seller can specify if he/she wants to have an auction, a buyout-price or both
+
+
+Requirement ID 4.3 
+        Use case: A book out for auction can have a reservation price
+
+
+Requirement ID 4.4
+        A book out for auction have an ending date
+
+
+Requirement ID 4.5 
+Anyone can make a bid for a book out for auction except for the owner of the auction/book
+
+
+Requirement ID 4.6
+A bid have to exceed the previous bid with at least 10 kr and in even 10 kr intervals.
+
+
+Requirement ID 4.7
+A book on the market that is not on auction can be reserved for 5 minutes during which it is not visible to other buyers.
+
+
+
+
+Requirement ID 5
+        Cremona Bookstore integration 
+
+
+Requirement ID 5.1 
+        If a buyer search for a book without any sellers, the buyer should get information regarding if the book is available at Cremona Bookstore at Chalmers
+
+
+
+
+Requirement ID 6
+        Reservations of books
+
+
+Requirement ID 6.1
+When a reservation is made, the user making the reservation gets access to the buyer‚Äôs contact information
+
+
+Requirement ID 6.2 
+A buyer can only make one book reservation at the time.
+
+
+Requirement ID 7
+        ISBN number provides user with info about author, year, version, name etc.
+
+
+
+
+
+
+2.5 Non-functional requirements for add-on functionality
+
+
+
+
+2.6 Application models
+2.6.1 Scenarios
+2.6.2 Use case model Use cases priority
+2.6.3 Static model
+2.6.4 Dynamic model
+2.6.5 User interface
+2.7 Test cases
+2.8 Possible future directions
+2.9 References
+
+
+Sommerville, Ian (2007). Software engineering. Eight edition, Pearson Education Limited, Edinburgh Gate, England.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 APPENDIX
 Use cases GUI Object model Dynamic model 
-  Version: 
-  Date 
-  Author 
+ Version: 
+ Date 
+ Author 
 
 This version overrides all previous versions.
-
-
