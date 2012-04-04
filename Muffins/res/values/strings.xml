@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, MuffinsActivity!</string>
     <string name="app_name">Muffins</string>
+    <string name="username">Emil Nystrom</string>
 
 </resources>
