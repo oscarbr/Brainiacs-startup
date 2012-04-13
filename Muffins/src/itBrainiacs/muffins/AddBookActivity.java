@@ -9,6 +9,8 @@ public class AddBookActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		/* Placeholder textview */
+		
 		TextView tw = new TextView(this);
 		tw.setText("This is where you add your books that you wanna sell.");
 		setContentView(tw);
