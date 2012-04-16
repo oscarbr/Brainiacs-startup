@@ -32,6 +32,10 @@
         <activity 
             android:name=".AddBookActivity">
         </activity>
+        
+        <activity 
+            android:name=".SettingsActivity">
+        </activity>
     
     </application>
 

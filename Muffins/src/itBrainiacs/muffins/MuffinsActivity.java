@@ -40,6 +40,11 @@ public class MuffinsActivity extends TabActivity {
         spec = tabHost.newTabSpec("addBook").setIndicator("Add book", res.getDrawable(R.drawable.icon_tab_addbook)).setContent(intent);
         tabHost.addTab(spec);
         
+        /* The same procedure for Settings */
+        intent = new Intent().setClass(this, SettingsActivity.class);
+        spec = tabHost.newTabSpec("settings").setIndicator("Settings", res.getDrawable(R.drawable.icon_tab_settings)).setContent(intent);
+        tabHost.addTab(spec);
+        
         /* Setting the default tab to be the first (search) */
         tabHost.setCurrentTab(0);
     }
