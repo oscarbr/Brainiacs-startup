@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <TextView 
+        android:id="@+id/authorTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Author:" />
+    <EditText
+        android:id="@+id/authorET"
+        android:layout_below="@id/authorTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <TextView 
+        android:id="@+id/titleTW"
+        android:layout_below="@id/authorET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Book title:" />
+    <EditText 
+        android:id="@+id/titleET"
+        android:layout_below="@id/titleTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <Button 
+        android:id="@+id/OKButton"
+        android:layout_below="@id/titleET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Search" />
+                
+</RelativeLayout>
