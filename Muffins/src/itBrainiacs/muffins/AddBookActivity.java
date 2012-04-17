@@ -36,7 +36,8 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		String author = authorET.getText().toString();
 		String title = titleET.getText().toString();
 		
-		Toast.makeText(getApplicationContext(), author + " " + title + "has been added", Toast.LENGTH_SHORT).show();
+		/* Place holder Toast to notify that the listener works */
+		Toast.makeText(getApplicationContext(), author + ", " + title + " has been added", Toast.LENGTH_LONG).show();
 	}
 
 	
