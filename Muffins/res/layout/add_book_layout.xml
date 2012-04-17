@@ -5,36 +5,35 @@
 
     <!-- Convention for ID:s - activityDescriptionViewDescriptionViewType (camel-case) (view type shortened)  -->
     
-    
 	<TextView 
-        android:id="@+id/searchAuthorTW"
+        android:id="@+id/addBookAuthorTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Author:" />
     <EditText
-        android:id="@+id/searchAuthorET"
-        android:layout_below="@id/searchAuthorTW"
+        android:id="@+id/addBookAuthorET"
+        android:layout_below="@id/addBookAuthorTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
     <TextView 
-        android:id="@+id/searchTitleTW"
-        android:layout_below="@id/searchAuthorET"
+        android:id="@+id/addBookTitleTW"
+        android:layout_below="@id/addBookAuthorET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Book title:" />
     <EditText 
-        android:id="@+id/searchTitleET"
-        android:layout_below="@id/searchTitleTW"
+        android:id="@+id/addBookTitleET"
+        android:layout_below="@id/addBookTitleTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
     <Button 
-        android:id="@+id/searchSearchButton"
+        android:id="@+id/addBookAddButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchTitleET"
+        android:layout_below="@id/addBookTitleET"
         android:layout_marginTop="10dp"
-        android:text="Search" />
+        android:text="Add" />
                 
 </RelativeLayout>
