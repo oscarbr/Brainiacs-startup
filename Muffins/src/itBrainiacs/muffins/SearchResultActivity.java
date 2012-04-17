@@ -33,6 +33,7 @@ public class SearchResultActivity extends ListActivity {
 		/* Filters the list if the user starts typing */
 		lv.setTextFilterEnabled(true);
 		
+		/* Defines what will happen if you click a button */
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -42,4 +43,5 @@ public class SearchResultActivity extends ListActivity {
 			
 		});
 	}
+
 }
