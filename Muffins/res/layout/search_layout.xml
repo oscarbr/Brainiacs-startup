@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-    <TextView 
+
+	<TextView 
         android:id="@+id/authorTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -27,9 +28,10 @@
     
     <Button 
         android:id="@+id/OKButton"
-        android:layout_below="@id/titleET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/titleET"
+        android:layout_marginTop="10dp"
         android:text="Search" />
                 
 </RelativeLayout>

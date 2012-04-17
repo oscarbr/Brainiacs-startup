@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <!-- When selected this image will be used as icon -->
-    <item android:drawable="@drawable/add_book_dark" 
+    <item android:drawable="@drawable/placeholder_icon_grey" 
         android:state_selected="true" />
     
     <!-- When not selected this image will be used as icon -->
-    <item android:drawable="@drawable/add_book_light" />
+    <item android:drawable="@drawable/placeholder_icon_white" />
 
 </selector>
