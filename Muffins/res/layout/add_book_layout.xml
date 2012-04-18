@@ -78,8 +78,21 @@
     
     <!-- Comment TextView and EditText -->
     <TextView 
-        android:id="@+id/addBookCommentTW"
+        android:id="@+id/addBookPriceTW"
         android:layout_below="@id/addBookCourseET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Price:" />
+    <EditText
+        android:id="@+id/addBookPriceET"
+        android:layout_below="@id/addBookPriceTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <!-- Comment TextView and EditText -->
+    <TextView 
+        android:id="@+id/addBookCommentTW"
+        android:layout_below="@id/addBookPriceET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Comment:" />
