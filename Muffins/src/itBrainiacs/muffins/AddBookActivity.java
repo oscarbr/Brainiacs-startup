@@ -52,6 +52,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	/* Method called when the 'Add' button has been pressed and the user wants to add a book to the database */
 	private void addBook() {
 		
+		
 		/* Get the Strings from the field edited by the user */
 		String author = authorET.getText().toString();
 		String title = titleET.getText().toString();
