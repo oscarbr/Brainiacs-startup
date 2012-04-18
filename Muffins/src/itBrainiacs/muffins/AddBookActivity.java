@@ -39,7 +39,6 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		/* Place holder Toast to notify that the listener works */
 		Toast.makeText(getApplicationContext(), author + ", " + title + " has been added", Toast.LENGTH_LONG).show();
 	}
-
 	
 	/* Method from the interface OnClickListener. Called when the any button that has this class as a listener is pressed*/
 	public void onClick(View view) {
