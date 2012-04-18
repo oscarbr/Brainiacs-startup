@@ -36,8 +36,7 @@ public class SearchResultActivity extends ListActivity {
 		/* Defines what will happen if you click a button */
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
-			public void onItemClick(AdapterView<?> parent, View view, int position,
-					long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
 				Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
 			}
 			
