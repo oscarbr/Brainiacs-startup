@@ -5,9 +5,20 @@
 
     <!-- Convention for ID:s - activityDescriptionViewDescriptionViewType (camel-case) (view type shortened)  -->
     
+    <TextView 
+        android:id="@+id/searchISBNTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Book ISBN:" />
+    <EditText 
+        android:id="@+id/searchISBNET"
+        android:layout_below="@id/searchISBNTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
     
 	<TextView 
         android:id="@+id/searchAuthorTW"
+        android:layout_below="@id/searchISBNET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Author:" />
@@ -29,11 +40,35 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
+    <TextView 
+        android:id="@+id/searchVersionTW"
+        android:layout_below="@id/searchTitleET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Book version:" />
+    <EditText 
+        android:id="@+id/searchVersionET"
+        android:layout_below="@id/searchVersionTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <TextView 
+        android:id="@+id/searchCourseTW"
+        android:layout_below="@id/searchVersionET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Course:" />
+    <EditText 
+        android:id="@+id/searchCourseET"
+        android:layout_below="@id/searchCourseTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+ 
     <Button 
         android:id="@+id/searchSearchButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchTitleET"
+        android:layout_below="@id/searchCourseET"
         android:layout_marginTop="10dp"
         android:text="Search" />
                 
