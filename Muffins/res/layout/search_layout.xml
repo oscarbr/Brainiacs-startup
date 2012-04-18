@@ -9,7 +9,8 @@
     android:layout_height="fill_parent" >
 
     <!-- Convention for ID:s - activityDescriptionViewDescriptionViewType (camel-case) (view type shortened)  -->
-    
+    	
+    <!-- ISBN TextView and EditText -->
     <TextView 
         android:id="@+id/searchISBNTW"
         android:layout_width="fill_parent"
@@ -21,6 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
+    <!-- Author TextView and EditText -->
 	<TextView 
         android:id="@+id/searchAuthorTW"
         android:layout_below="@id/searchISBNET"
@@ -32,7 +34,8 @@
         android:layout_below="@id/searchAuthorTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-    
+    	
+    <!-- Title TextView and EditText -->
     <TextView 
         android:id="@+id/searchTitleTW"
         android:layout_below="@id/searchAuthorET"
@@ -44,19 +47,21 @@
         android:layout_below="@id/searchTitleTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-    
+   	
+   	<!-- Version TextView and EditText -->
     <TextView 
         android:id="@+id/searchVersionTW"
         android:layout_below="@id/searchTitleET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Book version:" />
+        android:text="Version:" />
     <EditText 
         android:id="@+id/searchVersionET"
         android:layout_below="@id/searchVersionTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-    
+    	
+    <!-- Course TextView and EditText -->
     <TextView 
         android:id="@+id/searchCourseTW"
         android:layout_below="@id/searchVersionET"
