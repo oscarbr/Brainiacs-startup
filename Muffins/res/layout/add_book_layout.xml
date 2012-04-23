@@ -22,7 +22,8 @@
         android:id="@+id/addBookAuthorET"
         android:layout_below="@id/addBookAuthorTW"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="must be atleast 10 characters" />
     
     <!-- Title TextView and EditText -->
     <TextView 
@@ -35,7 +36,8 @@
         android:id="@+id/addBookTitleET"
         android:layout_below="@id/addBookTitleTW"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" 
+        android:hint="must be atleast 10 characters" />
     
     <!-- ISBN TextView and EditText -->
     <TextView
@@ -43,13 +45,14 @@
         android:layout_below="@id/addBookTitleET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="ISBN:" />
+        android:text="ISBN: (Optional)" />
     <EditText
         android:id="@+id/addBookISBNET"
         android:layout_below="@id/addBookISBNTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:inputType="number" 
+        android:hint="must be 10 or 13 digits" />
     
     <!-- Version TextView and EditText -->
     <TextView 
@@ -57,7 +60,7 @@
         android:layout_below="@id/addBookISBNET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Version:" />
+        android:text="Version:(optional)" />
     <EditText
         android:id="@+id/addBookVersionET"
         android:layout_below="@id/addBookVersionTW"
@@ -70,12 +73,14 @@
         android:layout_below="@id/addBookVersionET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Publishing year:" />
+        android:text="Publishing year: (optional)" />
     <EditText
         android:id="@+id/addBookPubYearET"
         android:layout_below="@id/addBookPubYearTW"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" 
+        android:inputType="number"
+        android:hint="yyyy" />
     
     <!-- Course TextView and EditText -->
     <TextView 
@@ -83,7 +88,7 @@
         android:layout_below="@id/addBookPubYearET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Course:" />
+        android:text="Course: (optional)" />
     <EditText
         android:id="@+id/addBookCourseET"
         android:layout_below="@id/addBookCourseTW"
