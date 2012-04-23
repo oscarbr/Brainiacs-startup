@@ -1,6 +1,8 @@
 package itBrainiacs.muffins;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,9 +53,9 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	
 	/* Method called when the 'Add' button has been pressed and the user wants to add a book to the database */
 	private void addBook() {
+		boolean validInput;
 		
-		
-		/* Get the Strings from the field edited by the user */
+		/* Get the Strings from the field edited by the user */		
 		String author = authorET.getText().toString();
 		String title = titleET.getText().toString();
 		String isbn = ISBNET.getText().toString();
@@ -62,8 +64,12 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		String price = priceET.getText().toString();
 		String comment = commentET.getText().toString();
 		
-		/* Place holder Toast to notify that the listener works */
-		Toast.makeText(getApplicationContext(), "A book with"
+				
+		validInput = checkInput(author, title, isbn, version, course, price, comment);
+		if (validInput) {
+		
+			/* Place holder Toast to notify that the listener works */
+			Toast.makeText(getApplicationContext(), "A book with"
 				+ "\nAuthor: " + author 
 				+ "\nTitle: " + title 
 				+ "\nISBN: " + isbn
@@ -72,7 +78,47 @@ public class AddBookActivity extends Activity implements OnClickListener {
 				+ "\nPrice: " + price
 				+ "\nComment: " + comment
 				+ "\nhas been added", Toast.LENGTH_LONG).show();
+		}
 	}
+	
+	private boolean checkInput(String author, String title, String isbn, String version, 
+							String course, String price, String comment) {
+		String badInput = "Please correct the following input before proceeding:\n\n";
+		boolean validInput = true;
+		
+		if (author.length() < 10) {
+			badInput = badInput + "--Author name must be greater than 10 characters.\n";
+			validInput = false;
+		}
+		if (title.length() < 10) {
+			badInput = badInput + "--Title must be greater than 10 characters.\n";
+		validInput = false;
+		}
+		if ((isbn.length() != 10) && (isbn.length() != 13)) {
+			badInput = badInput + "--The ISBN-number must be 10 or 13 digits long.\n";
+		validInput = false;
+		}
+		if (!(price.length() > 0 && price.length() < 5)) {
+			badInput = badInput + "--Please specify a price within the range of 0-10000 SEK.\n";
+		validInput = false;
+		}
+		
+		if (!validInput) {
+			AlertDialog inputWarningDialog = new AlertDialog.Builder(this).create();
+			inputWarningDialog.setTitle("Invalid input!");
+			inputWarningDialog.setMessage(badInput);
+			inputWarningDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			   public void onClick(DialogInterface dialog, int which) {
+			      // here you can add functions
+			   }
+			});
+			inputWarningDialog.show();
+		}
+			
+		return validInput;
+	}
+	
+
 	
 	/* Method called when the 'Take Picture' button has been pressed and the user wants to add a photo of their book */
 	private void takePicture() {
