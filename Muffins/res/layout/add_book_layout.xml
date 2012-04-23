@@ -70,7 +70,7 @@
         android:layout_below="@id/addBookVersionET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Version:" />
+        android:text="Publishing year:" />
     <EditText
         android:id="@+id/addBookPubYearET"
         android:layout_below="@id/addBookPubYearTW"
@@ -80,7 +80,7 @@
     <!-- Course TextView and EditText -->
     <TextView 
         android:id="@+id/addBookCourseTW"
-        android:layout_below="@id/addBookVersionET"
+        android:layout_below="@id/addBookPubYearET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Course:" />
