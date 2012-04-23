@@ -12,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.lang.Character;
+
 
 public class AddBookActivity extends Activity implements OnClickListener {
 	
@@ -94,11 +96,11 @@ public class AddBookActivity extends Activity implements OnClickListener {
 			badInput = badInput + "--Title must be greater than 10 characters.\n";
 		validInput = false;
 		}
-		if ((isbn.length() != 10) && (isbn.length() != 13)) {
+		if ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn)) {
 			badInput = badInput + "--The ISBN-number must be 10 or 13 digits long.\n";
 		validInput = false;
 		}
-		if (!(price.length() > 0 && price.length() < 5)) {
+		if (!(price.length() > 0 && price.length() < 5) || !onlyDigits(price)) {
 			badInput = badInput + "--Please specify a price within the range of 0-10000 SEK.\n";
 		validInput = false;
 		}
@@ -118,6 +120,14 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		return validInput;
 	}
 	
+	private boolean onlyDigits(String s){
+		for (int i=0; i < s.length(); i++) {
+			if (!Character.isDigit(s.charAt(i)))
+				return false;
+		}
+		return true;
+			
+	}
 
 	
 	/* Method called when the 'Take Picture' button has been pressed and the user wants to add a photo of their book */
