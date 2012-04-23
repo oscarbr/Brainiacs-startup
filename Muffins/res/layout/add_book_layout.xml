@@ -64,6 +64,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
+     <!-- Publishing year TextView and EditText -->
+    <TextView 
+        android:id="@+id/addBookPubYearTW"
+        android:layout_below="@id/addBookVersionET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Version:" />
+    <EditText
+        android:id="@+id/addBookPubYearET"
+        android:layout_below="@id/addBookPubYearTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
     <!-- Course TextView and EditText -->
     <TextView 
         android:id="@+id/addBookCourseTW"
