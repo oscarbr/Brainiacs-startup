@@ -1,6 +1,7 @@
 package itBrainiacs.muffins;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.app.AlertDialog;
+import java.lang.Character;
 
 public class AddBookActivity extends Activity implements OnClickListener {
 	
@@ -60,19 +61,12 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		/* Get the Strings from the field edited by the user */		
 		String author = authorET.getText().toString();
 		String title = titleET.getText().toString();
-		String isbnString = ISBNET.getText().toString();
+		String isbn = ISBNET.getText().toString();
 		String version = versionET.getText().toString();
 		String pubYear = pubYearET.getText().toString();
 		String course = courseET.getText().toString();
-		String priceString = priceET.getText().toString();
+		String price = priceET.getText().toString();
 		String comment = commentET.getText().toString();
-		Integer isbn = 0;
-		Integer price = 0;
-		
-		if (isbnString.length() != 0)
-			isbn = Integer.parseInt(isbnString);
-		if (priceString.length() != 0)
-			price = Integer.parseInt(priceString);
 				
 		validInput = checkInput(author, title, isbn, version, course, price, comment);
 		if (validInput) {
@@ -90,25 +84,26 @@ public class AddBookActivity extends Activity implements OnClickListener {
 				+ "\nhas been added", Toast.LENGTH_LONG).show();
 		}
 	}
+
 	
-	private boolean checkInput(String author, String title, Integer isbn, String version, 
-							String course, Integer price, String comment) {
+	private boolean checkInput(String author, String title, String isbn, String version, 
+							String course, String price, String comment) {
 		String badInput = "Please correct the following input before proceeding:\n\n";
 		boolean validInput = true;
 		
-		if (author != null && author.length() < 10) {
+		if (author.length() < 10) {
 			badInput = badInput + "--Author name must be greater than 10 characters.\n";
 			validInput = false;
 		}
-		if (title != null && title.length() < 10) {
+		if (title.length() < 10) {
 			badInput = badInput + "--Title must be greater than 10 characters.\n";
 		validInput = false;
 		}
-		if ((String.valueOf(isbn).length() != 10) && (String.valueOf(isbn).length() != 13)) {
+		if ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn)) {
 			badInput = badInput + "--The ISBN-number must be 10 or 13 digits long.\n";
 		validInput = false;
 		}
-		if (price < 1 || price > 10000) {
+		if (!(price.length() > 0 && price.length() < 5) || !onlyDigits(price)) {
 			badInput = badInput + "--Please specify a price within the range of 0-10000 SEK.\n";
 		validInput = false;
 		}
@@ -126,7 +121,16 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		}
 			
 		return validInput;
+	}
+	
+	private boolean onlyDigits(String s){
+		for (int i=0; i < s.length(); i++) {
+			if (!Character.isDigit(s.charAt(i)))
+				return false;
 		}
+		return true;
+			
+	}
 	
 	/* Method called when the 'Take Picture' button has been pressed and the user wants to add a photo of their book */
 	private void takePicture() {
