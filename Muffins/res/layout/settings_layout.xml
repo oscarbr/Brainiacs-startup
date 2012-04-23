@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ScrollView to make the activity scrollable -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+	<!-- Information on the settings-tab -->
+    <TextView 
+        android:id="@+id/settingsInfoTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Please specify either a valid email or phone nr (or both) for buyers to contact you\n" />
+        
+    <!-- Email TextView and EditText -->
+	<TextView 
+        android:id="@+id/settingsEmailTW"
+        android:layout_below="@id/settingsInfoTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Email:" />
+    <EditText
+        android:id="@+id/settingsEmailET"
+        android:layout_below="@id/settingsEmailTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:inputType="textEmailAddress"/>
+    
+    <!-- Phone-nr TextView and EditText -->
+	<TextView 
+        android:id="@+id/settingsPhoneTW"
+        android:layout_below="@id/settingsEmailET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone nr:" />
+    <EditText
+        android:id="@+id/settingsPhoneET"
+        android:layout_below="@id/settingsPhoneTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:inputType="phone"/>
+    
+    <!-- Password TextView and EditText -->
+	<TextView 
+        android:id="@+id/settingsPasswordTW"
+        android:layout_below="@id/settingsPhoneET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Password for editing your entry:" />
+    <EditText
+        android:id="@+id/settingsPasswordET"
+        android:layout_below="@id/settingsPasswordTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:inputType="textVisiblePassword"/>
+
+      
+	</RelativeLayout>
+</ScrollView>
