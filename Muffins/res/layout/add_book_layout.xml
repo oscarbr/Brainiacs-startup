@@ -48,7 +48,8 @@
         android:id="@+id/addBookISBNET"
         android:layout_below="@id/addBookISBNTW"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="number" />
     
     <!-- Version TextView and EditText -->
     <TextView 
@@ -87,7 +88,8 @@
         android:id="@+id/addBookPriceET"
         android:layout_below="@id/addBookPriceTW"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" 
+        android:inputType="number" />
     
     <!-- Comment TextView and EditText -->
     <TextView 
