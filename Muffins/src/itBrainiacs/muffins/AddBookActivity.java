@@ -54,7 +54,9 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		addButton.setOnClickListener(this);
 	}
 	
-	/* Method called when the 'Add' button has been pressed and the user wants to add a book to the database */
+	/**
+	 * Method called when the 'Add' button has been pressed and the user wants to add a book to the database
+	 */
 	private void addBook() {
 		boolean validInput;
 		
@@ -67,8 +69,9 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		String course = courseET.getText().toString();
 		String price = priceET.getText().toString();
 		String comment = commentET.getText().toString();
-				
-		validInput = checkInput(author, title, isbn, version, course, price, comment);
+		
+		/* Validating the input provided by the user */
+		validInput = checkInput(author, title, isbn, price);
 		if (validInput) {
 		
 			/* Place holder Toast to notify that the listener works */
@@ -85,9 +88,16 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	
-	private boolean checkInput(String author, String title, String isbn, String version, 
-							String course, String price, String comment) {
+	/**
+	 * Validates the user-input while attempting to add a new book, before adding to the database
+	 * 
+	 * @param author Author of the book, must be atleast 10 characters
+	 * @param title Title of the book, must be atleast 10 characters
+	 * @param isbn ISBN-number. Must be 10 or 13 digits
+	 * @param price Price must be specified as a number between 0-10000.
+	 * @return Returns a boolean stating if the input is valid
+	 */
+	private boolean checkInput(String author, String title, String isbn, String price) {
 		String badInput = "Please correct the following input before proceeding:\n\n";
 		boolean validInput = true;
 		
@@ -99,7 +109,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 			badInput = badInput + "--Title must be greater than 10 characters.\n";
 		validInput = false;
 		}
-		if ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn)) {
+		if (isbn.length() != 0 && ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn))) {
 			badInput = badInput + "--The ISBN-number must be 10 or 13 digits long.\n";
 		validInput = false;
 		}
