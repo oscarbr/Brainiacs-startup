@@ -1,25 +1,17 @@
 	private void testDB(){
-		//Creating a json-representation of my query
-		
-		JSONObject query = new JSONObject();
-
 		try {
+			/* Creating a json-representation of the query and 
+			 * convert it to a String to be able to send in a POST 
+			 * to the php-script on the server */
+			JSONObject query = new JSONObject();
 			query.put("author", "Emilio");
 			query.put("title", "Management");
-
-		} catch (JSONException e1) {
-			e1.printStackTrace();
-		}
+			String json = query.toString();
 		
-		String json = query.toString();
-		Toast.makeText(getApplicationContext(), json, Toast.LENGTH_LONG).show();
-		
-		// Create a new HttpClient and Post Header
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://muffins.trestad.net/muffin_app/search_books.php");
+			// Create a new HttpClient and Post Header
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost("http://muffins.trestad.net/muffin_app/search_books.php");
 
-
-		try {	    	
 		   	List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);  
 		   	nameValuePairs.add(new BasicNameValuePair("jsondata", json));  
 		   	httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -28,25 +20,27 @@
 	        InputStream in = response.getEntity().getContent();
 	        
 	        String results = convertStreamToString(in);
-	        
-	        Toast.makeText(getApplicationContext(), in.toString(), Toast.LENGTH_LONG).show();
-	        Toast.makeText(getApplicationContext(), results, Toast.LENGTH_LONG).show();
+	        	        
+			JSONObject jsonResults = new JSONObject(results);
+			
+			Toast.makeText(getApplicationContext(), (String) jsonResults.get("author"), Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), (String) jsonResults.get("title"), Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), (String) jsonResults.get("testPerson"), Toast.LENGTH_LONG).show();
 
 
 			} catch (ClientProtocolException e) {
 				System.out.println("ERROR (ClientProtocolException): " + e.toString());
 			} catch (IOException e) {
 			    System.out.println("ERROR (IOException): " + e.toString());	    
+			} catch (JSONException e) {
+				System.out.println("ERROR (JSONException): " + e.toString());
+				e.printStackTrace();
 			} 
+		
 			
 	}
 	private String convertStreamToString(InputStream is) {
-        /*
-         * To convert the InputStream to String we use the BufferedReader.readLine()
-         * method. We iterate until the BufferedReader return null which means
-         * there's no more data to read. Each line will appended to a StringBuilder
-         * and returned as String.
-         */
+ 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
  

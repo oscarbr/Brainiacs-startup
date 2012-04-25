@@ -61,7 +61,6 @@ public class SearchActivity extends Activity implements OnClickListener {
 
 	/* Method to be called when executing a search */
 	private void searchBooks() {
-		
 		/* Fetching the text filled in by the user in the fields */
 		String author = authorET.getText().toString();
 		String title = titleET.getText().toString();
@@ -75,7 +74,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 				+ "\nISBN:" + isbn 
 				+ "\nVersion: " + version
 				+ "\nCourse: " + course 
-				+ "\nhas been searched", Toast.LENGTH_LONG).show();
+				+ "\nhas been searched", Toast.LENGTH_LONG).show();	
 	}
 	
 	/* Method called when the searchButton is pressed */
@@ -83,3 +82,4 @@ public class SearchActivity extends Activity implements OnClickListener {
 		searchBooks();
 	}
 }
+	
