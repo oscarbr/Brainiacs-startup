@@ -5,7 +5,7 @@
 	$decoded = json_decode($jsonInput,true);
 	
 	//Connect to the database
-	$connection = mysql_connect(localhost, muffin_master, svansk0ta); //might change this to be localhost
+	$connection = mysql_connect(localhost, ***, ***); //might change this to be localhost
 	
 	if (!$connection) {
 		die("Could not connect to db: " . mysql_error()); 	

@@ -2,10 +2,9 @@
 	//Get the information from the request (POST)
 	$jsonInput = $_POST['jsondata'];
 	$decoded = json_decode($jsonInput,true);
-	echo "At least connected!";
-	/*
+
 	//Connect to the database
-	$connection = mysql_connect(localhost:3306, php_script_user, svansk0ta) or die ("Could not connect to db: " . mysql_error());
+	$connection = mysql_connect(localhost:3306, ***, ***) or die ("Could not connect to db: " . mysql_error());
 
 
 	//Select the database to be used
@@ -31,6 +30,6 @@
 	
 	//Disconnect database
 	mysql_close($connection);
-	*/
+
 ?>
 
