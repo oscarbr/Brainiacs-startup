@@ -74,7 +74,18 @@ public class SearchActivity extends Activity implements OnClickListener {
 				+ "\nISBN:" + isbn 
 				+ "\nVersion: " + version
 				+ "\nCourse: " + course 
-				+ "\nhas been searched", Toast.LENGTH_LONG).show();	
+				+ "\nhas been searched", Toast.LENGTH_LONG).show();
+		
+		/* creates a json-object (ready for json formatting) of the requested search */
+		JSONObject query = new JSONObject();
+		try {
+			query.put("author", author);
+			query.put("title", title);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		JSONObject results = ServerCommunicator.searchBooks(query);
 	}
 	
 	/* Method called when the searchButton is pressed */
