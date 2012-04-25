@@ -1,9 +1,12 @@
 package itBrainiacs.muffins;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import android.app.Activity;
 import android.content.Context;
@@ -50,13 +53,14 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		
 		try {
 			FileInputStream fileRead = openFileInput(SavedUserDetails);
-			DataInputStream dataStream = new DataInputStream(fileRead);
-			name = dataStream.readLine();
-			email = dataStream.readLine();
-			phone = dataStream.readLine();
-			password = dataStream.readLine();
+			DataInputStream dStream = new DataInputStream(fileRead);
+			BufferedReader bReader = new BufferedReader(new InputStreamReader(dStream));
+			name = bReader.readLine();
+			email = bReader.readLine();
+			phone = bReader.readLine();
+			password = bReader.readLine();
 			
-			nameET.setText("name", TextView.BufferType.EDITABLE);
+			nameET.setText(name, TextView.BufferType.EDITABLE);
 			emailET.setText(email, TextView.BufferType.EDITABLE);
 			phoneET.setText(phone, TextView.BufferType.EDITABLE);
 			passwordET.setText(password, TextView.BufferType.EDITABLE);
@@ -69,6 +73,11 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	}
 	
 	private void saveSettings() {
+		name = nameET.getText().toString();
+		email= emailET.getText().toString();
+		phone = phoneET.getText().toString();
+		password = passwordET.getText().toString();
+		
 		userDetails = name + "\n" + email + "\n" + phone + "\n" + password;
 		/* Writing user details to private file in the internal storage of the device */
 		try {
