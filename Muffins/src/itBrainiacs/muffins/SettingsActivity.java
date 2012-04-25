@@ -55,6 +55,13 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			email = dataStream.readLine();
 			phone = dataStream.readLine();
 			password = dataStream.readLine();
+			
+			nameET.setText("name", TextView.BufferType.EDITABLE);
+			emailET.setText(email, TextView.BufferType.EDITABLE);
+			phoneET.setText(phone, TextView.BufferType.EDITABLE);
+			passwordET.setText(password, TextView.BufferType.EDITABLE);
+			
+			Toast.makeText(getApplicationContext(), "Settings loaded", Toast.LENGTH_SHORT).show();
 		}
 		catch (IOException e) {
 			Toast.makeText(getApplicationContext(), "Settings-file could not be found", Toast.LENGTH_SHORT).show();
