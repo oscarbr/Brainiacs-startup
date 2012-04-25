@@ -17,10 +17,25 @@
         android:layout_height="wrap_content"
         android:text="Please specify either a valid email or phone nr (or both) for buyers to contact you\n" />
         
+    <!-- Name TextView and EditText -->
+    <TextView
+        android:id="@+id/settingsNameTW"
+        android:layout_below="@id/settingsInfoTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Name:" />
+    <EditText
+        android:id="@+id/settingsNameET"
+        android:layout_below="@id/settingsNameTW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="optional" />
+    
+    
     <!-- Email TextView and EditText -->
 	<TextView 
         android:id="@+id/settingsEmailTW"
-        android:layout_below="@id/settingsInfoTW"
+        android:layout_below="@id/settingsNameET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Email:" />
@@ -57,8 +72,27 @@
         android:layout_below="@id/settingsPasswordTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" 
-        android:inputType="textVisiblePassword"/>
+        android:inputType="textPassword"
+        android:hint="Using the same password as for your mail is not recommended"/>
+    
+    <!-- Button to store the data entered in settings -->
+    <Button
+        android:id="@+id/settingsSaveButton"
+        android:layout_below="@id/settingsPasswordET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Save data" />
 
+    <!-- Button to delete the saved information -->
+    <Button
+        android:id="@+id/settingsDeleteButton"
+        android:layout_below="@id/settingsPasswordET"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Delete saved data" />
       
 	</RelativeLayout>
 </ScrollView>
