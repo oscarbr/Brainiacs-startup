@@ -93,8 +93,14 @@ public class SettingsActivity extends Activity implements OnClickListener {
 
 	private void deleteSettings() {
 		userDetails = "";			
-		if (deleteFile(SavedUserDetails))
+		if (deleteFile(SavedUserDetails)) {
+			nameET.setText("");
+			emailET.setText("");
+			phoneET.setText("");
+			passwordET.setText("");
+		
 			Toast.makeText(getApplicationContext(), "User details deleted", Toast.LENGTH_SHORT).show();
+		}
 		else
 			Toast.makeText(getApplicationContext(), "File could not be found", Toast.LENGTH_SHORT).show();
 		}
