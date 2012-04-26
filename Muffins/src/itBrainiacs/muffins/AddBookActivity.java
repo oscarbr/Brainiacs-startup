@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import java.lang.Character;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class AddBookActivity extends Activity implements OnClickListener {
 	
 	/* Variables to be act as hooks to views specified in the layout-XML */
@@ -73,18 +76,25 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		/* Validating the input provided by the user */
 		validInput = checkInput(author, title, isbn, price);
 		if (validInput) {
-		
-			/* Place holder Toast to notify that the listener works */
-			Toast.makeText(getApplicationContext(), "A book with"
-				+ "\nAuthor: " + author 
-				+ "\nTitle: " + title 
-				+ "\nISBN: " + isbn
-				+ "\nVersion: " + version
-				+ "\npubYear: " + pubYear
-				+ "\nCourse: " + course
-				+ "\nPrice: " + price
-				+ "\nComment: " + comment
-				+ "\nhas been added", Toast.LENGTH_LONG).show();
+			
+			JSONObject query = new JSONObject();
+			
+			try {
+				query.put("author", author);
+				query.put("title", title);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			/* Sends the query with addBook to the server via the ServerCommunicator-class */
+			if(ServerCommunicator.addBook(query)) {
+				
+				Toast.makeText(getApplicationContext(), "Book was put up for sale!", Toast.LENGTH_LONG).show();
+			
+			} else {
+				
+				Toast.makeText(getApplicationContext(), "Communication with server failed!", Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 
