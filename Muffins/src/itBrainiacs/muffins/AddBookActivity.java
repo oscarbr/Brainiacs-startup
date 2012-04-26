@@ -86,6 +86,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 				e.printStackTrace();
 			}
 			
+			/* Sends the query with addBook to the server via the ServerCommunicator-class */
 			if(ServerCommunicator.addBook(query)) {
 				
 				Toast.makeText(getApplicationContext(), "Book was put up for sale!", Toast.LENGTH_LONG).show();
