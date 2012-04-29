@@ -13,8 +13,24 @@
 	//Select the database to be used
 	mysql_select_db("muffin_books", $connection) or die (mysql_error());
 	
+	$first = 0;
+	$keys = "";
+	$values = "";
+	
+	//Capture all the keys and values inputed. Risk of getting invalid once. 
+	foreach ($decoded as $key => $value) {
+		if (first == 0) {
+			$keys = $key;
+			$values = "'" . $value . "'";
+			first = 1;
+		} else {
+			$keys = $keys . ", " . $key;
+			$values = $values . ", '" . $value . "'";
+		}
+	}		 
+	
 	//Construct the insert-query
-	$sql = "INSERT INTO Books (author, title, testPerson) VALUES ('" . $decoded['author'] . "', '" . $decoded['title'] . "', 'Rikard Andersson')";
+	$sql = "INSERT INTO Books (" . $keys . ") VALUES (" . $values . ")";
 		
 	//Make the query to the database with the connection
 	if(!mysql_query($sql, $connection)){
