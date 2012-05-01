@@ -1,6 +1,6 @@
 CREATE TABLE Books (
   saleID int(11) NOT NULL,
-  isbn int(13) DEFAULT NULL,
+  isbn bigint(13) DEFAULT NULL,
   author varchar(100) NOT NULL,
   title varchar(100) NOT NULL,
   edition varchar(45) DEFAULT NULL,
@@ -14,6 +14,6 @@ CREATE TABLE Books (
   email varchar(45) NOT NULL,
   phone varchar(45) NOT NULL,
   password varchar(45) NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE KEY id_UNIQUE (id)
+  PRIMARY KEY (saleID),
+  UNIQUE KEY id_UNIQUE (saleID) //Varför har vi denna?
 )
