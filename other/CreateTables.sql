@@ -1,6 +1,6 @@
 CREATE TABLE Books (
-  saleID int(11) NOT NULL,
-  isbn bigint(13) DEFAULT NULL,
+  saleID int NOT NULL AUTO_INCREMENT,
+  isbn bigint DEFAULT NULL,
   author varchar(100) NOT NULL,
   title varchar(100) NOT NULL,
   edition varchar(45) DEFAULT NULL,
@@ -8,12 +8,11 @@ CREATE TABLE Books (
   course char(6) DEFAULT NULL,
   period varchar(45) DEFAULT NULL,
   bookType varchar(45) DEFAULT NULL,
-  sold int(1) DEFAULT NULL,
+  sold tinyint DEFAULT NULL,
   price varchar(45) NOT NULL,
   expires date NOT NULL,
   email varchar(45) NOT NULL,
   phone varchar(45) NOT NULL,
   password varchar(45) NOT NULL,
-  PRIMARY KEY (saleID),
-  UNIQUE KEY id_UNIQUE (saleID) //Varför har vi denna?
+  PRIMARY KEY (saleID)
 )

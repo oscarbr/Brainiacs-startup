@@ -77,16 +77,12 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		validInput = checkInput(author, title, isbn, price);
 		if (validInput) {
 			
+			//This code is duplicate from SearchActivity - make this redundancy go away!
 			JSONObject query = new JSONObject();
-			
 			try {
 				query.put("author", author);
 				query.put("title", title);
-				/* query.put("isbn", isbn);
-				query.put("version", version);
-				query.put("publYear", publYear);
 				query.put("price", price);
-				*/
 				
 			} catch (JSONException e) {
 				e.printStackTrace();
