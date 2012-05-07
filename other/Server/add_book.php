@@ -19,26 +19,31 @@
 	
 	//Capture all the keys and values inputed. Risk of getting invalid once. 
 	foreach ($decoded as $key => $value) {
-		if (first == 0) {
+		if ($first == 0) {
 			$keys = $key;
 			$values = "'" . $value . "'";
-			first = 1;
+			$first = 1;
 		} else {
 			$keys = $keys . ", " . $key;
 			$values = $values . ", '" . $value . "'";
 		}
-	}		 
+	}
+	
 	
 	//Construct the insert-query
 	$sql = "INSERT INTO Books (" . $keys . ") VALUES (" . $values . ")";
-		
+	
 	//Make the query to the database with the connection
-	if(!mysql_query($sql, $connection)){
+	
+	
+	$results = mysql_query($sql, $connection);
+	
+	if(!$results){
 		die("Could not add book to db" . mysql_error());
+	} else {
+		echo $results;
 	}
 	
-	echo "Book added to database";
-		
 	//Disconnect database
 	mysql_close($connection);
 ?>

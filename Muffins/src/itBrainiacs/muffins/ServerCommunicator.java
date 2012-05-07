@@ -34,14 +34,10 @@ public class ServerCommunicator {
 	 *of the book to be added.
 	 *@return True if the add was successfull 
 	 */
-	public static boolean addBook(JSONObject book){
+	public static String addBook(JSONObject book){
 		/* Path to server script */
 		String url = "http://muffins.trestad.net/muffin_app/add_book.php";
-		if(requestResponsFromServer(book, url).equals("null")){
-			return false;
-		} else {
-			return true;
-		}
+		return requestResponsFromServer(book, url);
 	}
 	
 	/** 
@@ -54,7 +50,7 @@ public class ServerCommunicator {
 	public static JSONObject searchBooks(JSONObject search){
 		/* Path to server script */
 		String url = "http://muffins.trestad.net/muffin_app/search_books.php";
-		JSONObject jsonResults = null;
+		JSONObject jsonResults = new JSONObject();
 		try {
 			jsonResults = new JSONObject(requestResponsFromServer(search, url));
 		} catch (JSONException e) {
@@ -76,7 +72,7 @@ public class ServerCommunicator {
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			InputStream in = response.getEntity().getContent();
-			results = convertStreamToString(in); 
+			results = convertStreamToString(in);
 		
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

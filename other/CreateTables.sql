@@ -15,5 +15,5 @@ CREATE TABLE Books (
   phone varchar(45) NOT NULL,
   password varchar(45) NOT NULL,
   PRIMARY KEY (saleID),
-  UNIQUE KEY id_UNIQUE (saleID) //Varför har vi denna?
+  UNIQUE KEY id_UNIQUE (saleID) //VarfÃ¶r har vi denna?
 )

@@ -68,7 +68,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		String title = titleET.getText().toString();
 		String isbn = ISBNET.getText().toString();
 		String version = versionET.getText().toString();
-		String pubYear = pubYearET.getText().toString();
+		String publYear = pubYearET.getText().toString();
 		String course = courseET.getText().toString();
 		String price = priceET.getText().toString();
 		String comment = commentET.getText().toString();
@@ -82,20 +82,23 @@ public class AddBookActivity extends Activity implements OnClickListener {
 			try {
 				query.put("author", author);
 				query.put("title", title);
+				/* query.put("isbn", isbn);
+				query.put("version", version);
+				query.put("publYear", publYear);
+				query.put("price", price);
+				*/
+				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			
 			/* Sends the query with addBook to the server via the ServerCommunicator-class */
-			if(ServerCommunicator.addBook(query)) {
-				
-				Toast.makeText(getApplicationContext(), "Book was put up for sale!", Toast.LENGTH_LONG).show();
+			String communicationResults = ServerCommunicator.addBook(query);
 			
-			} else {
-				
-				Toast.makeText(getApplicationContext(), "Communication with server failed!", Toast.LENGTH_LONG).show();
-			}
+			Toast.makeText(getApplicationContext(), communicationResults, Toast.LENGTH_LONG).show();
+			
 		}
+
 	}
 
 	/**
