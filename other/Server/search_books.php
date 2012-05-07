@@ -3,9 +3,7 @@
 	$jsonInput = $_POST['jsondata'];
 	$decoded = json_decode($jsonInput,true);
 	
-	$username = "muffin_master";
-	$password = "***";
-	$server = "localhost";
+	include '../../pswd.php';
 		
 	//Connect to the database
 	$connection = mysql_connect($server, $username, $password) or die ("Could not connect to db: " . mysql_error());
