@@ -13,6 +13,7 @@ CREATE TABLE Books (
   expires date NOT NULL,
   email varchar(45) NOT NULL,
   phone varchar(45) NOT NULL,
+  comment varchar(150) DEFAULT NULL,
   password varchar(45) NOT NULL,
   PRIMARY KEY (saleID)
 )
