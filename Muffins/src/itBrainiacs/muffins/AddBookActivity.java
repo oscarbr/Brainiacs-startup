@@ -77,19 +77,14 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		validInput = checkInput(author, title, isbn, price);
 		if (validInput) {
 			
-			//This code is duplicate from SearchActivity - make this redundancy go away!
-			JSONObject query = new JSONObject();
-			try {
-				query.put("author", author);
-				query.put("title", title);
-				query.put("price", price);
-				
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+			DataBook newBook = new DataBook();
+			newBook.setAuthor(author);
+			newBook.setTitle(title);
+			newBook.setIsbn(isbn);
+			newBook.setPrice(price);
 			
 			/* Sends the query with addBook to the server via the ServerCommunicator-class */
-			String communicationResults = ServerCommunicator.addBook(query);
+			String communicationResults = ServerCommunicator.addBook(newBook);
 			
 			Toast.makeText(getApplicationContext(), communicationResults, Toast.LENGTH_LONG).show();
 			
