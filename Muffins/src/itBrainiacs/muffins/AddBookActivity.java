@@ -24,7 +24,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private EditText titleET;
 	private EditText ISBNET;
 	private EditText versionET;
-	private EditText pubYearET;
+	private EditText publYearET;
 	private EditText courseET;
 	private EditText priceET;
 	private EditText commentET;
@@ -45,7 +45,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		titleET = (EditText) findViewById(R.id.addBookTitleET);
 		ISBNET = (EditText) findViewById(R.id.addBookISBNET);
 		versionET = (EditText) findViewById(R.id.addBookVersionET);
-		pubYearET = (EditText) findViewById(R.id.addBookPubYearET);
+		publYearET = (EditText) findViewById(R.id.addBookPubYearET);
 		courseET = (EditText) findViewById(R.id.addBookCourseET);
 		priceET = (EditText) findViewById(R.id.addBookPriceET);
 		commentET = (EditText) findViewById(R.id.addBookCommentET);
@@ -68,7 +68,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		String title = titleET.getText().toString();
 		String isbn = ISBNET.getText().toString();
 		String version = versionET.getText().toString();
-		String publYear = pubYearET.getText().toString();
+		String publYear = publYearET.getText().toString();
 		String course = courseET.getText().toString();
 		String price = priceET.getText().toString();
 		String comment = commentET.getText().toString();
