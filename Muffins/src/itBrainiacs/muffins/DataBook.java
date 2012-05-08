@@ -81,19 +81,19 @@ public class DataBook {
 		this.sold = sold;
 	}
 
-	public Integer getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
-	public Date getExpires() {
+	public String getExpires() {
 		return expires;
 	}
 
-	public void setExpires(Date expires) {
+	public void setExpires(String expires) {
 		this.expires = expires;
 	}
 
