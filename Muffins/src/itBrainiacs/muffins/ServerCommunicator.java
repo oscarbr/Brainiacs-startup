@@ -74,7 +74,7 @@ public class ServerCommunicator {
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			InputStream in = response.getEntity().getContent();
-			results = convertStreamToString(in);
+			results = MuffinsUtility.convertStreamToString(in);
 		
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -86,29 +86,5 @@ public class ServerCommunicator {
 		return results;
 	}
 
-	
-	/* Collects all of the data from an InputStream and converts it into a String */
-	private static String convertStreamToString(InputStream is) {
- 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
- 
-        String line = null;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
-    }
 
 }
