@@ -33,7 +33,21 @@ public class DataBookFactory {
 		
 		dataBooks.add(book);
 		
-		
 		return dataBooks;
+	}
+	
+	public static JSONObject dataBookToJSON(DataBook book) {
+		
+		JSONObject jsonBook = new JSONObject();
+		
+		try {
+			jsonBook.put("author", book.getAuthor());
+			jsonBook.put("title", book.getTitle());
+			jsonBook.put("price", book.getPrice());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		return jsonBook;
 	}
 }
