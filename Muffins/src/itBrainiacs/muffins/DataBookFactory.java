@@ -50,6 +50,11 @@ public class DataBookFactory {
 			jsonBook.put("author", book.getAuthor());
 			jsonBook.put("title", book.getTitle());
 			jsonBook.put("price", book.getPrice());
+			jsonBook.put("comment", book.getComment());
+			jsonBook.put("isbn", book.getIsbn());
+			jsonBook.put("edition", book.getEdition());
+			jsonBook.put("course", book.getCourse());
+			jsonBook.put("publYear", book.getPublYear());
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
