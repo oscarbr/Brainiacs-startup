@@ -82,6 +82,10 @@ public class AddBookActivity extends Activity implements OnClickListener {
 			newBook.setTitle(title);
 			newBook.setIsbn(isbn);
 			newBook.setPrice(price);
+			newBook.setCourse(course);
+			newBook.setEdition(version);
+			newBook.setPublYear(publYear);
+			newBook.setComment(comment);
 			
 			/* Sends the query with addBook to the server via the ServerCommunicator-class */
 			String communicationResults = ServerCommunicator.addBook(newBook);
