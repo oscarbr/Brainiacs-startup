@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import java.lang.Character;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class AddBookActivity extends Activity implements OnClickListener {
 	

@@ -1,9 +1,5 @@
 package itBrainiacs.muffins;
 
-import java.util.Date;
-
-import org.json.JSONObject;
-
 public class DataBook {
 
 	private String title;
