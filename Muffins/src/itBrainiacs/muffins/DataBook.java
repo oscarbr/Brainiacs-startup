@@ -24,6 +24,7 @@ public class DataBook {
 	private String phone;
 	private String password;
 	private String saleId;
+	private String comment;
 
 	public String getIsbn() {
 		return isbn;
@@ -167,6 +168,14 @@ public class DataBook {
 
 	public void setLanguage(String language) {
 		this.language = language;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
+	
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 }
