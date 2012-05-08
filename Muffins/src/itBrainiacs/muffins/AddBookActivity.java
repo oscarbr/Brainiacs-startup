@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import java.lang.Character;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class AddBookActivity extends Activity implements OnClickListener {
 	
@@ -24,7 +22,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private EditText titleET;
 	private EditText ISBNET;
 	private EditText versionET;
-	private EditText pubYearET;
+	private EditText publYearET;
 	private EditText courseET;
 	private EditText priceET;
 	private EditText commentET;
@@ -45,7 +43,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		titleET = (EditText) findViewById(R.id.addBookTitleET);
 		ISBNET = (EditText) findViewById(R.id.addBookISBNET);
 		versionET = (EditText) findViewById(R.id.addBookVersionET);
-		pubYearET = (EditText) findViewById(R.id.addBookPubYearET);
+		publYearET = (EditText) findViewById(R.id.addBookPubYearET);
 		courseET = (EditText) findViewById(R.id.addBookCourseET);
 		priceET = (EditText) findViewById(R.id.addBookPriceET);
 		commentET = (EditText) findViewById(R.id.addBookCommentET);
@@ -68,7 +66,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		String title = titleET.getText().toString();
 		String isbn = ISBNET.getText().toString();
 		String version = versionET.getText().toString();
-		String publYear = pubYearET.getText().toString();
+		String publYear = publYearET.getText().toString();
 		String course = courseET.getText().toString();
 		String price = priceET.getText().toString();
 		String comment = commentET.getText().toString();
@@ -77,19 +75,18 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		validInput = checkInput(author, title, isbn, price);
 		if (validInput) {
 			
-			//This code is duplicate from SearchActivity - make this redundancy go away!
-			JSONObject query = new JSONObject();
-			try {
-				query.put("author", author);
-				query.put("title", title);
-				query.put("price", price);
-				
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+			DataBook newBook = new DataBook();
+			newBook.setAuthor(author);
+			newBook.setTitle(title);
+			newBook.setIsbn(isbn);
+			newBook.setPrice(price);
+			newBook.setCourse(course);
+			newBook.setEdition(version);
+			newBook.setPublYear(publYear);
+			newBook.setComment(comment);
 			
 			/* Sends the query with addBook to the server via the ServerCommunicator-class */
-			String communicationResults = ServerCommunicator.addBook(query);
+			String communicationResults = ServerCommunicator.addBook(newBook);
 			
 			Toast.makeText(getApplicationContext(), communicationResults, Toast.LENGTH_LONG).show();
 			

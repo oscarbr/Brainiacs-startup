@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -34,10 +35,10 @@ public class ServerCommunicator {
 	 *of the book to be added.
 	 *@return True if the add was successfull 
 	 */
-	public static String addBook(JSONObject book){
+	public static String addBook(DataBook book){
 		/* Path to server script */
 		String url = "http://muffins.trestad.net/muffin_app/add_book.php";
-		return requestResponsFromServer(book, url);
+		return requestResponsFromServer(DataBookFactory.dataBookToJSON(book), url);
 	}
 	
 	/** 
@@ -47,16 +48,17 @@ public class ServerCommunicator {
 	 *of the book to be searched for.
 	 *@return JSONObject with the search results. Null if there was an error.
 	 */
-	public static JSONObject searchBooks(JSONObject search){
+	public static LinkedList<DataBook> searchBooks(DataBook book){
 		/* Path to server script */
+		JSONObject jsonSearch = DataBookFactory.dataBookToJSON(book);
 		String url = "http://muffins.trestad.net/muffin_app/search_books.php";
 		JSONObject jsonResults = new JSONObject();
 		try {
-			jsonResults = new JSONObject(requestResponsFromServer(search, url));
+			jsonResults = new JSONObject(requestResponsFromServer(jsonSearch, url));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return jsonResults;
+		return DataBookFactory.jsonToDataBooks(jsonResults);
 	}
 	
 	

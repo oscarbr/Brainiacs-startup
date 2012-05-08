@@ -2,8 +2,7 @@ package itBrainiacs.muffins;
 
 //TESTING TO COMMENT TO GET THIS SHIT WORKING!
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.LinkedList;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -60,19 +59,11 @@ public class SearchActivity extends Activity implements OnClickListener {
 				+ "\nhas been searched", Toast.LENGTH_LONG).show();
 		
 		/* creates a json-object (ready for json formatting) of the requested search */
-		JSONObject query = new JSONObject();
-		try {
-			if(!author.equals("")){
-				query.put("author", author);
-			}
-			if(!title.equals("")){
-				query.put("title", title);
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		DataBook bookQuery = new DataBook();
+		bookQuery.setAuthor(author);
+		bookQuery.setTitle(title);
 		
-		JSONObject results = ServerCommunicator.searchBooks(query);
+		LinkedList<DataBook> results = ServerCommunicator.searchBooks(bookQuery);
 		
 		Toast.makeText(getApplicationContext(), results.toString(), Toast.LENGTH_LONG).show();
 	}
