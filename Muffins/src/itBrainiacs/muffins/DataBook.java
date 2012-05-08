@@ -18,8 +18,8 @@ public class DataBook {
 	private String period;
 	private String booktype;
 	private Boolean sold;
-	private Integer price;
-	private Date expires;
+	private String price;
+	private String expires;
 	private String email;
 	private String phone;
 	private String password;
