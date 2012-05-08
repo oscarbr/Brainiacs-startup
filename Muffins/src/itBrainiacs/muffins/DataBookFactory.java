@@ -28,7 +28,7 @@ public class DataBookFactory {
 			book.setExpires(jsonObject.get("expires").toString());
 		} catch (JSONException e) {
 			e.printStackTrace();
-			return null;
+			return dataBooks;
 		}
 		
 		dataBooks.add(book);
