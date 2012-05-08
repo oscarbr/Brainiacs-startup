@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -72,14 +71,17 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		}
 	}
 	
-	private void saveSettings() {
-		name = nameET.getText().toString();
-		email= emailET.getText().toString();
-		phone = phoneET.getText().toString();
-		password = passwordET.getText().toString();
-		
+	/**
+	 * Writes user details to private file in the internal storage of the device
+	 * @param name Name of the application user
+	 * @param email 
+	 * @param phone 
+	 * @param password
+	 * @req No null values. If no information is entered empty Strings should be provided.
+	 */
+	private void saveSettings(String name, String email, String phone, String password) {
 		userDetails = name + "\n" + email + "\n" + phone + "\n" + password;
-		/* Writing user details to private file in the internal storage of the device */
+		
 		try {
 			FileOutputStream fileWrite = openFileOutput(SavedUserDetails, Context.MODE_PRIVATE);
 			fileWrite.write(userDetails.getBytes());
@@ -91,6 +93,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Clears all fields and deletes any previously saved files containing user details.
+	 */
 	private void deleteSettings() {
 		userDetails = "";			
 		if (deleteFile(SavedUserDetails)) {
@@ -107,10 +112,15 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	
 
 	public void onClick(View view) {
-		if (view.getId() == R.id.settingsSaveButton) 
-			saveSettings();
+		if (view.getId() == R.id.settingsSaveButton) {
+			name = nameET.getText().toString();
+			email= emailET.getText().toString();
+			phone = phoneET.getText().toString();
+			password = passwordET.getText().toString();
+		
+			saveSettings(name, email, phone, password);
+		}
 		else if (view.getId() == R.id.settingsDeleteButton)
 			deleteSettings();
 	}
-	
 }

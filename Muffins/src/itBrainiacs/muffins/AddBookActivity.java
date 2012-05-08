@@ -1,3 +1,8 @@
+/*
+ * TODO: Måste komma på hur fan man ska initiera settingsactivity bara för att köra en specifik hämta-data-metod
+ * Intent? Skicka med någon form av värde som vid create på settings gör bara det vid start, och annars kör som vanligt?
+ */
+
 package itBrainiacs.muffins;
 
 import android.app.Activity;
@@ -12,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import java.lang.Character;
 
 public class AddBookActivity extends Activity implements OnClickListener {
@@ -27,6 +33,11 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private EditText commentET;
 	private Button takePictureButton;
 	private Button addButton;
+	
+	private String name ="";
+	private String email = "";
+	private String phone = "";
+	private String password = "";
 	
 	private final static int CAMERA_CATCHING_CODE = 100; //The code for activity request camera
 	private final static int MEDIA_TYPE_IMAGE = 1;
@@ -53,6 +64,31 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		/* Setting the 'add' button to execute onClick() when pressed */
 		addButton.setOnClickListener(this);
 	}
+	
+	/* Method from the interface OnClickListener. Called when the any button that has this class as a listener is pressed*/
+	public void onClick(View view) {
+		if (view.getId() == R.id.addBookTakePictureButton) {
+			
+			takePicture();
+			
+		} else if (view.getId() == R.id.addBookAddButton) {
+			int BOOK_REQUEST = 1;
+			Intent userDataIntent = new Intent();
+			userDataIntent.setClass(AddBookActivity.this, SettingsActivity.class);
+			startActivityForResult(userDataIntent, BOOK_REQUEST);
+			
+			
+			
+			/*
+			if ((email.length() < 1 || phone.length() < 1) && password.length() < 4){
+				
+			}
+			else
+				addBook();
+			*/
+		}
+	}
+
 	
 	/**
 	 * Method called when the 'Add' button has been pressed and the user wants to add a book to the database
@@ -133,14 +169,22 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		return validInput;
 	}
 	
+	/**
+	 * Checks to see that the string contains only digits
+	 * @param s
+	 * @return true if no non-digit characters were found
+	 */
 	private boolean onlyDigits(String s){
 		for (int i=0; i < s.length(); i++) {
 			if (!Character.isDigit(s.charAt(i)))
 				return false;
 		}
 		return true;
-			
 	}
+	
+	
+	
+	
 	
 	/* Method called when the 'Take Picture' button has been pressed and the user wants to add a photo of their book */
 	private void takePicture() {
@@ -174,16 +218,5 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	        }
 		}
 	}
-	
-	/* Method from the interface OnClickListener. Called when the any button that has this class as a listener is pressed*/
-	public void onClick(View view) {
-		if (view.getId() == R.id.addBookTakePictureButton) {
-			
-			takePicture();
-			
-		} else if (view.getId() == R.id.addBookAddButton) {
-			
-			addBook();
-		}
-	}
 }
+
