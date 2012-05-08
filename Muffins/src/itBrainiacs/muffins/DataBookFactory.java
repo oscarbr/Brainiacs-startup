@@ -13,7 +13,7 @@ public class DataBookFactory {
 	 * Static method returning a List of all the books contained in a JSONObject
 	 * 
 	 *@param JSONObject that contains one or several books
-	 *@return True if the add was successfull
+	 *@return LinkedList<DataBook> with the books in the search results. Empty list if the JSONObject doesnt contain any books
 	 */
 	public static LinkedList<DataBook> jsonToDataBooks(JSONObject jsonObject) {
 		
@@ -36,6 +36,12 @@ public class DataBookFactory {
 		return dataBooks;
 	}
 	
+	/** 
+	 * Static method returning a JSONObject of a DataBook
+	 * 
+	 *@param DataBook to be made into a JSONObject
+	 *@return JSONObject representation of book.
+	 */
 	public static JSONObject dataBookToJSON(DataBook book) {
 		
 		JSONObject jsonBook = new JSONObject();
