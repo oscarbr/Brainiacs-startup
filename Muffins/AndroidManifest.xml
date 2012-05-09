@@ -37,6 +37,10 @@
             android:name=".SettingsActivity">
         </activity>
         
+                <activity 
+            android:name=".SearchItemActivity">
+        </activity>
+        
         <uses-library 
             android:name="com.google.gson"
             android:required="true" />
