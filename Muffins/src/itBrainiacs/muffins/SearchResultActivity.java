@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,27 +22,27 @@ public class SearchResultActivity extends ListActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		/* Temporary solution, query will later be initiated from SearchActivity */
-		DataBook loadDatabase = new DataBook();
-		loadDatabase.setAuthor("emil nystrom");
-		loadDatabase.setTitle("");
-		
-		LinkedList<DataBook> queryResultList = (LinkedList<DataBook>) ServerCommunicator.searchBooks(loadDatabase);
 		ArrayList<String> shownList = new ArrayList<String>();
+		shownList.add("SearchResultActivity open. List loaded.");
+
 		
-		if (queryResultList == null)
-			Toast.makeText(getApplicationContext(), "No list found" , Toast.LENGTH_LONG).show();
-		else {
+		Intent i = getIntent();
+		if (i.hasCategory("Search")) {
+			DataBook bookQuery = (DataBook) i.getParcelableExtra("QueriedBook");		
+			LinkedList<DataBook> queryResultList = (LinkedList<DataBook>) ServerCommunicator.searchBooks(bookQuery);
+
+			Toast.makeText(getApplicationContext(), "DB queried, list recieved" , Toast.LENGTH_LONG).show();
 			DataBook book;
 			while (queryResultList.size() > 0) {
 				book = queryResultList.poll();
-				shownList.add(book.getTitle() + " by: " + book.getAuthor());
+				shownList.add(book.getAuthor() + ": " + book.getTitle());
 			}
 		}
 		
+		
 		/* The ArrayAdapter will later be of a type which we ourself create i.e. Sale */
 		this.setListAdapter(new ArrayAdapter<String>(this, R.layout.search_results_list_item, shownList)); 
+		
 		
 		/* A pointer to our ListView, used to edit settings for the ListView */
 		ListView lv = this.getListView();
@@ -58,5 +59,6 @@ public class SearchResultActivity extends ListActivity {
 			
 		});
 	}
-
+	
 }
+

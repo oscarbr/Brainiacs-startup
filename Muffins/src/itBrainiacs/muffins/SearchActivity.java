@@ -8,11 +8,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 /* implementing OnClickListener in order to catch events where buttons are clicked and something needs to happen */
@@ -44,6 +46,11 @@ public class SearchActivity extends Activity implements OnClickListener {
 		searchButton.setOnClickListener(this);
     }
 
+	/* Method called when the searchButton is pressed */
+	public void onClick(View view) {
+		searchBooks();
+	}
+	
 	/* Method to be called when executing a search */
 	private void searchBooks() {
 		/* Fetching the text filled in by the user in the fields */
@@ -53,27 +60,23 @@ public class SearchActivity extends Activity implements OnClickListener {
 		String version = versionET.getText().toString();
 		String course = courseET.getText().toString();
 		
-		/* Place holder notifying that the button has been pressed and that these parametres have been found */
-		Toast.makeText(getApplicationContext(), "Author: " + author 
-				+ "\nTitle:" + title 
-				+ "\nISBN:" + isbn 
-				+ "\nVersion: " + version
-				+ "\nCourse: " + course 
-				+ "\nhas been searched", Toast.LENGTH_LONG).show();
 		
-		/* creates a json-object (ready for json formatting) of the requested search */
+		/* creates a DataBook-object which is to be queried from the database via the SearchResultActivity */
 		DataBook bookQuery = new DataBook();
 		bookQuery.setAuthor(author);
 		bookQuery.setTitle(title);
+		bookQuery.setIsbn(isbn);
 		
-		LinkedList<DataBook> results = ServerCommunicator.searchBooks(bookQuery);
+		Intent i = new Intent(this, SearchResultActivity.class);
+		i.addCategory("Search");
+		i.putExtra("QueriedBook", bookQuery);
 		
-		Toast.makeText(getApplicationContext(), results.toString(), Toast.LENGTH_LONG).show();
+		//TabHost tabHost = ((TabHost) getParent()).getTabHost();
+		
+		startActivity(i);
+		
 	}
 	
-	/* Method called when the searchButton is pressed */
-	public void onClick(View view) {
-		searchBooks();
-	}
+
 }
 	
