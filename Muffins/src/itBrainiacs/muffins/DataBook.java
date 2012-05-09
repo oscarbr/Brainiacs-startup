@@ -5,7 +5,6 @@ public class DataBook {
 	private String title;
 	private String author;
 	private String publisher;
-	private String date;
 	private String language;
 	private String isbn;
 	private String edition;
@@ -19,7 +18,7 @@ public class DataBook {
 	private String email;
 	private String phone;
 	private String password;
-	private String saleId;
+	private String saleID;
 	private String comment;
 
 	public String getIsbn() {
@@ -27,7 +26,8 @@ public class DataBook {
 	}
 
 	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+		if (!isbn.equals(""))
+			this.isbn = isbn;
 	}
 
 	public String getEdition() {
@@ -35,7 +35,8 @@ public class DataBook {
 	}
 
 	public void setEdition(String edition) {
-		this.edition = edition;
+		if (!isbn.equals(""))
+			this.edition = edition;
 	}
 
 	public String getPublYear() {
@@ -43,7 +44,8 @@ public class DataBook {
 	}
 
 	public void setPublYear(String publYear) {
-		this.publYear = publYear;
+		if(!publYear.equals(""))
+			this.publYear = publYear;
 	}
 
 	public String getCourse() {
@@ -51,7 +53,8 @@ public class DataBook {
 	}
 
 	public void setCourse(String course) {
-		this.course = course;
+		if(!course.equals(""))
+			this.course = course;
 	}
 
 	public String getPeriod() {
@@ -59,7 +62,8 @@ public class DataBook {
 	}
 
 	public void setPeriod(String period) {
-		this.period = period;
+		if(!period.equals(""))
+			this.period = period;
 	}
 
 	public String getBookType() {
@@ -67,7 +71,8 @@ public class DataBook {
 	}
 
 	public void setBookType(String bookType) {
-		this.bookType = bookType;
+		if(!bookType.equals(""))
+			this.bookType = bookType;
 	}
 
 	public Boolean getSold() {
@@ -75,7 +80,8 @@ public class DataBook {
 	}
 
 	public void setSold(Boolean sold) {
-		this.sold = sold;
+		if(!sold.equals(""))
+			this.sold = sold;
 	}
 
 	public String getPrice() {
@@ -83,7 +89,8 @@ public class DataBook {
 	}
 
 	public void setPrice(String price) {
-		this.price = price;
+		if(!price.equals(""))
+			this.price = price;
 	}
 
 	public String getExpires() {
@@ -91,7 +98,8 @@ public class DataBook {
 	}
 
 	public void setExpires(String expires) {
-		this.expires = expires;
+		if(!expires.equals(""))
+			this.expires = expires;
 	}
 
 	public String getEmail() {
@@ -99,7 +107,8 @@ public class DataBook {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		if(!email.equals(""))
+			this.email = email;
 	}
 
 	public String getPhone() {
@@ -107,7 +116,8 @@ public class DataBook {
 	}
 
 	public void setPhone(String phone) {
-		this.phone = phone;
+		if(!phone.equals(""))
+			this.phone = phone;
 	}
 
 	public String getPassword() {
@@ -115,15 +125,17 @@ public class DataBook {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		if(!password.equals(""))
+			this.password = password;
 	}
 
-	public String getSaleId() {
-		return saleId;
+	public String getSaleID() {
+		return saleID;
 	}
 
-	public void setSaleId(String saleId) {
-		this.saleId = saleId;
+	public void setSaleID(String saleID) {
+		if(!saleID.equals(""))
+			this.saleID = saleID;
 	}
 
 	public String getTitle() {
@@ -131,7 +143,8 @@ public class DataBook {
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		if(!title.equals(""))
+			this.title = title;
 	}
 
 	public String getAuthor() {
@@ -139,7 +152,8 @@ public class DataBook {
 	}
 
 	public void setAuthor(String author) {
-		this.author = author;
+		if(!author.equals(""))
+			this.author = author;
 	}
 
 	public String getPublisher() {
@@ -147,15 +161,8 @@ public class DataBook {
 	}
 
 	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
+		if(!publisher.equals(""))
+			this.publisher = publisher;
 	}
 
 	public String getLanguage() {
@@ -163,7 +170,8 @@ public class DataBook {
 	}
 
 	public void setLanguage(String language) {
-		this.language = language;
+		if(!language.equals(""))
+			this.language = language;
 	}
 	
 	public String getComment() {
@@ -171,7 +179,7 @@ public class DataBook {
 	}
 	
 	public void setComment(String comment) {
-		this.comment = comment;
+		if(!comment.equals(""))
+			this.comment = comment;
 	}
-
 }
