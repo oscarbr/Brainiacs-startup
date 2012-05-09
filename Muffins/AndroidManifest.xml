@@ -36,6 +36,10 @@
         <activity 
             android:name=".SettingsActivity">
         </activity>
+        
+        <uses-library 
+            android:name="com.google.gson"
+            android:required="true" />
     
     </application>
 
