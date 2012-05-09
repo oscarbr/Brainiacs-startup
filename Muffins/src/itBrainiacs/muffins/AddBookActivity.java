@@ -144,6 +144,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 			if (!onlyDigits(publYear) || publYear.length() > 4) {
 				badInput = badInput
 						+ "--This is not a valid publishing year \n";
+				validInput = false;
 			} else {
 				int inputYear = Integer.parseInt(publYear);
 				Calendar c = Calendar.getInstance();
@@ -151,6 +152,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 				if (currentYear < inputYear) {
 					badInput = badInput
 							+ "--This is not a valid publishing year \n";
+					validInput = false;
 				}
 			}
 		}
