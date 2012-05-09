@@ -12,7 +12,7 @@ public class DataBook {
 	private String publYear;
 	private String course;
 	private String period;
-	private String booktype;
+	private String bookType;
 	private Boolean sold;
 	private String price;
 	private String expires;
@@ -62,12 +62,12 @@ public class DataBook {
 		this.period = period;
 	}
 
-	public String getBooktype() {
-		return booktype;
+	public String getBookType() {
+		return bookType;
 	}
 
-	public void setBooktype(String booktype) {
-		this.booktype = booktype;
+	public void setBookType(String bookType) {
+		this.bookType = bookType;
 	}
 
 	public Boolean getSold() {
