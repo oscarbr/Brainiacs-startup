@@ -93,5 +93,7 @@
 			<class location="${out.dir}" />
 		</findbugs>
 	</target>
+	
+	<taskdef uri="antlib:com.google.gson" classpath="lib/gson-2.1.jar" />
 
 </project>
