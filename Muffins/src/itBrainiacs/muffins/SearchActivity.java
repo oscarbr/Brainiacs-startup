@@ -1,13 +1,15 @@
 package itBrainiacs.muffins;
 
 //TESTING TO COMMENT TO GET THIS SHIT WORKING!
+
+import java.util.LinkedList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /* implementing OnClickListener in order to catch events where buttons are clicked and something needs to happen */
@@ -41,7 +43,6 @@ public class SearchActivity extends Activity implements OnClickListener {
 
 	/* Method to be called when executing a search */
 	private void searchBooks() {
-		
 		/* Fetching the text filled in by the user in the fields */
 		String author = authorET.getText().toString();
 		String title = titleET.getText().toString();
@@ -56,6 +57,15 @@ public class SearchActivity extends Activity implements OnClickListener {
 				+ "\nVersion: " + version
 				+ "\nCourse: " + course 
 				+ "\nhas been searched", Toast.LENGTH_LONG).show();
+		
+		/* creates a json-object (ready for json formatting) of the requested search */
+		DataBook bookQuery = new DataBook();
+		bookQuery.setAuthor(author);
+		bookQuery.setTitle(title);
+		
+		LinkedList<DataBook> results = ServerCommunicator.searchBooks(bookQuery);
+		
+		Toast.makeText(getApplicationContext(), results.toString(), Toast.LENGTH_LONG).show();
 	}
 	
 	/* Method called when the searchButton is pressed */
@@ -63,3 +73,4 @@ public class SearchActivity extends Activity implements OnClickListener {
 		searchBooks();
 	}
 }
+	

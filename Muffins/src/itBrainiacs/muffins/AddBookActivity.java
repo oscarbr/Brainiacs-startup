@@ -1,7 +1,3 @@
-/*
- * TODO: Måste komma på hur fan man ska initiera settingsactivity bara för att köra en specifik hämta-data-metod
- * Intent? Skicka med någon form av värde som vid create på settings gör bara det vid start, och annars kör som vanligt?
- */
 
 package itBrainiacs.muffins;
 
@@ -19,15 +15,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.lang.Character;
+import java.util.Calendar;
 
 public class AddBookActivity extends Activity implements OnClickListener {
-	
-	/* Variables to be act as hooks to views specified in the layout-XML */
+
+	/* Variables to act as hooks to views specified in the layout-XML */
 	private EditText authorET;
 	private EditText titleET;
 	private EditText ISBNET;
 	private EditText versionET;
-	private EditText pubYearET;
+	private EditText publYearET;
 	private EditText courseET;
 	private EditText priceET;
 	private EditText commentET;
@@ -39,6 +36,15 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private String phone = "";
 	private String password = "";
 	
+	private String author = "";
+	private String title = "";
+	private String isbn = "";
+	private String version = "";
+	private String publYear = "";
+	private String course = "";
+	private String price = "";
+	private String comment = "";
+	
 	/* The code for activity request camera. To be implemented
 	 * private final static int CAMERA_CATCHING_CODE = 100; 
 	 * private final static int MEDIA_TYPE_IMAGE = 1;
@@ -46,19 +52,17 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 */
 	private final static int USER_DETAIL_REQUEST = 1;
 	
-	
-	
-	
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.add_book_layout);
-		
+
 		/* Getting references to the objects (views) specified in the layout-XML */
 		authorET = (EditText) findViewById(R.id.addBookAuthorET);
 		titleET = (EditText) findViewById(R.id.addBookTitleET);
 		ISBNET = (EditText) findViewById(R.id.addBookISBNET);
 		versionET = (EditText) findViewById(R.id.addBookVersionET);
-		pubYearET = (EditText) findViewById(R.id.addBookPubYearET);
+		publYearET = (EditText) findViewById(R.id.addBookPubYearET);
 		courseET = (EditText) findViewById(R.id.addBookCourseET);
 		priceET = (EditText) findViewById(R.id.addBookPriceET);
 		commentET = (EditText) findViewById(R.id.addBookCommentET);
@@ -68,7 +72,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		takePictureButton = (Button) findViewById(R.id.addBookTakePictureButton);
 		*/
 		addButton = (Button) findViewById(R.id.addBookAddButton);
-		
+
 		/* Setting the 'add' button to execute onClick() when pressed */
 		addButton.setOnClickListener(this);
 	}
@@ -84,77 +88,121 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	
 	/**
-	 * Method called when the 'Add' button has been pressed and the user wants to add a book to the database
+	 * Method called when the 'Add' button has been pressed and the user wants
+	 * to add a book to the database
 	 */
 	private void addBook() {
 		boolean validInput;
-		
-		/* Get the Strings from the field edited by the user */		
+
+		/* Get the Strings from the field edited by the user */
 		String author = authorET.getText().toString();
 		String title = titleET.getText().toString();
 		String isbn = ISBNET.getText().toString();
 		String version = versionET.getText().toString();
-		String pubYear = pubYearET.getText().toString();
+		String publYear = publYearET.getText().toString();
 		String course = courseET.getText().toString();
 		String price = priceET.getText().toString();
 		String comment = commentET.getText().toString();
-		
+
 		/* Validating the input provided by the user */
-		validInput = checkInput(author, title, isbn, price);
+		validInput = checkInput(author, title, isbn, price, publYear);
 		if (validInput) {
 			
 			Intent userDataIntent = new Intent();
 			userDataIntent.setClass(AddBookActivity.this, SettingsActivity.class);
 			userDataIntent.addCategory("USER_DETAIL_CHECK");
 			startActivityForResult(userDataIntent, USER_DETAIL_REQUEST);
+
+
+
+			/*
+			 * Sends the query with addBook to the server via the
+			 * ServerCommunicator-class
+			 */
+
+
+
+
+
 		}
+
 	}
 	
 
 	/**
-	 * Validates the user-input while attempting to add a new book, before adding to the database
+	 * Validates the user-input while attempting to add a new book, before
+	 * adding to the database
 	 * 
-	 * @param author Author of the book, must be atleast 10 characters
-	 * @param title Title of the book, must be atleast 10 characters
-	 * @param isbn ISBN-number. Must be 10 or 13 digits
-	 * @param price Price must be specified as a number between 0-10000.
+	 * @param author
+	 *            Author of the book, must be atleast 10 characters
+	 * @param title
+	 *            Title of the book, must be atleast 10 characters
+	 * @param isbn
+	 *            ISBN-number. Must be 10 or 13 digits
+	 * @param price
+	 *            Price must be specified as a number between 0-10000.
 	 * @return Returns a boolean stating if the input is valid
 	 */
-	private boolean checkInput(String author, String title, String isbn, String price) {
+	private boolean checkInput(String author, String title, String isbn,
+			String price, String publYear) {
 		String badInput = "Please correct the following input before proceeding:\n\n";
 		boolean validInput = true;
-		
+
 		if (author.length() < 10) {
-			badInput = badInput + "--Author name must be greater than 10 characters.\n";
+			badInput = badInput
+					+ "--Author name must be greater than 10 characters.\n";
 			validInput = false;
 		}
 		if (title.length() < 10) {
-			badInput = badInput + "--Title must be greater than 10 characters.\n";
-		validInput = false;
+			badInput = badInput
+					+ "--Title must be greater than 10 characters.\n";
+			validInput = false;
 		}
-		if (isbn.length() != 0 && ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn))) {
-			badInput = badInput + "--The ISBN-number must be 10 or 13 digits long.\n";
-		validInput = false;
+		if (isbn.length() != 0
+				&& ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn))) {
+			badInput = badInput
+					+ "--The ISBN-number must be 10 or 13 digits long.\n";
+			validInput = false;
 		}
 		if (!(price.length() > 0 && price.length() < 5) || !onlyDigits(price)) {
-			badInput = badInput + "--Please specify a price within the range of 0-10000 SEK.\n";
-		validInput = false;
+			badInput = badInput
+					+ "--Please specify a price within the range of 0-10000 SEK.\n";
+			validInput = false;
 		}
-		
+		if (publYear.length() > 0) {
+			if (!onlyDigits(publYear) || publYear.length() > 4) {
+				badInput = badInput
+						+ "--This is not a valid publishing year \n";
+				validInput = false;
+			} else {
+				int inputYear = Integer.parseInt(publYear);
+				Calendar c = Calendar.getInstance();
+				int currentYear = c.get(Calendar.YEAR);
+				if (currentYear < inputYear) {
+					badInput = badInput
+							+ "--This is not a valid publishing year \n";
+					validInput = false;
+				}
+			}
+		}
+
 		if (!validInput) {
-			AlertDialog inputWarningDialog = new AlertDialog.Builder(this).create();
-				inputWarningDialog.setTitle("Invalid input!");
+
+			AlertDialog inputWarningDialog = new AlertDialog.Builder(this)
+					.create();
+			inputWarningDialog.setTitle("Invalid input!");
 			inputWarningDialog.setMessage(badInput);
-				inputWarningDialog.setButton("OK", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-			      // here you can add functions
-			   }
-			});
+			inputWarningDialog.setButton("OK",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							// here you can add functions
+						}
+					});
+
 			inputWarningDialog.show();
 		}
-			
+
 		return validInput;
 	}
 	
@@ -172,26 +220,48 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	}
 	
 
-	/* Method called when the 'Take Picture' button has been pressed and the user wants to add a photo of their book
+
+	/*
+	 * Method called when the 'Take Picture' button has been pressed and the
+	 * user wants to add a photo of their book
+
 	private void takePicture() {
-		
+
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		
-		//http://developer.android.com/guide/topics/media/camera.html#intents
-		//imageUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+
+		// http://developer.android.com/guide/topics/media/camera.html#intents
+		// imageUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
 	}
+
 	*/
 	
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == USER_DETAIL_REQUEST) {
-			if (resultCode == RESULT_OK)
+			if (resultCode == RESULT_OK) {
+				DataBook newBook = new DataBook();
+				
+				newBook.setAuthor(author);
+				newBook.setTitle(title);
+				newBook.setIsbn(isbn);
+				newBook.setPrice(price);
+				newBook.setCourse(course);
+				newBook.setEdition(version);
+				newBook.setPublYear(publYear);
+				newBook.setComment(comment);
+				
+				String communicationResults = ServerCommunicator.addBook(newBook);
+				Toast.makeText(getApplicationContext(), communicationResults,
+						Toast.LENGTH_LONG).show();
+				
 				Toast.makeText(getApplicationContext(), "Book uploaded" , Toast.LENGTH_SHORT).show();
-			else 
+			}
+			else {
 				Toast.makeText(getApplicationContext(), "Please insert the required user details" , Toast.LENGTH_SHORT).show();
 				Intent goToSettingsIntent = new Intent();
 				goToSettingsIntent.setClass(AddBookActivity.this, SettingsActivity.class);
 				startActivity(goToSettingsIntent);
+			}
 		}
 		
 		/* The Result comes from a camera activity 
@@ -208,7 +278,6 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	        } */
 		}
 	
-	
-	}
+}
 
 
