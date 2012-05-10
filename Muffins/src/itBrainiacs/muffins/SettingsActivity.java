@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,6 +27,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	
 	private Button saveButton;
 	private Button deleteButton;
+	
+	private Boolean detailsLoaded = false;
+	private Boolean sufficientDetails = false;
 	
 	private String name = "";
 	private String email = "";
@@ -64,11 +68,26 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			phoneET.setText(phone, TextView.BufferType.EDITABLE);
 			passwordET.setText(password, TextView.BufferType.EDITABLE);
 			
-			Toast.makeText(getApplicationContext(), "Settings loaded", Toast.LENGTH_SHORT).show();
+			detailsLoaded = true;
+			
+			// Check to see that the required details are correct
+			if ((email.length() != 0 || phone.length() != 0) && password.length() > 4)
+				sufficientDetails = true;
 		}
 		catch (IOException e) {
-			Toast.makeText(getApplicationContext(), "Settings-file could not be found", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "No settings-file found", Toast.LENGTH_SHORT).show();
 		}
+		
+		Intent intent = getIntent();
+		if (intent.hasCategory("USER_DETAIL_CHECK")) {
+			if (detailsLoaded && sufficientDetails)
+				setResult(RESULT_OK, intent);
+			else
+				setResult(RESULT_CANCELED, intent);
+			finish();
+		}
+			
+		
 	}
 	
 	/**

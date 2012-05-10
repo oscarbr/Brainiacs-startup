@@ -39,9 +39,14 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private String phone = "";
 	private String password = "";
 	
-	private final static int CAMERA_CATCHING_CODE = 100; //The code for activity request camera
-	private final static int MEDIA_TYPE_IMAGE = 1;
-	private Uri imageUri;
+	/* The code for activity request camera. To be implemented
+	 * private final static int CAMERA_CATCHING_CODE = 100; 
+	 * private final static int MEDIA_TYPE_IMAGE = 1;
+	 * private Uri imageUri;
+	 */
+	private final static int USER_DETAIL_REQUEST = 1;
+	
+	
 	
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +63,10 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		priceET = (EditText) findViewById(R.id.addBookPriceET);
 		commentET = (EditText) findViewById(R.id.addBookCommentET);
 		
+		/*
+		 * Picturebutton to be implemented. 
 		takePictureButton = (Button) findViewById(R.id.addBookTakePictureButton);
+		*/
 		addButton = (Button) findViewById(R.id.addBookAddButton);
 		
 		/* Setting the 'add' button to execute onClick() when pressed */
@@ -69,23 +77,10 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		if (view.getId() == R.id.addBookTakePictureButton) {
 			
-			takePicture();
+			//takePicture();
 			
 		} else if (view.getId() == R.id.addBookAddButton) {
-			int BOOK_REQUEST = 1;
-			Intent userDataIntent = new Intent();
-			userDataIntent.setClass(AddBookActivity.this, SettingsActivity.class);
-			startActivityForResult(userDataIntent, BOOK_REQUEST);
-			
-			
-			
-			/*
-			if ((email.length() < 1 || phone.length() < 1) && password.length() < 4){
-				
-			}
-			else
 				addBook();
-			*/
 		}
 	}
 
@@ -109,20 +104,14 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		/* Validating the input provided by the user */
 		validInput = checkInput(author, title, isbn, price);
 		if (validInput) {
-		
-			/* Place holder Toast to notify that the listener works */
-			Toast.makeText(getApplicationContext(), "A book with"
-				+ "\nAuthor: " + author 
-				+ "\nTitle: " + title 
-				+ "\nISBN: " + isbn
-				+ "\nVersion: " + version
-				+ "\npubYear: " + pubYear
-				+ "\nCourse: " + course
-				+ "\nPrice: " + price
-				+ "\nComment: " + comment
-				+ "\nhas been added", Toast.LENGTH_LONG).show();
+			
+			Intent userDataIntent = new Intent();
+			userDataIntent.setClass(AddBookActivity.this, SettingsActivity.class);
+			userDataIntent.addCategory("USER_DETAIL_CHECK");
+			startActivityForResult(userDataIntent, USER_DETAIL_REQUEST);
 		}
 	}
+	
 
 	/**
 	 * Validates the user-input while attempting to add a new book, before adding to the database
@@ -156,10 +145,10 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		
 		if (!validInput) {
 			AlertDialog inputWarningDialog = new AlertDialog.Builder(this).create();
-			inputWarningDialog.setTitle("Invalid input!");
+				inputWarningDialog.setTitle("Invalid input!");
 			inputWarningDialog.setMessage(badInput);
-			inputWarningDialog.setButton("OK", new DialogInterface.OnClickListener() {
-			   public void onClick(DialogInterface dialog, int which) {
+				inputWarningDialog.setButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
 			      // here you can add functions
 			   }
 			});
@@ -182,11 +171,8 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		return true;
 	}
 	
-	
-	
-	
-	
-	/* Method called when the 'Take Picture' button has been pressed and the user wants to add a photo of their book */
+
+	/* Method called when the 'Take Picture' button has been pressed and the user wants to add a photo of their book
 	private void takePicture() {
 		
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -194,29 +180,35 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		//http://developer.android.com/guide/topics/media/camera.html#intents
 		//imageUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
 	}
+	*/
 	
-	/* On receiving the picture taken by the camera app. */
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		/* The Result comes from a camera activity */
-		if (requestCode == CAMERA_CATCHING_CODE) {
-	        
-			/* Image has been captured and saved to a path specified in the intent */
-			if (resultCode == RESULT_OK) {
-				
-				data.getData();
-			
-				/* Image has not been captured due to user cancelling process */
-	        } else if (resultCode == RESULT_CANCELED) {
-	        	
-	        	Toast.makeText(getApplicationContext(), "Oh, snap, you cancelled, why did you do that?", Toast.LENGTH_SHORT).show();
-	        
-	        /* Something has gone terribly wrong and the application failed to capture image. */
-	        } else {
-	        	
-	        	Toast.makeText(getApplicationContext(), "Ehh, something went wrong and no image was captured", Toast.LENGTH_SHORT);
-	        }
+		if (requestCode == USER_DETAIL_REQUEST) {
+			if (resultCode == RESULT_OK)
+				Toast.makeText(getApplicationContext(), "Book uploaded" , Toast.LENGTH_SHORT).show();
+			else 
+				Toast.makeText(getApplicationContext(), "Please insert the required user details" , Toast.LENGTH_SHORT).show();
+				Intent goToSettingsIntent = new Intent();
+				goToSettingsIntent.setClass(AddBookActivity.this, SettingsActivity.class);
+				startActivity(goToSettingsIntent);
 		}
+		
+		/* The Result comes from a camera activity 
+		if (requestCode == CAMERA_CATCHING_CODE) 
+			// Image has been captured and saved to a path specified in the intent
+			if (resultCode == RESULT_OK) {
+				data.getData();
+				// Image has not been captured due to user cancelling process
+	        } else if (resultCode == RESULT_CANCELED) {
+	        	Toast.makeText(getApplicationContext(), "Oh, snap, you cancelled, why did you do that?", Toast.LENGTH_SHORT).show();
+	        // Something has gone terribly wrong and the application failed to capture image.
+	        } else {
+	        	Toast.makeText(getApplicationContext(), "Ehh, something went wrong and no image was captured", Toast.LENGTH_SHORT);
+	        } */
+		}
+	
+	
 	}
-}
+
 
