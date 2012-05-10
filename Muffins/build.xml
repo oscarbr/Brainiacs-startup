@@ -77,6 +77,10 @@
          In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
          in order to avoid having your file be overridden by tools such as "android update project"
     -->
+    
+    <taskdef uri="antlib:com.google.gson" classpath="lib/gson-2.1.jar" />
+    
+    
     <!-- version-tag: 1 -->
     <import file="${sdk.dir}/tools/ant/build.xml" />
     
@@ -94,6 +98,5 @@
 		</findbugs>
 	</target>
 	
-	<taskdef uri="antlib:com.google.gson" classpath="lib/gson-2.1.jar" />
 
 </project>
