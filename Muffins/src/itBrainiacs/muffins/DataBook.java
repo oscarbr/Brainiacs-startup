@@ -15,25 +15,27 @@ public class DataBook implements Parcelable {
 	private String publYear = "";
 	private String course = "";
 	private String period = "";
-	private String booktype = "";
+	private String bookType = "";
 	private Boolean sold = false;
 	private String price = "";
 	private String expires = "";
 	private String email = "";
 	private String phone = "";
 	private String password = "";
-	private String saleId = "";
+	private String saleID = "";
 	private String comment = "";
 	
 	public DataBook(){
 	}
+
 
 	public String getIsbn() {
 		return isbn;
 	}
 
 	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+		if (!isbn.equals(""))
+			this.isbn = isbn;
 	}
 
 	public String getEdition() {
@@ -41,7 +43,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setEdition(String edition) {
-		this.edition = edition;
+		if (!edition.equals(""))
+			this.edition = edition;
 	}
 
 	public String getPublYear() {
@@ -49,7 +52,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setPublYear(String publYear) {
-		this.publYear = publYear;
+		if(!publYear.equals(""))
+			this.publYear = publYear;
 	}
 
 	public String getCourse() {
@@ -57,7 +61,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setCourse(String course) {
-		this.course = course;
+		if(!course.equals(""))
+			this.course = course;
 	}
 
 	public String getPeriod() {
@@ -65,15 +70,17 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setPeriod(String period) {
-		this.period = period;
+		if(!period.equals(""))
+			this.period = period;
 	}
 
-	public String getBooktype() {
-		return booktype;
+	public String getBookType() {
+		return bookType;
 	}
 
-	public void setBooktype(String booktype) {
-		this.booktype = booktype;
+	public void setBookType(String bookType) {
+		if(!bookType.equals(""))
+			this.bookType = bookType;
 	}
 
 	public Boolean getSold() {
@@ -81,7 +88,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setSold(Boolean sold) {
-		this.sold = sold;
+		if(!sold.equals(""))
+			this.sold = sold;
 	}
 
 	public String getPrice() {
@@ -89,7 +97,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setPrice(String price) {
-		this.price = price;
+		if(!price.equals(""))
+			this.price = price;
 	}
 
 	public String getExpires() {
@@ -97,7 +106,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setExpires(String expires) {
-		this.expires = expires;
+		if(!expires.equals(""))
+			this.expires = expires;
 	}
 
 	public String getEmail() {
@@ -105,7 +115,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		if(!email.equals(""))
+			this.email = email;
 	}
 
 	public String getPhone() {
@@ -113,7 +124,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setPhone(String phone) {
-		this.phone = phone;
+		if(!phone.equals(""))
+			this.phone = phone;
 	}
 
 	public String getPassword() {
@@ -121,15 +133,17 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		if(!password.equals(""))
+			this.password = password;
 	}
 
-	public String getSaleId() {
-		return saleId;
+	public String getSaleID() {
+		return saleID;
 	}
 
-	public void setSaleId(String saleId) {
-		this.saleId = saleId;
+	public void setSaleID(String saleID) {
+		if(!saleID.equals(""))
+			this.saleID = saleID;
 	}
 
 	public String getTitle() {
@@ -137,7 +151,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		if(!title.equals(""))
+			this.title = title;
 	}
 
 	public String getAuthor() {
@@ -145,7 +160,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setAuthor(String author) {
-		this.author = author;
+		if(!author.equals(""))
+			this.author = author;
 	}
 
 	public String getPublisher() {
@@ -153,15 +169,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
+		if(!publisher.equals(""))
+			this.publisher = publisher;
 	}
 
 	public String getLanguage() {
@@ -169,7 +178,8 @@ public class DataBook implements Parcelable {
 	}
 
 	public void setLanguage(String language) {
-		this.language = language;
+		if(!language.equals(""))
+			this.language = language;
 	}
 	
 	public String getComment() {
@@ -177,10 +187,9 @@ public class DataBook implements Parcelable {
 	}
 	
 	public void setComment(String comment) {
-		this.comment = comment;
+		if(!comment.equals(""))
+			this.comment = comment;
 	}
-
-	
 	
 	public int describeContents() {
 		// TODO Auto-generated method stub
@@ -216,7 +225,7 @@ public class DataBook implements Parcelable {
 			return new DataBook[size];
 		}
 	};
-  
+
 }
 
    

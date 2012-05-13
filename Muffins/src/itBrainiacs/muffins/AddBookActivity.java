@@ -115,18 +115,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 			startActivityForResult(userDataIntent, USER_DETAIL_REQUEST);
 
 
-
-			/*
-			 * Sends the query with addBook to the server via the
-			 * ServerCommunicator-class
-			 */
-
-
-
-
-
 		}
-
 	}
 	
 

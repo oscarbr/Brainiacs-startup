@@ -15,6 +15,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.NameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,9 +51,9 @@ public class ServerCommunicator {
 		/* Path to server script */
 		JSONObject jsonSearch = DataBookFactory.dataBookToJSON(book);
 		String url = "http://muffins.trestad.net/muffin_app/search_books.php";
-		JSONObject jsonResults = new JSONObject();
+		JSONArray jsonResults = new JSONArray();
 		try {
-			jsonResults = new JSONObject(requestResponsFromServer(jsonSearch, url));
+			jsonResults = new JSONArray(requestResponsFromServer(jsonSearch, url));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

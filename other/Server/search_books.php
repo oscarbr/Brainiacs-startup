@@ -31,7 +31,10 @@
 	//Make the query to the database with the connection
 	$query_results = mysql_query($sql, $connection);
 	
-	$results = mysql_fetch_array($query_results, MYSQL_ASSOC);
+	$results = array();
+	while($r = mysql_fetch_array($query_results, MYSQL_ASSOC)) {
+		$results[] = $r;
+	}
 	
 	//Return the data encoded in json
 	echo json_encode($results);
