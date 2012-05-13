@@ -1,26 +1,32 @@
 package itBrainiacs.muffins;
 
-public class DataBook {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-	private String title;
-	private String author;
-	private String publisher;
-	private String date;
-	private String language;
-	private String isbn;
-	private String edition;
-	private String publYear;
-	private String course;
-	private String period;
-	private String booktype;
-	private Boolean sold;
-	private String price;
-	private String expires;
-	private String email;
-	private String phone;
-	private String password;
-	private String saleId;
-	private String comment;
+public class DataBook implements Parcelable {
+
+	private String title = "";
+	private String author = "";
+	private String publisher = "";
+	private String date = ""; 
+	private String language = "";
+	private String isbn = "";
+	private String edition = "";
+	private String publYear = "";
+	private String course = "";
+	private String period = "";
+	private String booktype = "";
+	private Boolean sold = false;
+	private String price = "";
+	private String expires = "";
+	private String email = "";
+	private String phone = "";
+	private String password = "";
+	private String saleId = "";
+	private String comment = "";
+	
+	public DataBook(){
+	}
 
 	public String getIsbn() {
 		return isbn;
@@ -174,4 +180,43 @@ public class DataBook {
 		this.comment = comment;
 	}
 
+	
+	
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void writeToParcel(Parcel parcBook, int arg1) {
+		parcBook.writeString(isbn);
+		parcBook.writeString(author);
+		parcBook.writeString(title);
+		parcBook.writeString(edition);
+		parcBook.writeString(course);
+	}
+	
+	
+	public DataBook(Parcel source){
+        isbn = source.readString();
+        author = source.readString();
+        title = source.readString();
+        edition = source.readString();
+        course = source.readString();
+
+	}
+    
+	public static final Parcelable.Creator<DataBook> CREATOR
+    	= new Parcelable.Creator<DataBook>() {
+	
+		public DataBook createFromParcel(Parcel in) {
+			return new DataBook(in);
+		}
+
+		public DataBook[] newArray(int size) {
+			return new DataBook[size];
+		}
+	};
+  
 }
+
+   
