@@ -35,7 +35,7 @@ public class DataBook {
 	}
 
 	public void setEdition(String edition) {
-		if (!isbn.equals(""))
+		if (!edition.equals(""))
 			this.edition = edition;
 	}
 
