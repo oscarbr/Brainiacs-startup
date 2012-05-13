@@ -63,15 +63,13 @@ public class SearchActivity extends Activity implements OnClickListener {
 		bookQuery.setAuthor(author);
 		bookQuery.setTitle(title);
 		bookQuery.setIsbn(isbn);
-		
+
 		Intent i = new Intent(this, SearchResultActivity.class);
 		i.addCategory("Search");
 		i.putExtra("QueriedBook", bookQuery);
 		
-		//TabHost tabHost = ((TabHost) getParent()).getTabHost();
-		
 		startActivity(i);
-		
+
 	}
 	
 
