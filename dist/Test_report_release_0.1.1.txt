@@ -1,0 +1,92 @@
+Test report - version 0.1.1
+  
+Table of contents - test report - version 0.1.1
+1 Introduction
+	1.1 Purpose of application
+	1.2 General characteristics of application
+2 Test environment
+	2.1 Hardware environment
+	2.2 Software environment and system information
+		2.2.3 Software settings
+3 Known bugs and limitations
+4 Test specifications for this test report
+5 Test report table
+
+Application version: 0.1.1
+Date: 2012-05-13
+Authors: Oscar Brodefors, Filip Askviken, Rikard Andersson,   
+    Emil Nyström
+
+
+This version overrides all previous versions.
+
+________________________________________________________________________________
+
+
+1 Introduction
+
+1.1 Purpose of application
+A simple application for smartphones where students can gather to sell and buy used books needed at courses given at Chalmers (and possibly other Universities). Users can register books for sale and other users can search and find these books. The unique selling point compared to existing sites like blocket or tradera is the niche market. When buying from our application you know that the seller is close by and that you can set up a meeting to get the book the same day.
+
+
+1.2 General characteristics of application
+No transactions are handled by the application. The application simply matches buyer with seller and provides the opportunity for market mechanisms to function in the interaction between these two parties.
+Functionality to add a plethora of attributes about the book and for users to search for books on these criterias. Also the ability to describe a book in general and to upload a photo of the book taken with the mobile camera. A book could be uploaded by filling in a ISBN-number and then obtaining book title, author and edition.
+
+Possible functions to be added in future versions:
+- Auctions
+- Connection to Cremona to compare price and to buy new books
+- A website connected to the application
+
+
+2 Test environment
+This android-project is preferably tested and runned from Eclipse. First step for a new tester or developer should be to install EGit from Eclipse Marketplace and the ADT plugin for Eclipse (http://developer.android.com/sdk/eclipse-adt.html.). Please visit and read the installation guide (http://developer.android.com/sdk/installing.html). 
+
+After installation of Android ADT and connection with Github in your Eclipse, import the project in Eclipse: file → import → Git → Projects from Git → next → URL → insert https://emil-nystrom@github.com/oscarbr/Brainiacs-startup.git as URL → next → next → next → finish. Now you are ready to build or run the application. The application is runned through a .apk-package. The apk-package includes the release 0.1 which is the version tested in this test report. 
+
+The .apk-package can be found at https://github.com/oscarbr/Brainiacs-startup, go to tags → RELEASE_0.1.zip.
+
+The test report document to new developers and testers is avaliable on: https://docs.google.com/document/d/1oXC8qSHJzy3TRIEg0nVonFR0eNtPC01yBdP7oxgWOlc/edit.
+
+The test report table is avaliable at: https://docs.google.com/spreadsheet/ccc?key=0Ao75Xu-pWZuDdGxoc1ZROF9BZXlEUThuUnJ5UUl1OHc.
+ 
+
+2.1 Hardware environment
+For the test, three MacBook’s and one Dell XPS M1530 have been used. Three computers with the operating software Mac OSX-Lion and one with Windows 8 have been used. A android emulator in Eclipse (Target Android 2.1, skin WVGA800) and a real mobile phone (Samsung Galaxy S plus) have been used for the tests. 
+
+
+2.2 Software environment and system information
+For the test, the following software have been used:
+1. Eclipse SDK version 3.7.2
+2. Android Development Toolkit version 18.0.0
+3. Eclipse Mylyn project version 3.6.5
+4. Eclipse EGit 1.3.0 
+
+
+2.2.3 Software settings
+No specific settings needed, use default settings. 
+
+
+3 Known bugs and limitations
+Bug issue #11 is known. If the mobile lacks internet connection, the application experiences an error and shuts down.
+
+
+4 Test specifications for this test report
+
+Test ID 1.1.5-N Publishing year
+Description: The seller can set a publishing year for the book for sale.
+Precondition: The tester have a book to sell, have the application, and have filled in user details.
+Test steps: 
+1. The tester presses the button “add book”
+2. fill in 2015 in the textbox for publishing year
+3. Presses “add”
+
+Postcondition: The tester gets a exception message: “this is not a valid publishing year”.
+Related requirements: 1.1.5
+
+
+5 Test report table
+
+Date          Test ID        Result        Comments                        
+
+120512        1.1.5-N        Passed        Without remarks
