@@ -1,3 +1,4 @@
+
 package itBrainiacs.muffins;
 
 import android.app.TabActivity;
@@ -31,9 +32,9 @@ public class MuffinsActivity extends TabActivity {
         tabHost.addTab(spec);
         
         /* Repeating the same for SearchResults */
-        intent = new Intent().setClass(this, SearchResultActivity.class);
-        spec = tabHost.newTabSpec("result").setIndicator("Store", res.getDrawable(R.drawable.icon_tab_searchresult)).setContent(intent);
-        tabHost.addTab(spec);
+        //intent = new Intent().setClass(this, SearchResultActivity.class);
+        //spec = tabHost.newTabSpec("result").setIndicator("Store", res.getDrawable(R.drawable.icon_tab_searchresult)).setContent(intent);
+        //tabHost.addTab(spec);
         
         /* The same procedure for AddBooks */
         intent = new Intent().setClass(this, AddBookActivity.class);

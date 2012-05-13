@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +27,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	
 	private Button saveButton;
 	private Button deleteButton;
+	
+	private Boolean detailsLoaded = false;
+	private Boolean sufficientDetails = false;
 	
 	private String name = "";
 	private String email = "";
@@ -65,21 +68,39 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			phoneET.setText(phone, TextView.BufferType.EDITABLE);
 			passwordET.setText(password, TextView.BufferType.EDITABLE);
 			
-			Toast.makeText(getApplicationContext(), "Settings loaded", Toast.LENGTH_SHORT).show();
+			detailsLoaded = true;
+			
+			// Check to see that the required details are correct
+			if ((email.length() != 0 || phone.length() != 0) && password.length() > 4)
+				sufficientDetails = true;
 		}
 		catch (IOException e) {
-			Toast.makeText(getApplicationContext(), "Settings-file could not be found", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "No settings-file found", Toast.LENGTH_SHORT).show();
 		}
+		
+		Intent intent = getIntent();
+		if (intent.hasCategory("USER_DETAIL_CHECK")) {
+			if (detailsLoaded && sufficientDetails)
+				setResult(RESULT_OK, intent);
+			else
+				setResult(RESULT_CANCELED, intent);
+			finish();
+		}
+			
+		
 	}
 	
-	private void saveSettings() {
-		name = nameET.getText().toString();
-		email= emailET.getText().toString();
-		phone = phoneET.getText().toString();
-		password = passwordET.getText().toString();
-		
+	/**
+	 * Writes user details to private file in the internal storage of the device
+	 * @param name Name of the application user
+	 * @param email 
+	 * @param phone 
+	 * @param password
+	 * @req No null values. If no information is entered empty Strings should be provided.
+	 */
+	private void saveSettings(String name, String email, String phone, String password) {
 		userDetails = name + "\n" + email + "\n" + phone + "\n" + password;
-		/* Writing user details to private file in the internal storage of the device */
+		
 		try {
 			FileOutputStream fileWrite = openFileOutput(SavedUserDetails, Context.MODE_PRIVATE);
 			fileWrite.write(userDetails.getBytes());
@@ -91,6 +112,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Clears all fields and deletes any previously saved files containing user details.
+	 */
 	private void deleteSettings() {
 		userDetails = "";			
 		if (deleteFile(SavedUserDetails)) {
@@ -107,10 +131,15 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	
 
 	public void onClick(View view) {
-		if (view.getId() == R.id.settingsSaveButton) 
-			saveSettings();
+		if (view.getId() == R.id.settingsSaveButton) {
+			name = nameET.getText().toString();
+			email= emailET.getText().toString();
+			phone = phoneET.getText().toString();
+			password = passwordET.getText().toString();
+		
+			saveSettings(name, email, phone, password);
+		}
 		else if (view.getId() == R.id.settingsDeleteButton)
 			deleteSettings();
 	}
-	
 }
