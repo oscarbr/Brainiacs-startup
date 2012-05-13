@@ -23,15 +23,12 @@ public class SearchResultActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ArrayList<String> shownList = new ArrayList<String>();
-		shownList.add("SearchResultActivity open. List loaded.");
-
 		
 		Intent i = getIntent();
 		if (i.hasCategory("Search")) {
 			DataBook bookQuery = (DataBook) i.getParcelableExtra("QueriedBook");		
 			LinkedList<DataBook> queryResultList = (LinkedList<DataBook>) ServerCommunicator.searchBooks(bookQuery);
 
-			Toast.makeText(getApplicationContext(), "DB queried, list recieved" , Toast.LENGTH_LONG).show();
 			DataBook book;
 			while (queryResultList.size() > 0) {
 				book = queryResultList.poll();
