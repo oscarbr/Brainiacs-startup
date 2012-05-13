@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.LinkedList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,135 +24,145 @@ public class DataBookFactory {
 	 * @return LinkedList<DataBook> with the books in the search results. Empty
 	 *         list if the JSONObject doesnt contain any books
 	 */
-	public static LinkedList<DataBook> jsonToDataBooks(JSONObject jsonObject) {
+	public static LinkedList<DataBook> jsonToDataBooks(JSONArray jsonArray) {
 
 		LinkedList<DataBook> dataBooks = new LinkedList<DataBook>();
 
-		DataBook book = new DataBook();
-		
-		//TODO Add a loop that iterates over all books depending on how the JSON looks.
-		if(jsonObject.has("title")) {
-			try {
-				book.setTitle(jsonObject.get("title").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("author")) {
-			try {
-				book.setAuthor(jsonObject.get("author").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("price")) {
-			try {
-				book.setPrice(jsonObject.get("price").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("expires")) {
-			try {
-				book.setExpires(jsonObject.get("expires").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("isbn")) {
-			try {
-				book.setIsbn(jsonObject.get("isbn").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("publisher")) {
-			try {
-				book.setPublisher(jsonObject.get("publisher").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("edition")) {
-			try {
-				book.setEdition(jsonObject.get("edition").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("publYear")) {
-			try {
-				book.setPublYear(jsonObject.get("publYear").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("course")) {
-			try {
-				book.setCourse(jsonObject.get("course").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("comment")) {
-			try {
-				book.setComment(jsonObject.get("comment").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("bookType")) {
-			try {
-				book.setBookType(jsonObject.get("bookType").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("period")) {
-			try {
-				book.setPeriod(jsonObject.get("period").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("isbn")) {
-			try {
-				book.setIsbn(jsonObject.get("isbn").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("email")) {
-			try {
-				book.setEmail(jsonObject.get("email").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("phone")) {
-			try {
-				book.setPhone(jsonObject.get("phone").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("saleID")) {
-			try {
-				book.setSaleID(jsonObject.get("saleID").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		if(jsonObject.has("language")) {
-			try {
-				book.setLanguage(jsonObject.get("language").toString());
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
+		JSONObject jsonObject;
+		DataBook book;
 
-		dataBooks.add(book);
+		//This for-loop iterates over the JSONObject elements in the JSON-string returned by the server
+		for (int i = 0; i < jsonArray.length(); i++) {
 
+			try {
+				jsonObject = jsonArray.getJSONObject(i);
+				book = new DataBook();
+
+				if (jsonObject.has("title")) {
+					try {
+						book.setTitle(jsonObject.get("title").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("author")) {
+					try {
+						book.setAuthor(jsonObject.get("author").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("price")) {
+					try {
+						book.setPrice(jsonObject.get("price").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("expires")) {
+					try {
+						book.setExpires(jsonObject.get("expires").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("isbn")) {
+					try {
+						book.setIsbn(jsonObject.get("isbn").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("publisher")) {
+					try {
+						book.setPublisher(jsonObject.get("publisher")
+								.toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("edition")) {
+					try {
+						book.setEdition(jsonObject.get("edition").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("publYear")) {
+					try {
+						book.setPublYear(jsonObject.get("publYear").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("course")) {
+					try {
+						book.setCourse(jsonObject.get("course").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("comment")) {
+					try {
+						book.setComment(jsonObject.get("comment").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("bookType")) {
+					try {
+						book.setBookType(jsonObject.get("bookType").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("period")) {
+					try {
+						book.setPeriod(jsonObject.get("period").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("isbn")) {
+					try {
+						book.setIsbn(jsonObject.get("isbn").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("email")) {
+					try {
+						book.setEmail(jsonObject.get("email").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("phone")) {
+					try {
+						book.setPhone(jsonObject.get("phone").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("saleID")) {
+					try {
+						book.setSaleID(jsonObject.get("saleID").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				if (jsonObject.has("language")) {
+					try {
+						book.setLanguage(jsonObject.get("language").toString());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				dataBooks.add(book);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
 		return dataBooks;
 	}
 
@@ -165,113 +176,113 @@ public class DataBookFactory {
 	public static JSONObject dataBookToJSON(DataBook book) {
 
 		JSONObject jsonBook = new JSONObject();
-		
-		if(book.getAuthor() != null) {
+
+		if (book.getAuthor() != null) {
 			try {
 				jsonBook.put("author", book.getAuthor());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getTitle() != null) {
+		if (book.getTitle() != null) {
 			try {
 				jsonBook.put("title", book.getTitle());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getPrice() != null) {
+		if (book.getPrice() != null) {
 			try {
 				jsonBook.put("price", book.getPrice());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getIsbn() != null) {
+		if (book.getIsbn() != null) {
 			try {
 				jsonBook.put("isbn", book.getIsbn());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getEdition() != null) {
+		if (book.getEdition() != null) {
 			try {
 				jsonBook.put("edition", book.getEdition());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getCourse() != null) {
+		if (book.getCourse() != null) {
 			try {
 				jsonBook.put("course", book.getCourse());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getPublYear() != null) {
+		if (book.getPublYear() != null) {
 			try {
 				jsonBook.put("publYear", book.getPublYear());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getComment() != null) {
+		if (book.getComment() != null) {
 			try {
 				jsonBook.put("comment", book.getComment());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getBookType() != null) {
+		if (book.getBookType() != null) {
 			try {
 				jsonBook.put("bookType", book.getBookType());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getPublisher() != null) {
+		if (book.getPublisher() != null) {
 			try {
 				jsonBook.put("publisher", book.getPublisher());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getLanguage() != null) {
+		if (book.getLanguage() != null) {
 			try {
 				jsonBook.put("language", book.getLanguage());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getExpires() != null) {
+		if (book.getExpires() != null) {
 			try {
 				jsonBook.put("expires", book.getExpires());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getEmail() != null) {
+		if (book.getEmail() != null) {
 			try {
 				jsonBook.put("email", book.getEmail());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getPhone() != null) {
+		if (book.getPhone() != null) {
 			try {
 				jsonBook.put("phone", book.getPhone());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getPassword() != null) {
+		if (book.getPassword() != null) {
 			try {
 				jsonBook.put("password", book.getPassword());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		if(book.getSaleID() != null) {
+		if (book.getSaleID() != null) {
 			try {
 				jsonBook.put("saleID", book.getSaleID());
 			} catch (JSONException e) {

@@ -95,9 +95,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 
 			Toast.makeText(getApplicationContext(), communicationResults,
 					Toast.LENGTH_LONG).show();
-
 		}
-
 	}
 
 	/**
