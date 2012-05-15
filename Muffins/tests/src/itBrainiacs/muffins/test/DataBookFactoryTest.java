@@ -1,7 +1,14 @@
 package itBrainiacs.muffins.test;
 
+import java.util.LinkedList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import itBrainiacs.muffins.*;
 
+import android.R.bool;
 import android.test.AndroidTestCase;
 
 public class DataBookFactoryTest extends AndroidTestCase {
@@ -15,9 +22,47 @@ public class DataBookFactoryTest extends AndroidTestCase {
 	
 	/**
 	 * Test method for {@link itBrainiacs.muffins.DataBookFactory#jsonToDataBooks(org.json.JSONArray)}.
+	 * @throws JSONException 
 	 */
-	public void testJsonToDataBooks() {
-		fail("Not yet implemented"); // TODO
+	public void testJsonToDataBooks() throws JSONException {
+		
+		DataBook bok = new DataBook();
+		bok.setTitle("Konsten att make love");
+		bok.setAuthor("Filip Sandviken");
+		bok.setIsbn("1234567890");
+		bok.setPublYear("1993");
+		bok.setEdition("first");
+		bok.setCourse("XXX666");
+		bok.setPrice("11");
+		
+		LinkedList<DataBook> dataBooks = new LinkedList<DataBook>();
+		dataBooks.add(bok);
+		
+		JSONObject object = new JSONObject();
+		object.put("title", "Konsten att make love");
+		object.put("author", "Filip Sandviken");
+		object.put("isbn", "1234567890");
+		object.put("publYear", "1993");
+		object.put("edition", "first");
+		object.put("course", "XXX666");
+		object.put("price", "11");
+
+		JSONArray array = new JSONArray();
+		array.put(object);
+		
+		LinkedList<DataBook> dataBooks2 = new LinkedList<DataBook>();
+		dataBooks2 = DataBookFactory.jsonToDataBooks(array);
+		
+		//[{"saleID":"22","edition":"first","phone":"","bookType":null,"period":null,"password":"","course":"XXX666","author":"Filip Sandviken",
+		//"title":"Konsten att make love","expires":"2012-07-15","price":"11","email":"","isbn":"1234567890","comment":null,"publYear":"1993","sold":null}]
+
+		assertEquals("", dataBooks.getFirst().getAuthor(), dataBooks2.getFirst().getAuthor());
+		assertEquals("", dataBooks.getFirst().getTitle(), dataBooks2.getFirst().getTitle());
+		assertEquals("", dataBooks.getFirst().getPrice(), dataBooks2.getFirst().getPrice());
+		assertEquals("", dataBooks.getFirst().getIsbn(), dataBooks2.getFirst().getIsbn());
+		assertEquals("", dataBooks.getFirst().getEdition(), dataBooks2.getFirst().getEdition());
+		assertEquals("", dataBooks.getFirst().getPublYear(), dataBooks2.getFirst().getPublYear());
+		assertEquals("", dataBooks.getFirst().getCourse(), dataBooks2.getFirst().getCourse());	
 	}
 
 	/**
