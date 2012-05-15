@@ -19,10 +19,12 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 public class SearchResultActivity extends ListActivity {
-
+	ArrayList<String> shownList;
+	ArrayList<DataBook> bookList;
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ArrayList<String> shownList = new ArrayList<String>();
+		shownList = new ArrayList<String>();
 		
 		Intent i = getIntent();
 		if (i.hasCategory("Search")) {
@@ -32,7 +34,8 @@ public class SearchResultActivity extends ListActivity {
 			DataBook book;
 			while (queryResultList.size() > 0) {
 				book = queryResultList.poll();
-				shownList.add(book.getAuthor() + ": " + book.getTitle());
+				shownList.add(book.getTitle());
+				bookList.add(book);
 			}
 		}
 		
@@ -51,7 +54,14 @@ public class SearchResultActivity extends ListActivity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
-				Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+				Intent bookInfoIntent = new Intent();
+				bookInfoIntent.setClass(SearchResultActivity.this, SearchItemActivity.class);
+
+				//TODO Vad menas? Fixa så att rätt bok skickas med.  
+				//DataBook book = (DataBook) bookList[position];
+				//bookInfoIntent.addCategory("showInfo");
+				//bookInfoIntent.putExtra("book", book);
+				startActivity(bookInfoIntent);
 			}
 			
 		});
