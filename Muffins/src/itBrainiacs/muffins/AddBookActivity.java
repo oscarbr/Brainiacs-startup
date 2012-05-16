@@ -143,11 +143,13 @@ public class AddBookActivity extends Activity implements OnClickListener {
 			validInput = false;
 		}
 		String isbn = newBook.getIsbn();
-		if (isbn == null || (isbn.length() != 0
-				&& ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn)))) {
-			badInput = badInput
-					+ "--The ISBN-number must be 10 or 13 digits long.\n";
-			validInput = false;
+		if (isbn != null) {
+			if ((isbn.length() != 0
+					&& ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn)))) {
+				badInput = badInput
+						+ "--The ISBN-number must be 10 or 13 digits long.\n";
+				validInput = false;
+			}
 		}
 		String price = newBook.getPrice();
 		if (price == null || (!(price.length() > 0 && price.length() < 5) || !onlyDigits(price))) {
