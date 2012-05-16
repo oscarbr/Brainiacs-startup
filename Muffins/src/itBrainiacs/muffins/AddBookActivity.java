@@ -22,16 +22,15 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	/* Variables to act as hooks to views specified in the layout-XML */
 	private EditText authorET;
 	private EditText titleET;
-	private EditText ISBNET;
-	private EditText versionET;
-	private EditText publYearET;
+	private EditText isbnET;
+	private EditText editionET;
 	private EditText courseET;
 	private EditText priceET;
 	private EditText commentET;
-	private EditText publisherET;
 	private Button takePictureButton;
 	private Button addButton;
 	
+	DataBook newBook;
 	/*
 	 * To be implemented. To allow the poster of the book to edit/delete
 
@@ -40,15 +39,8 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private String phone = "";
 	private String password = "";
 	*/
-	
-	private String author = "";
-	private String title = "";
-	private String isbn = "";
-	private String version = "";
-	private String publYear = "";
-	private String course = "";
-	private String price = "";
-	private String comment = "";
+
+
 	
 	/* The code for activity request camera. To be implemented
 	 * private final static int CAMERA_CATCHING_CODE = 100; 
@@ -65,9 +57,8 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		/* Getting references to the objects (views) specified in the layout-XML */
 		authorET = (EditText) findViewById(R.id.addBookAuthorET);
 		titleET = (EditText) findViewById(R.id.addBookTitleET);
-		ISBNET = (EditText) findViewById(R.id.addBookISBNET);
-		versionET = (EditText) findViewById(R.id.addBookVersionET);
-		publYearET = (EditText) findViewById(R.id.addBookPubYearET);
+		isbnET = (EditText) findViewById(R.id.addBookISBNET);
+		editionET = (EditText) findViewById(R.id.addBookEditionET);
 		courseET = (EditText) findViewById(R.id.addBookCourseET);
 		priceET = (EditText) findViewById(R.id.addBookPriceET);
 		commentET = (EditText) findViewById(R.id.addBookCommentET);
@@ -98,20 +89,19 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 * to add a book to the database
 	 */
 	private void addBook() {
-		boolean validInput;
-
+		newBook = new DataBook();
+		String author = authorET.getText().toString();
 		/* Get the Strings from the field edited by the user */
-		author = authorET.getText().toString();
-		title = titleET.getText().toString();
-		isbn = ISBNET.getText().toString();
-		version = versionET.getText().toString();
-		publYear = publYearET.getText().toString();
-		course = courseET.getText().toString();
-		price = priceET.getText().toString();
-		comment = commentET.getText().toString();
+		newBook.setAuthor(authorET.getText().toString());
+		newBook.setTitle(titleET.getText().toString());
+		newBook.setIsbn(isbnET.getText().toString());
+		newBook.setEdition(editionET.getText().toString());
+		newBook.setCourse(courseET.getText().toString());
+		newBook.setPrice(priceET.getText().toString());
+		newBook.setComment(commentET.getText().toString());
 
 		/* Validating the input provided by the user */
-		validInput = checkInput(author, title, isbn, price, publYear);
+		boolean validInput = checkInput();
 		if (validInput) {
 			
 			Intent userDataIntent = new Intent();
@@ -138,47 +128,32 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 *            Price must be specified as a number between 0-10000.
 	 * @return Returns a boolean stating if the input is valid
 	 */
-	private boolean checkInput(String author, String title, String isbn,
-			String price, String publYear) {
+	private boolean checkInput() {
 		String badInput = "Please correct the following input before proceeding:\n\n";
 		boolean validInput = true;
-
-		if (author.length() < 4) {
+	
+		if (newBook.getAuthor() == null || newBook.getAuthor().length() < 4) {
 			badInput = badInput
 					+ "--Author name must be greater than 4 characters.\n";
 			validInput = false;
 		}
-		if (title.length() < 5) {
+		if (newBook.getTitle() == null || newBook.getTitle().length() < 5) {
 			badInput = badInput
 					+ "--Title must be greater than 5 characters.\n";
 			validInput = false;
 		}
-		if (isbn.length() != 0
-				&& ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn))) {
+		String isbn = newBook.getIsbn();
+		if (isbn == null || (isbn.length() != 0
+				&& ((isbn.length() != 10) && (isbn.length() != 13) || !onlyDigits(isbn)))) {
 			badInput = badInput
 					+ "--The ISBN-number must be 10 or 13 digits long.\n";
 			validInput = false;
 		}
-		if (!(price.length() > 0 && price.length() < 5) || !onlyDigits(price)) {
+		String price = newBook.getPrice();
+		if (price == null || (!(price.length() > 0 && price.length() < 5) || !onlyDigits(price))) {
 			badInput = badInput
 					+ "--Please specify a price within the range of 0-10000 SEK.\n";
 			validInput = false;
-		}
-		if (publYear.length() > 0) {
-			if (!onlyDigits(publYear) || publYear.length() > 4) {
-				badInput = badInput
-						+ "--This is not a valid publishing year \n";
-				validInput = false;
-			} else {
-				int inputYear = Integer.parseInt(publYear);
-				Calendar c = Calendar.getInstance();
-				int currentYear = c.get(Calendar.YEAR);
-				if (currentYear < inputYear) {
-					badInput = badInput
-							+ "--This is not a valid publishing year \n";
-					validInput = false;
-				}
-			}
 		}
 
 		if (!validInput) {
@@ -233,17 +208,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == USER_DETAIL_REQUEST) {
 			if (resultCode == RESULT_OK) {
-				DataBook newBook = new DataBook();
-				
-				newBook.setAuthor(author);
-				newBook.setTitle(title);
-				newBook.setIsbn(isbn);
-				newBook.setPrice(price);
-				newBook.setCourse(course);
-				newBook.setEdition(version);
-				newBook.setPublYear(publYear);
-				newBook.setComment(comment);
-				
+								
 				String communicationResults = ServerCommunicator.addBook(newBook);
 				if (communicationResults.equals("1"))
 					Toast.makeText(getApplicationContext(), "Book uploaded",

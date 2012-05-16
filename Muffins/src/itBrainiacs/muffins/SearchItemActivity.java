@@ -20,6 +20,8 @@ public class SearchItemActivity extends Activity implements OnClickListener {
 		TextView price = (TextView) findViewById(R.id.bookPriceTW);
 		TextView edition = (TextView) findViewById(R.id.editionTW);
 		TextView comment = (TextView) findViewById(R.id.commentTW);
+		TextView isbn = (TextView) findViewById(R.id.isbnTW);
+		TextView course = (TextView) findViewById(R.id.courseTW);
 		
 		
 		Intent i = getIntent();
@@ -40,10 +42,20 @@ public class SearchItemActivity extends Activity implements OnClickListener {
 			if (!bookEdition.equals("null")) {
 				edition.setText("Edition: " + bookEdition);
 				edition.setVisibility(View.VISIBLE);
-			}			
-		}
+			}		
 			
-		
+			String bookIsbn= book.getIsbn();
+			if (!bookIsbn.equals("null")) {
+				isbn.setText("ISBN: " + bookIsbn);
+				isbn.setVisibility(View.VISIBLE);
+			}	
+			
+			String bookCourse= book.getCourse();
+			if (!bookCourse.equals("null")) {
+				course.setText("Course: " + bookCourse);
+				course.setVisibility(View.VISIBLE);
+			}	
+		}
 	}
 
 	public void onClick(View arg0) {

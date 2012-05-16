@@ -38,7 +38,7 @@ public class SearchResultActivity extends ListActivity {
 			
 			while (queryResultList.size() > 0) {
 				book = queryResultList.poll();
-				shownList.add(book.getTitle() + " by: " + book.getAuthor());
+				shownList.add(book.getTitle() + " - " + book.getPrice() + " SEK");
 				bookList.add(book);
 			}
 		}
