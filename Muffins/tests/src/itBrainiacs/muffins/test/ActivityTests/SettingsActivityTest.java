@@ -1,7 +1,7 @@
 package itBrainiacs.muffins.test;
 
 import android.test.ActivityInstrumentationTestCase2;
-import itBrainiacs.muffins.AddBookActivity;
+import itBrainiacs.muffins.SettingsActivity;
 
 public class SettingsActivityTest extends ActivityInstrumentationTestCase2<SettingsActivity> {
 
