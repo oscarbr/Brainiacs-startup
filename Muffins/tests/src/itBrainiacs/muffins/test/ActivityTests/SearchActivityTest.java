@@ -7,7 +7,6 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
 	
 	SearchActivity searchActivity;
 	
-	
 	public SearchActivityTest() {
 		super("itBrainiacs.muffins" ,SearchActivity.class);
 	}
