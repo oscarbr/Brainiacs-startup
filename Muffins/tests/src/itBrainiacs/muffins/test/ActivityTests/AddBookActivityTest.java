@@ -26,4 +26,5 @@ public class AddBookActivityTest extends ActivityInstrumentationTestCase2<AddBoo
 	public void testOnClick() {
 		addBookActivity.onClick(addBookActivity.findViewById(itBrainiacs.muffins.R.id.addBookAddButton));	
 	}
+	
 }
