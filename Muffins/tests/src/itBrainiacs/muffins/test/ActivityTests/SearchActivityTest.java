@@ -1,4 +1,4 @@
-package itBrainiacs.muffins.test;
+package itBrainiacs.muffins.test.ActivityTests;
 
 import android.test.*;
 import itBrainiacs.muffins.SearchActivity;
