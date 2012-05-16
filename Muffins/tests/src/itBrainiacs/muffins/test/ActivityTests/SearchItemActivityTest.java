@@ -1,7 +1,6 @@
 package itBrainiacs.muffins.test.ActivityTests;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.EditText;
 import itBrainiacs.muffins.SearchItemActivity;
 
 public class SearchItemActivityTest extends ActivityInstrumentationTestCase2<SearchItemActivity> {
