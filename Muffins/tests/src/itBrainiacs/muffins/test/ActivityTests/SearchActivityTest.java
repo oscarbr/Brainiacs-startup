@@ -9,7 +9,7 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
 	
 	
 	public SearchActivityTest() {
-		super(SearcActivity.class);
+		super(SearchActivity.class);
 	}
 	
 	protected void setUp() throws Exception {
@@ -26,6 +26,6 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
 	}
 	
 	public void testOnClick() {
-		searchActivity.onClick(findViewById(itBrainiacs.muffins.R.id.searchSearchButton));
+		searchActivity.onClick(searchActivity.findViewById(itBrainiacs.muffins.R.id.searchSearchButton));
 	}
 }
