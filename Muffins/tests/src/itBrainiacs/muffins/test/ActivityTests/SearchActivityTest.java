@@ -9,7 +9,7 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
 	
 	
 	public SearchActivityTest() {
-		super(SearchActivity.class);
+		super("itBrainiacs.muffins" ,SearchActivity.class);
 	}
 	
 	protected void setUp() throws Exception {
