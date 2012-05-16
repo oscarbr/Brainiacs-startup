@@ -8,7 +8,6 @@ public class DataBook implements Parcelable {
 	private String title;
 	private String author;
 	private String publisher;
-	private String date; 
 	private String language;
 	private String isbn;
 	private String edition;
@@ -212,6 +211,10 @@ public class DataBook implements Parcelable {
 		if (course == null)
 			course = "";
 		bookParcel.writeString(course);
+		bookParcel.writeString(price);
+		if (comment == null)
+			comment = "";
+		bookParcel.writeString(comment);
 	}
 	
 	
@@ -231,6 +234,10 @@ public class DataBook implements Parcelable {
         course = source.readString();
         if (course.length() == 0)
         	course = null;
+        price = source.readString();
+        comment = source.readString();
+        if (comment.length() == 0)
+        	comment = null;
 	}
     
 	public static final Parcelable.Creator<DataBook> CREATOR

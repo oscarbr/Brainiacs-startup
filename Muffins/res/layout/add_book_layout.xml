@@ -23,7 +23,7 @@
         android:layout_below="@id/addBookAuthorTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="must be atleast 10 characters" />
+        android:hint="must be atleast 4 characters" />
     
     <!-- Title TextView and EditText -->
     <TextView 
@@ -37,7 +37,7 @@
         android:layout_below="@id/addBookTitleTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" 
-        android:hint="must be atleast 10 characters" />
+        android:hint="must be atleast 5 characters" />
     
     <!-- ISBN TextView and EditText -->
     <TextView
@@ -121,6 +121,7 @@
         android:layout_below="@id/addBookCommentTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    
     
     <!-- Add picture button, starts an activity where you can take a picture -->
     <Button

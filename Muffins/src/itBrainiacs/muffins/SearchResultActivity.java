@@ -25,6 +25,7 @@ public class SearchResultActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		shownList = new ArrayList<String>();
+		bookList = new ArrayList<DataBook>();
 		
 		Intent i = getIntent();
 		if (i.hasCategory("Search")) {
@@ -32,9 +33,12 @@ public class SearchResultActivity extends ListActivity {
 			LinkedList<DataBook> queryResultList = (LinkedList<DataBook>) ServerCommunicator.searchBooks(bookQuery);
 
 			DataBook book;
+			if (queryResultList.size() == 0)
+				shownList.add("No books found. Please make sure you are connected to the internet.");
+			
 			while (queryResultList.size() > 0) {
 				book = queryResultList.poll();
-				shownList.add(book.getTitle());
+				shownList.add(book.getTitle() + " by: " + book.getAuthor());
 				bookList.add(book);
 			}
 		}
@@ -57,10 +61,12 @@ public class SearchResultActivity extends ListActivity {
 				Intent bookInfoIntent = new Intent();
 				bookInfoIntent.setClass(SearchResultActivity.this, SearchItemActivity.class);
 
-				//TODO Vad menas? Fixa så att rätt bok skickas med.  
-				//DataBook book = (DataBook) bookList[position];
-				//bookInfoIntent.addCategory("showInfo");
-				//bookInfoIntent.putExtra("book", book);
+
+				DataBook book = (DataBook) bookList.get(position);
+				
+				bookInfoIntent.addCategory("showInfo");
+				bookInfoIntent.putExtra("book", book);
+
 				startActivity(bookInfoIntent);
 			}
 			

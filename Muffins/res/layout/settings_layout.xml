@@ -73,7 +73,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" 
         android:inputType="textPassword"
-        android:hint="Using the same password as for your mail is not recommended"/>
+        android:hint="must be atleast 4 characters"/>
     
     <!-- Button to store the data entered in settings -->
     <Button

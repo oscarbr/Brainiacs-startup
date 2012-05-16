@@ -28,13 +28,18 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private EditText courseET;
 	private EditText priceET;
 	private EditText commentET;
+	private EditText publisherET;
 	private Button takePictureButton;
 	private Button addButton;
 	
+	/*
+	 * To be implemented. To allow the poster of the book to edit/delete
+
 	private String name ="";
 	private String email = "";
 	private String phone = "";
 	private String password = "";
+	*/
 	
 	private String author = "";
 	private String title = "";
@@ -96,14 +101,14 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		boolean validInput;
 
 		/* Get the Strings from the field edited by the user */
-		String author = authorET.getText().toString();
-		String title = titleET.getText().toString();
-		String isbn = ISBNET.getText().toString();
-		String version = versionET.getText().toString();
-		String publYear = publYearET.getText().toString();
-		String course = courseET.getText().toString();
-		String price = priceET.getText().toString();
-		String comment = commentET.getText().toString();
+		author = authorET.getText().toString();
+		title = titleET.getText().toString();
+		isbn = ISBNET.getText().toString();
+		version = versionET.getText().toString();
+		publYear = publYearET.getText().toString();
+		course = courseET.getText().toString();
+		price = priceET.getText().toString();
+		comment = commentET.getText().toString();
 
 		/* Validating the input provided by the user */
 		validInput = checkInput(author, title, isbn, price, publYear);
@@ -138,14 +143,14 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		String badInput = "Please correct the following input before proceeding:\n\n";
 		boolean validInput = true;
 
-		if (author.length() < 10) {
+		if (author.length() < 4) {
 			badInput = badInput
-					+ "--Author name must be greater than 10 characters.\n";
+					+ "--Author name must be greater than 4 characters.\n";
 			validInput = false;
 		}
-		if (title.length() < 10) {
+		if (title.length() < 5) {
 			badInput = badInput
-					+ "--Title must be greater than 10 characters.\n";
+					+ "--Title must be greater than 5 characters.\n";
 			validInput = false;
 		}
 		if (isbn.length() != 0
@@ -240,10 +245,13 @@ public class AddBookActivity extends Activity implements OnClickListener {
 				newBook.setComment(comment);
 				
 				String communicationResults = ServerCommunicator.addBook(newBook);
-				Toast.makeText(getApplicationContext(), communicationResults,
+				if (communicationResults.equals("1"))
+					Toast.makeText(getApplicationContext(), "Book uploaded",
 						Toast.LENGTH_LONG).show();
-				
-				Toast.makeText(getApplicationContext(), "Book uploaded" , Toast.LENGTH_SHORT).show();
+				else 
+					Toast.makeText(getApplicationContext(), "Book failed to upload",
+							Toast.LENGTH_LONG).show();
+
 			}
 			else {
 				Toast.makeText(getApplicationContext(), "Please insert the required user details" , Toast.LENGTH_SHORT).show();
