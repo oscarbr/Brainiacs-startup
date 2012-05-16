@@ -12,7 +12,7 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
 		super(SearcActivity.class);
 	}
 	
-	protected setUp() throws Exception {
+	protected void setUp() throws Exception {
 		super.setUp();
 		
 		setActivityInitialTouchMode(false);
@@ -21,7 +21,7 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
 		
 	}
 	
-	public testPreConditions() {
+	public void testPreConditions() {
 		assertTrue(searchActivity != null);
 	}
 	
