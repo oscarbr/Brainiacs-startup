@@ -31,7 +31,8 @@ public class DataBookFactory {
 		JSONObject jsonObject;
 		DataBook book;
 
-		//This for-loop iterates over the JSONObject elements in the JSON-string returned by the server
+		// This for-loop iterates over the JSONObject elements in the
+		// JSON-string returned by the server
 		for (int i = 0; i < jsonArray.length(); i++) {
 
 			try {
@@ -330,19 +331,28 @@ public class DataBookFactory {
 	 * @return DataBook object with title, creater, publisher, date & language
 	 */
 	public static DataBook parseLibris(String json) {
-
 		DataBook bok = new DataBook();
-		JsonElement jelement = new JsonParser().parse(json);
-		JsonObject jobject = jelement.getAsJsonObject();
-		jobject = jobject.getAsJsonObject("xsearch");
-		JsonArray jarray = jobject.getAsJsonArray("list");
-		jobject = jarray.get(0).getAsJsonObject();
+		try {
+			JsonElement jelement = new JsonParser().parse(json);
+			JsonObject jobject = jelement.getAsJsonObject();
+			jobject = jobject.getAsJsonObject("xsearch");
+			JsonArray jarray = jobject.getAsJsonArray("list");
+			jobject = jarray.get(0).getAsJsonObject();
 
-		bok.setTitle(jobject.get("title").toString());
-		bok.setAuthor(jobject.get("creator").toString());
-		bok.setPublisher(jobject.get("publisher").toString());
-		bok.setPublYear(jobject.get("date").toString());
-		bok.setLanguage(jobject.get("language").toString());
+			if (jobject.has("title"))
+				bok.setTitle(jobject.get("title").toString());
+			if (jobject.has("creator"))
+				bok.setAuthor(jobject.get("creator").toString());
+			if (jobject.has("publisher"))
+				bok.setPublisher(jobject.get("publisher").toString());
+			if (jobject.has("date"))
+				bok.setPublYear(jobject.get("date").toString());
+			if (jobject.has("language"))
+				bok.setLanguage(jobject.get("language").toString());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return bok;
 	}
 }

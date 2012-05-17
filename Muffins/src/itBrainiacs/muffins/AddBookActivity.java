@@ -93,9 +93,15 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private void searchIsbn() {
 		String isbn = isbnET.getText().toString();
 		DataBook librisResultBook = DataBookFactory.searchLibris(isbn);
-
-		authorET.setText(librisResultBook.getAuthor());
-		titleET.setText(librisResultBook.getTitle());
+		
+		if (librisResultBook.getAuthor() != null)
+			authorET.setText(librisResultBook.getAuthor());
+		else
+			authorET.setHint("no author found");
+		if (librisResultBook.getTitle() != null)
+			titleET.setText(librisResultBook.getTitle());
+		else
+			authorET.setHint("no title found");
 	}
 
 	/**
