@@ -69,7 +69,7 @@
         android:layout_below="@id/searchVersionET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Course:" />
+        android:text="Coursecode:" />
     <EditText 
         android:id="@+id/searchCourseET"
         android:layout_below="@id/searchCourseTW"

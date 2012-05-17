@@ -88,7 +88,7 @@
         android:layout_below="@id/addBookPubYearET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Course: (optional)" />
+        android:text="Coursecode: (optional)" />
     <EditText
         android:id="@+id/addBookCourseET"
         android:layout_below="@id/addBookCourseTW"
