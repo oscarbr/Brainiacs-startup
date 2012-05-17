@@ -92,8 +92,14 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		
 		Intent intent = getIntent();
 		if (intent.hasCategory("USER_DETAIL_CHECK")) {
-			if (detailsLoaded && sufficientDetails)
+			if (detailsLoaded && sufficientDetails) {
+				intent.putExtra("name", name);
+				intent.putExtra("email", email);
+				intent.putExtra("phone", phone);
+				intent.putExtra("password", password);
+				
 				setResult(RESULT_OK, intent);
+			}			
 			else
 				setResult(RESULT_CANCELED, intent);
 			finish();

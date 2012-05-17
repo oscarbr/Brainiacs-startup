@@ -232,7 +232,11 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == USER_DETAIL_REQUEST) {
 			if (resultCode == RESULT_OK) {
-
+				newBook.setName(data.getStringExtra("name"));
+				newBook.setEmail(data.getStringExtra("email"));
+				newBook.setPhone(data.getStringExtra("phone"));
+				newBook.setPassword(data.getStringExtra("password"));
+				
 				String communicationResults = ServerCommunicator
 						.addBook(newBook);
 				if (communicationResults.contains("1"))
