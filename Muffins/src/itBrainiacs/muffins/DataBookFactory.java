@@ -341,15 +341,15 @@ public class DataBookFactory {
 			jobject = jarray.get(0).getAsJsonObject();
 
 			if (jobject.has("title"))
-				bok.setTitle(jobject.get("title").toString());
+				bok.setTitle(jobject.get("title").toString().replace("\"", ""));
 			if (jobject.has("creator"))
-				bok.setAuthor(jobject.get("creator").toString());
+				bok.setAuthor(jobject.get("creator").toString().replace("\"", ""));
 			if (jobject.has("publisher"))
-				bok.setPublisher(jobject.get("publisher").toString());
+				bok.setPublisher(jobject.get("publisher").toString().replace("\"", ""));
 			if (jobject.has("date"))
-				bok.setPublYear(jobject.get("date").toString());
+				bok.setPublYear(jobject.get("date").toString().replace("\"", ""));
 			if (jobject.has("language"))
-				bok.setLanguage(jobject.get("language").toString());
+				bok.setLanguage(jobject.get("language").toString().replace("\"", ""));
 
 		} catch (Exception e) {
 			e.printStackTrace();
