@@ -17,10 +17,11 @@ import com.google.gson.JsonParser;
 public class DataBookFactory {
 
 	/**
-	 * Static method returning a List of all the books contained in a JSONObject
+	 * Static method returning a List of all the books contained in a
+	 * JSONObject.
 	 * 
-	 * @param JSONObject
-	 *            that contains one or several books
+	 * @param jsonArray
+	 *            the json array
 	 * @return LinkedList<DataBook> with the books in the search results. Empty
 	 *         list if the JSONObject doesnt contain any books
 	 */
@@ -168,10 +169,10 @@ public class DataBookFactory {
 	}
 
 	/**
-	 * Static method returning a JSONObject of a DataBook
+	 * Static method returning a JSONObject of a DataBook.
 	 * 
-	 * @param DataBook
-	 *            to be made into a JSONObject
+	 * @param book
+	 *            the book
 	 * @return JSONObject representation of book.
 	 */
 	public static JSONObject dataBookToJSON(DataBook book) {
@@ -295,10 +296,10 @@ public class DataBookFactory {
 
 	/**
 	 * Static method for searching libris for specified ISBN, returns DataBook
-	 * object
+	 * object.
 	 * 
-	 * @param String
-	 *            ISBN number
+	 * @param isbn
+	 *            the isbn
 	 * @return DataBook with the book in the search results.
 	 */
 	// TODO Check behavior if multiple books are found
@@ -324,10 +325,10 @@ public class DataBookFactory {
 	}
 
 	/**
-	 * Static method for parsing json string from Libris to a DataBook object
+	 * Static method for parsing json string from Libris to a DataBook object.
 	 * 
-	 * @param String
-	 *            json
+	 * @param json
+	 *            the json
 	 * @return DataBook object with title, creater, publisher, date & language
 	 */
 	public static DataBook parseLibris(String json) {

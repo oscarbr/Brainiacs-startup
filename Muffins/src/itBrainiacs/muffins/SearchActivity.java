@@ -14,9 +14,12 @@ import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.Toast;
 
-/* implementing OnClickListener in order to catch events where buttons are clicked and something needs to happen */
+/**
+ * implementing OnClickListener in order to catch events where buttons are
+ * clicked and something needs to happen
+ */
 public class SearchActivity extends Activity implements OnClickListener {
-	
+
 	/* Variables to act as references to views specified in the layout-XML */
 	private Button searchButton;
 	private EditText isbnET;
@@ -24,31 +27,42 @@ public class SearchActivity extends Activity implements OnClickListener {
 	private EditText titleET;
 	private EditText versionET;
 	private EditText courseET;
-	
-	/** Called when the activity is initially created */
 
+	/**
+	 * Called when the activity is initially created.
+	 * 
+	 * @param savedInstanceState
+	 *            the saved instance state
+	 */
 	public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.search_layout);
-        
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.search_layout);
+
 		/* Getting references to the objects (views) specified in the layout-XML */
-        isbnET = (EditText) findViewById(R.id.searchISBNET);
-        authorET = (EditText) findViewById(R.id.searchAuthorET);
-        titleET = (EditText) findViewById(R.id.searchTitleET);
-        versionET = (EditText) findViewById(R.id.searchVersionET);
-        courseET = (EditText) findViewById(R.id.searchCourseET);
-        searchButton = (Button) findViewById(R.id.searchSearchButton);
-        
+		isbnET = (EditText) findViewById(R.id.searchISBNET);
+		authorET = (EditText) findViewById(R.id.searchAuthorET);
+		titleET = (EditText) findViewById(R.id.searchTitleET);
+		versionET = (EditText) findViewById(R.id.searchVersionET);
+		courseET = (EditText) findViewById(R.id.searchCourseET);
+		searchButton = (Button) findViewById(R.id.searchSearchButton);
+
 		/* Setting the 'add' button to execute onClick() when pressed */
 		searchButton.setOnClickListener(this);
-    }
+	}
 
-	/* Method called when the searchButton is pressed */
+	/**
+	 * Method called when the searchButton is pressed
+	 * 
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View view) {
 		searchBooks();
 	}
-	
+
 	/* Method to be called when executing a search */
+	/**
+	 * Search books.
+	 */
 	private void searchBooks() {
 		/* Fetching the text filled in by the user in the fields */
 		String author = authorET.getText().toString();
@@ -56,9 +70,11 @@ public class SearchActivity extends Activity implements OnClickListener {
 		String isbn = isbnET.getText().toString();
 		String version = versionET.getText().toString();
 		String course = courseET.getText().toString();
-		
-		
-		/* creates a DataBook-object which is to be queried from the database via the SearchResultActivity */
+
+		/*
+		 * creates a DataBook-object which is to be queried from the database
+		 * via the SearchResultActivity
+		 */
 		DataBook bookQuery = new DataBook();
 		bookQuery.setAuthor(author);
 		bookQuery.setTitle(title);
@@ -67,11 +83,9 @@ public class SearchActivity extends Activity implements OnClickListener {
 		Intent i = new Intent(this, SearchResultActivity.class);
 		i.addCategory("Search");
 		i.putExtra("QueriedBook", bookQuery);
-		
+
 		startActivity(i);
 
 	}
-	
 
 }
-	

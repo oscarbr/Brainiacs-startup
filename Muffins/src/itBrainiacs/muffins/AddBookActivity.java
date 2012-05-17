@@ -45,6 +45,11 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 */
 	private final static int USER_DETAIL_REQUEST = 1;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.add_book_layout);
@@ -74,6 +79,12 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 * Method from the interface OnClickListener. Called when the any button
 	 * that has this class as a listener is pressed
 	 */
+
+	/**
+	 * (non-Javadoc)
+	 * 
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View view) {
 		if (view.getId() == R.id.searchBookButton) {
 			searchIsbn();
@@ -86,14 +97,13 @@ public class AddBookActivity extends Activity implements OnClickListener {
 
 	/**
 	 * Method executed when search Libris button is pressed, fills proper Edit
-	 * text fields with found data
+	 * text fields with found data.
 	 * 
-	 * @return void
 	 */
 	private void searchIsbn() {
 		String isbn = isbnET.getText().toString();
 		DataBook librisResultBook = DataBookFactory.searchLibris(isbn);
-		
+
 		if (librisResultBook.getAuthor() != null)
 			authorET.setText(librisResultBook.getAuthor());
 		else
@@ -106,7 +116,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 
 	/**
 	 * Method called when the 'Add' button has been pressed and the user wants
-	 * to add a book to the database
+	 * to add a book to the database.
 	 */
 	private void addBook() {
 		newBook = new DataBook();
@@ -129,22 +139,13 @@ public class AddBookActivity extends Activity implements OnClickListener {
 					SettingsActivity.class);
 			userDataIntent.addCategory("USER_DETAIL_CHECK");
 			startActivityForResult(userDataIntent, USER_DETAIL_REQUEST);
-
 		}
 	}
 
 	/**
 	 * Validates the user-input while attempting to add a new book, before
-	 * adding to the database
+	 * adding to the database.
 	 * 
-	 * @param author
-	 *            Author of the book, must be atleast 10 characters
-	 * @param title
-	 *            Title of the book, must be atleast 10 characters
-	 * @param isbn
-	 *            ISBN-number. Must be 10 or 13 digits
-	 * @param price
-	 *            Price must be specified as a number between 0-10000.
 	 * @return Returns a boolean stating if the input is valid
 	 */
 	private boolean checkInput() {
@@ -177,7 +178,6 @@ public class AddBookActivity extends Activity implements OnClickListener {
 					+ "--Please specify a price within the range of 0-10000 SEK.\n";
 			validInput = false;
 		}
-
 		if (!validInput) {
 
 			AlertDialog inputWarningDialog = new AlertDialog.Builder(this)
@@ -193,14 +193,14 @@ public class AddBookActivity extends Activity implements OnClickListener {
 
 			inputWarningDialog.show();
 		}
-
 		return validInput;
 	}
 
 	/**
-	 * Checks to see that the string contains only digits
+	 * Checks to see that the string contains only digits.
 	 * 
 	 * @param s
+	 *            the s
 	 * @return true if no non-digit characters were found
 	 */
 	private boolean onlyDigits(String s) {
@@ -223,6 +223,12 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 * imageUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); }
 	 */
 
+	/**
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onActivityResult(int, int,
+	 *      android.content.Intent)
+	 */
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == USER_DETAIL_REQUEST) {
 			if (resultCode == RESULT_OK) {
