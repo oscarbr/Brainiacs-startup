@@ -19,10 +19,6 @@ public class AddBookActivityTest extends ActivityInstrumentationTestCase2<AddBoo
 		addBookActivity = getActivity();
 	}
 	
-	public void testPreConditions() {
-		assertTrue(addBookActivity != null);
-	}
-	
 	public void testOnClick() {
 		addBookActivity.onClick(addBookActivity.findViewById(itBrainiacs.muffins.R.id.addBookAddButton));	
 	}

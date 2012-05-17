@@ -16,12 +16,7 @@ public class SearchActivityTest extends ActivityInstrumentationTestCase2<SearchA
 		
 		setActivityInitialTouchMode(false);
 				
-		searchActivity = getActivity();
-		
-	}
-	
-	public void testPreConditions() {
-		assertTrue(searchActivity != null);
+		searchActivity = getActivity();	
 	}
 	
 	public void testOnClick() {

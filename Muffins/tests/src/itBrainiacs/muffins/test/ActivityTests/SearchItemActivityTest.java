@@ -18,8 +18,4 @@ public class SearchItemActivityTest extends ActivityInstrumentationTestCase2<Sea
 		
 		searchItemActivity = getActivity();
 	}
-	
-	public void testPreConditions() {
-		assertTrue(searchItemActivity != null);
-	}
 }

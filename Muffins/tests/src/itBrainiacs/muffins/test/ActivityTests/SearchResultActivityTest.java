@@ -17,10 +17,5 @@ public class SearchResultActivityTest extends ActivityInstrumentationTestCase2<S
 		setActivityInitialTouchMode(false);
 		
 		searchResultActivity = getActivity();
-	}
-	
-	public void testPreConditions() {
-		assertTrue(searchResultActivity != null);
-	}
-	
+	}	
 }

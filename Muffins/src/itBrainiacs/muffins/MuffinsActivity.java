@@ -18,7 +18,6 @@ public class MuffinsActivity extends TabActivity {
         /* Use res to access the res-folder (drawables) */
         Resources res = getResources();
         
-        
         TabHost tabHost = getTabHost();
         
         /* TabSpec and Intent to be reused for every Activity put under each tab */

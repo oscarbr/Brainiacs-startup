@@ -7,6 +7,7 @@ import android.widget.EditText;
 public class SettingsActivityTest extends ActivityInstrumentationTestCase2<SettingsActivity> {
 
 	private SettingsActivity settingsActivity;
+	/*
 	private EditText name;
 	private EditText email;
 	private EditText phone;
@@ -15,7 +16,7 @@ public class SettingsActivityTest extends ActivityInstrumentationTestCase2<Setti
 	private String testEmail = "TestEmail";
 	private String testPhone = "1";
 	private String testPassword = "TestPassword";
-
+	*/
 	
 	public SettingsActivityTest() {
 		super("itBrainiacs.muffins", SettingsActivity.class);
@@ -29,9 +30,8 @@ public class SettingsActivityTest extends ActivityInstrumentationTestCase2<Setti
 		settingsActivity = getActivity();
 	}
 	
-	public void testPreConditions() {
-		assertTrue(settingsActivity != null);
-	}
+	
+	/*
 	
 	public void testSaveSettings() {
 
@@ -85,6 +85,7 @@ public class SettingsActivityTest extends ActivityInstrumentationTestCase2<Setti
 					}
 				});
 		}
+		*/
 }
 	
 	
