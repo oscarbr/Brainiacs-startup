@@ -3,6 +3,7 @@ package itBrainiacs.muffins.test.ActivityTests;
 import android.test.ActivityInstrumentationTestCase2;
 import itBrainiacs.muffins.SettingsActivity;
 
+
 public class SettingsActivityTest extends ActivityInstrumentationTestCase2<SettingsActivity> {
 
 	private SettingsActivity settingsActivity;
@@ -18,10 +19,6 @@ public class SettingsActivityTest extends ActivityInstrumentationTestCase2<Setti
 		setActivityInitialTouchMode(false);
 		
 		settingsActivity = getActivity();
-	}
-	
-	public void testPreConditions() {
-		assertTrue(settingsActivity != null);
 	}
 }
 	

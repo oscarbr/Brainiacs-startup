@@ -18,9 +18,5 @@ public class SearchResultActivityTest extends ActivityInstrumentationTestCase2<S
 		
 		searchResultActivity = getActivity();
 	}
-	
-	public void testPreConditions() {
-		assertTrue(searchResultActivity != null);
-	}
-	
+
 }

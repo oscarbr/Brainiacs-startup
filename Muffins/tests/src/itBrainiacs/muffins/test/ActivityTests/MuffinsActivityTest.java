@@ -19,9 +19,4 @@ public class MuffinsActivityTest extends ActivityInstrumentationTestCase2<Muffin
 		muffinsActivity = getActivity();
 	}
 	
-	public void testPreConditions() {
-		assertTrue(muffinsActivity != null);
-	}
-	
-	
 }
