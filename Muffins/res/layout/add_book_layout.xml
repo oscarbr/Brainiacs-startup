@@ -43,13 +43,13 @@
     <TextView
         android:id="@+id/addBookISBNTW"
         android:layout_below="@id/addBookTitleET"
-        android:layout_width="fill_parent"
+        android:layout_width="230dip"
         android:layout_height="wrap_content"
         android:text="ISBN: (Optional)" />
     <EditText
         android:id="@+id/addBookISBNET"
         android:layout_below="@id/addBookISBNTW"
-        android:layout_width="250dip"
+        android:layout_width="230dip"
         android:layout_height="wrap_content"
         android:inputType="number" 
         android:hint="must be 10 or 13 digits" />
@@ -145,8 +145,7 @@
         android:id="@+id/searchBookButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/addBookISBNET"
-        android:layout_alignBottom="@+id/addBookISBNET"
+        android:layout_alignTop="@+id/addBookISBNET"
         android:layout_toRightOf="@+id/addBookISBNET"
         android:text="Search" />
       
