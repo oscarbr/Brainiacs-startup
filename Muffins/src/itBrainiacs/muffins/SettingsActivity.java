@@ -30,6 +30,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	
 	private Boolean detailsLoaded = false;
 	private Boolean sufficientDetails = false;
+	private Boolean closeAfterSave = false;
 	
 	private String name = "";
 	private String email = "";
@@ -37,6 +38,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	private String password = "";
 	private String userDetails = "";
 	private String SavedUserDetails = "Muffins_saved_variables";
+	
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,6 +79,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		catch (IOException e) {
 			Toast.makeText(getApplicationContext(), "No settings-file found", Toast.LENGTH_SHORT).show();
 		}
+		catch (RuntimeException e) {
+			deleteSettings(": corrupted save-file");
+		}
 		
 		Intent intent = getIntent();
 		if (intent.hasCategory("USER_DETAIL_CHECK")) {
@@ -86,8 +91,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 				setResult(RESULT_CANCELED, intent);
 			finish();
 		}
+		if (intent.hasCategory("USER_DETAIL_FILL"))
+			closeAfterSave = true;
 			
-		
 	}
 	
 	/**
@@ -99,13 +105,15 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	 * @req No null values. If no information is entered empty Strings should be provided.
 	 */
 	private void saveSettings(String name, String email, String phone, String password) {
-		userDetails = name + "\n" + email + "\n" + phone + "\n" + password;
+		userDetails = name + "\n" + email + "\n" + phone + "\n" + password + "\n";
 		
 		try {
 			FileOutputStream fileWrite = openFileOutput(SavedUserDetails, Context.MODE_PRIVATE);
 			fileWrite.write(userDetails.getBytes());
 			fileWrite.close();
 			Toast.makeText(getApplicationContext(), "User details saved", Toast.LENGTH_SHORT).show();
+			if (closeAfterSave)
+				finish();
 		}
 		catch (IOException e) {
 			Toast.makeText(getApplicationContext(), "File could not be created", Toast.LENGTH_SHORT).show();
@@ -115,7 +123,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	/**
 	 * Clears all fields and deletes any previously saved files containing user details.
 	 */
-	private void deleteSettings() {
+	private void deleteSettings(String msg) {
 		userDetails = "";			
 		if (deleteFile(SavedUserDetails)) {
 			nameET.setText("");
@@ -123,7 +131,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			phoneET.setText("");
 			passwordET.setText("");
 		
-			Toast.makeText(getApplicationContext(), "User details deleted", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "User details deleted" + msg, Toast.LENGTH_SHORT).show();
 		}
 		else
 			Toast.makeText(getApplicationContext(), "File could not be found", Toast.LENGTH_SHORT).show();
@@ -140,6 +148,6 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			saveSettings(name, email, phone, password);
 		}
 		else if (view.getId() == R.id.settingsDeleteButton)
-			deleteSettings();
+			deleteSettings("");
 	}
 }

@@ -229,12 +229,12 @@ public class AddBookActivity extends Activity implements OnClickListener {
 
 				String communicationResults = ServerCommunicator
 						.addBook(newBook);
-				if (communicationResults.equals("1"))
+				if (communicationResults.contains("1"))
 					Toast.makeText(getApplicationContext(), "Book uploaded",
-							Toast.LENGTH_LONG).show();
+							Toast.LENGTH_SHORT).show();
 				else
 					Toast.makeText(getApplicationContext(),
-							"Book failed to upload", Toast.LENGTH_LONG).show();
+							"Book failed to upload", Toast.LENGTH_SHORT).show();
 
 			} else {
 				Toast.makeText(getApplicationContext(),
@@ -243,6 +243,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 				Intent goToSettingsIntent = new Intent();
 				goToSettingsIntent.setClass(AddBookActivity.this,
 						SettingsActivity.class);
+				goToSettingsIntent.addCategory("USER_DETAIL_FILL");
 				startActivity(goToSettingsIntent);
 			}
 		}
