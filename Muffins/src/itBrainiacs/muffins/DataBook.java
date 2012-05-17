@@ -19,11 +19,13 @@ public class DataBook implements Parcelable {
 	private Boolean sold;
 	private String price;
 	private String expires;
+	private String saleID;
+	private String comment;
+	
+	private String name;
 	private String email;
 	private String phone;
 	private String password;
-	private String saleID;
-	private String comment;
 
 	/**
 	 * Instantiates a new data book.
@@ -209,6 +211,15 @@ public class DataBook implements Parcelable {
 	public void setExpires(String expires) {
 		if (!expires.equals(""))
 			this.expires = expires;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		if (!name.equals(""))
+			this.name = name;
 	}
 
 	/**
@@ -407,25 +418,43 @@ public class DataBook implements Parcelable {
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
 	 */
 	public void writeToParcel(Parcel bookParcel, int flags) {
+		bookParcel.writeString(price);
+		
 		if (isbn == null)
 			isbn = "";
 		bookParcel.writeString(isbn);
+		
 		if (author == null)
 			author = "";
 		bookParcel.writeString(author);
+		
 		if (title == null)
 			title = "";
 		bookParcel.writeString(title);
+		
 		if (edition == null)
 			edition = "";
 		bookParcel.writeString(edition);
+		
 		if (course == null)
 			course = "";
 		bookParcel.writeString(course);
-		bookParcel.writeString(price);
+		
 		if (comment == null)
 			comment = "";
 		bookParcel.writeString(comment);
+		
+		if (email == null)
+			email = "";
+		bookParcel.writeString(email);
+	
+		if (name == null)
+			name = "";
+		bookParcel.writeString(name);
+		
+		if (phone == null)
+			phone = "";
+		bookParcel.writeString(phone);
 	}
 
 	/**
@@ -434,25 +463,43 @@ public class DataBook implements Parcelable {
 	 * 
 	 */
 	public DataBook(Parcel source) {
+		price = source.readString();
+		
 		isbn = source.readString();
 		if (isbn.length() == 0)
 			isbn = null;
+		
 		author = source.readString();
 		if (author.length() == 0)
 			author = null;
+		
 		title = source.readString();
 		if (title.length() == 0)
 			title = null;
+		
 		edition = source.readString();
 		if (edition.length() == 0)
 			edition = null;
+		
 		course = source.readString();
 		if (course.length() == 0)
 			course = null;
-		price = source.readString();
+		
 		comment = source.readString();
 		if (comment.length() == 0)
 			comment = null;
+		
+		email = source.readString();
+		if (email.length() == 0)
+			email = null;
+		
+		name = source.readString();
+		if (name.length() == 0)
+			name = null;
+		
+		phone = source.readString();
+		if (phone.length() == 0)
+			phone = null;
 	}
 
 	public static final Parcelable.Creator<DataBook> CREATOR = new Parcelable.Creator<DataBook>() {

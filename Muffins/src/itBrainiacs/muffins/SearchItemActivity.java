@@ -27,6 +27,8 @@ public class SearchItemActivity extends Activity implements OnClickListener {
 		TextView comment = (TextView) findViewById(R.id.commentTW);
 		TextView isbn = (TextView) findViewById(R.id.isbnTW);
 		TextView course = (TextView) findViewById(R.id.courseTW);
+		TextView email= (TextView) findViewById(R.id.emailTW);
+		TextView phone= (TextView) findViewById(R.id.phoneTW);
 
 		Intent i = getIntent();
 		if (i.getCategories().contains("showInfo")) {
@@ -35,12 +37,6 @@ public class SearchItemActivity extends Activity implements OnClickListener {
 			title.setText(book.getTitle());
 			author.setText(book.getAuthor());
 			price.setText(book.getPrice() + " SEK");
-
-			String bookComment = book.getComment();
-			if (!bookComment.equals("null")) {
-				comment.setText("Comment by uploader:\n" + bookComment);
-				comment.setVisibility(View.VISIBLE);
-			}
 
 			String bookEdition = book.getEdition();
 			if (!bookEdition.equals("null")) {
@@ -58,6 +54,22 @@ public class SearchItemActivity extends Activity implements OnClickListener {
 			if (!bookCourse.equals("null")) {
 				course.setText("Course: " + bookCourse);
 				course.setVisibility(View.VISIBLE);
+			}
+			
+			String bookComment = book.getComment();
+			if (!bookComment.equals("null")) {
+				comment.setText("Comment by uploader:\n" + bookComment);
+				comment.setVisibility(View.VISIBLE);
+			}
+			
+			if (book.getEmail() != null) {
+				email.setText(book.getEmail());
+				email.setVisibility(View.VISIBLE);
+			}
+			
+			if (book.getPhone() != null) {
+				phone.setText(book.getPhone());
+				phone.setVisibility(View.VISIBLE);
 			}
 		}
 	}

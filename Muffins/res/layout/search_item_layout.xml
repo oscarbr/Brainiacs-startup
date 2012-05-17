@@ -95,12 +95,39 @@
       		android:visibility="gone" />
         
         <TextView 
-      		android:id="@+id/commentTW"
+      		android:id="@+id/contactTW"
       		android:layout_below="@id/courseTW"
       		android:layout_width="fill_parent"
       		android:layout_height="wrap_content"
+      		android:layout_marginTop="20dp"
+      		android:text="Seller contact information:" 
+      		android:textSize="15sp" />
+        
+        <TextView 
+      		android:id="@+id/emailTW"
+      		android:layout_below="@id/contactTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:text="" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+
+        <TextView 
+      		android:id="@+id/phoneTW"
+      		android:layout_below="@id/emailTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:text="" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+        
+        <TextView 
+      		android:id="@+id/commentTW"
+      		android:layout_below="@id/phoneTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
       		android:layout_marginTop="10dp"
-      		android:text="Comments: " 
+      		android:text="" 
       		android:textSize="15sp" 
       		android:visibility="gone" />
         
