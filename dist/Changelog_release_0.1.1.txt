@@ -1,0 +1,41 @@
+
+
+Change log - release 0.1.1
+
+
+
+Date: 2012-05-13
+Authors: Oscar Brodefors, Filip Askviken, Rikard Andersson,   
+    Emil Nyström
+
+
+This version overrides all previous versions.
+
+________________________________________________________________
+
+
+1. Added features
+This release includes small changes in the application. Two bugs are fixed. 
+
+
+2. Removed features
+This release has no removed features. 
+
+
+3. Changes
+Two bugs have been solved, see title 4 below. 
+
+
+4. Bug fixes
+Two bugs have been solved in this release, Bug issue #10 and bug issue #12. The search function is now showing more than one result when searching for a book and the publishing year cannot be more than the actual year (2012). 
+
+
+5. Known bugs
+Bug issue #11 is still known. If the mobile lacks internet connection, the application experiences an error and shuts down.
+
+
+6. Planned changes
+As before, the next step is to continue develop the functionality of the application by a more developed search-function and integration with user details. 
+
+Another next step is to implement a ISBN-connection for faster and better book-uploading. This will help the buyers get accurate information, for example regarding a book’s edition. Further, a connection to the mobile camera is going to be implemented, in order to enable picture taking of the book. This will make it easier for buyers to see the quality of the book. Identification of users with passwords and modification of database entries is another feature a couple of releases down the road.
+Requirements for the next release is: 1.2, 4.1, 4.2, 4.3 and after that 1.1.2, 3.1.

@@ -23,7 +23,7 @@
         android:layout_below="@id/addBookAuthorTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="must be atleast 10 characters" />
+        android:hint="must be atleast 4 characters" />
     
     <!-- Title TextView and EditText -->
     <TextView 
@@ -37,40 +37,40 @@
         android:layout_below="@id/addBookTitleTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" 
-        android:hint="must be atleast 10 characters" />
+        android:hint="must be atleast 5 characters" />
     
     <!-- ISBN TextView and EditText -->
     <TextView
         android:id="@+id/addBookISBNTW"
         android:layout_below="@id/addBookTitleET"
-        android:layout_width="fill_parent"
+        android:layout_width="230dip"
         android:layout_height="wrap_content"
         android:text="ISBN: (Optional)" />
     <EditText
         android:id="@+id/addBookISBNET"
         android:layout_below="@id/addBookISBNTW"
-        android:layout_width="fill_parent"
+        android:layout_width="230dip"
         android:layout_height="wrap_content"
         android:inputType="number" 
         android:hint="must be 10 or 13 digits" />
     
     <!-- Version TextView and EditText -->
     <TextView 
-        android:id="@+id/addBookVersionTW"
+        android:id="@+id/addBookEditionTW"
         android:layout_below="@id/addBookISBNET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Version:(optional)" />
     <EditText
-        android:id="@+id/addBookVersionET"
-        android:layout_below="@id/addBookVersionTW"
+        android:id="@+id/addBookEditionET"
+        android:layout_below="@id/addBookEditionTW"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
      <!-- Publishing year TextView and EditText -->
     <TextView 
         android:id="@+id/addBookPubYearTW"
-        android:layout_below="@id/addBookVersionET"
+        android:layout_below="@id/addBookEditionET"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Publishing year: (optional)" />
@@ -122,6 +122,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
     
+    
     <!-- Add picture button, starts an activity where you can take a picture -->
     <Button
         android:id="@+id/addBookTakePictureButton"
@@ -139,6 +140,14 @@
         android:layout_below="@id/addBookTakePictureButton"
         android:layout_marginTop="10dp"
         android:text="Add" />
+
+    <Button
+        android:id="@+id/searchBookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/addBookISBNET"
+        android:layout_toRightOf="@+id/addBookISBNET"
+        android:text="Search" />
       
 </RelativeLayout>
 </ScrollView>

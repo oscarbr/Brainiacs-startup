@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ScrollView to make the activity scrollable -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+    <!-- Convention for ID:s - activityDescriptionViewDescriptionViewType (camel-case) (view type shortened)  -->
+      
+        <TextView 
+      		android:id="@+id/titleTW"
+      		android:layout_width="wrap_content"
+      		android:layout_height="wrap_content"
+      		android:layout_marginTop="10dp"
+      		android:text="Title: "
+      		android:textSize="20sp" />
+        
+        <TextView 
+      		android:id="@+id/bookTitleTW"
+      		android:layout_toRightOf="@id/titleTW"
+      		android:layout_alignBottom="@id/titleTW"
+      		android:layout_width="wrap_content"
+      		android:layout_height="wrap_content"
+      		android:text="Title placeholder"
+      		android:textSize="25sp" />
+        
+        <TextView 
+      		android:id="@+id/authorTW"
+      		android:layout_below="@id/titleTW"
+      		android:layout_width="wrap_content"
+      		android:layout_height="wrap_content"
+      		android:layout_marginTop="5dp"
+      		android:text="Author: " 
+      		android:textSize="15sp" />
+        
+        <TextView 
+      		android:id="@+id/bookAuthorTW"
+      		android:layout_toRightOf="@id/authorTW"
+      		android:layout_alignBottom="@id/authorTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:layout_marginRight="5dp"
+      		android:text="Placeholder" 
+      		android:textSize="20sp" />
+        
+        <TextView 
+      		android:id="@+id/priceTW"
+      		android:layout_below="@id/bookAuthorTW"
+      		android:layout_width="wrap_content"
+      		android:layout_height="wrap_content"
+      		android:layout_marginTop="5dp"
+      		android:text="Price: " 
+      		android:textSize="15sp" />
+        
+        <TextView 
+      		android:id="@+id/bookPriceTW"
+      		android:layout_toRightOf="@id/priceTW"
+      		android:layout_alignBottom="@id/priceTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:layout_marginRight="5dp"
+      		android:text="Placeholder" 
+      		android:textSize="20sp" />
+        
+        <TextView 
+      		android:id="@+id/editionTW"
+      		android:layout_below="@id/bookPriceTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:text="Edition: placeholder" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+      	
+        <TextView 
+      		android:id="@+id/isbnTW"
+      		android:layout_below="@id/editionTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:text="" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+        
+        <TextView 
+      		android:id="@+id/courseTW"
+      		android:layout_below="@id/isbnTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:text="" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+        
+        <TextView 
+      		android:id="@+id/contactTW"
+      		android:layout_below="@id/courseTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:layout_marginTop="20dp"
+      		android:text="Seller contact information:" 
+      		android:textSize="15sp" />
+        
+        <TextView 
+      		android:id="@+id/emailTW"
+      		android:layout_below="@id/contactTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:text="" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+
+        <TextView 
+      		android:id="@+id/phoneTW"
+      		android:layout_below="@id/emailTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:text="" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+        
+        <TextView 
+      		android:id="@+id/commentTW"
+      		android:layout_below="@id/phoneTW"
+      		android:layout_width="fill_parent"
+      		android:layout_height="wrap_content"
+      		android:layout_marginTop="10dp"
+      		android:text="" 
+      		android:textSize="15sp" 
+      		android:visibility="gone" />
+        
+</RelativeLayout>
+</ScrollView>
