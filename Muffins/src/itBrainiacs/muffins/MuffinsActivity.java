@@ -6,6 +6,11 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
+/**
+ * First activity to be initiated when the application is started.
+ * Holds the tabHost for viewing of the other activities
+ *
+ */
 public class MuffinsActivity extends TabActivity {
 
 	/**
