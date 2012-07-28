@@ -213,10 +213,20 @@ public class DataBook implements Parcelable {
 			this.expires = expires;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
 	public void setName(String name) {
 		if (!name.equals(""))
 			this.name = name;
@@ -413,8 +423,11 @@ public class DataBook implements Parcelable {
 	}
 
 	/*
-	 * TODO (non-Javadoc)
 	 * 
+	 * 
+	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
+	 */
+	/* (non-Javadoc)
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
 	 */
 	public void writeToParcel(Parcel bookParcel, int flags) {
@@ -458,9 +471,9 @@ public class DataBook implements Parcelable {
 	}
 
 	/**
-	 * TODO
-	 * 
-	 * 
+	 * TODO.
+	 *
+	 * @param source the source
 	 */
 	public DataBook(Parcel source) {
 		price = source.readString();
