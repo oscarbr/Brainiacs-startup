@@ -17,7 +17,9 @@ import java.lang.Character;
 import java.util.Calendar;
 
 
-// Activity class for adding a book
+/**
+ *  Activity class for adding a book
+ */
 public class AddBookActivity extends Activity implements OnClickListener {
 
 	/* Variables to act as hooks to views specified in the layout-XML */

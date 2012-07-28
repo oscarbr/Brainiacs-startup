@@ -422,13 +422,12 @@ public class DataBook implements Parcelable {
 		return 0;
 	}
 
-	/*
-	 * 
-	 * 
+	/**
+	 * Creates a parcel of the DataBook to allow it being sent with intents between activities
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
-	 */
-	/* (non-Javadoc)
-	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
+	 * 
+	 * @param bookParcel name of the created parcel
+	 * @param flags 
 	 */
 	public void writeToParcel(Parcel bookParcel, int flags) {
 		bookParcel.writeString(price);
@@ -471,9 +470,9 @@ public class DataBook implements Parcelable {
 	}
 
 	/**
-	 * TODO.
-	 *
-	 * @param source the source
+	 * Creates a new DataBook from an existing parcel
+	 * 
+	 * @param source Incoming parcel to be unpacked
 	 */
 	public DataBook(Parcel source) {
 		price = source.readString();

@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Handles all the user details that are needed to upload books to the database
+ */
 public class SettingsActivity extends Activity implements OnClickListener {
 
 	private EditText nameET;
@@ -40,8 +43,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	private String SavedUserDetails = "Muffins_saved_variables";
 
 	/**
-	 * TODO
-	 * 
+	 * Initializing the activity.
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		deleteButton = (Button) findViewById(R.id.settingsDeleteButton);
 		deleteButton.setOnClickListener(this);
 
+		/* Checks if there are previously saved UserDetail 
+		 * and updates the corresponding fields
+		 */
 		try {
 			FileInputStream fileRead = openFileInput(SavedUserDetails);
 			DataInputStream dStream = new DataInputStream(fileRead);
@@ -80,7 +85,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 
 			detailsLoaded = true;
 
-			// Check to see that the required details are correct
+			/* Check to see that all required fields have been filled in */
 			if ((email.length() != 0 || phone.length() != 0)
 					&& password.length() > 4)
 				sufficientDetails = true;
@@ -90,6 +95,8 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			deleteSettings(": corrupted save-file");
 		}
 		
+		/* Checks to see if the activity was initiated from another activity or by 
+		 * pressing the settings-tab, and reacts accordingly */
 		Intent intent = getIntent();
 		if (intent.hasCategory("USER_DETAIL_CHECK")) {
 			if (detailsLoaded && sufficientDetails) {
@@ -144,7 +151,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * TODO Clears all fields and deletes any previously saved files containing
+	 * Clears all fields and deletes any previously saved files containing
 	 * user details.
 	 */
 	private void deleteSettings(String msg) {
@@ -163,8 +170,6 @@ public class SettingsActivity extends Activity implements OnClickListener {
 
 
 	/**
-	 * TODO
-	 * 
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
 	public void onClick(View view) {
