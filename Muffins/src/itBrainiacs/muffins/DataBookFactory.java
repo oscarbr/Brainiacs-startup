@@ -14,7 +14,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-// Class for handling DataBooks and json
+/** 
+ * Class for handling DataBooks and json 
+ */
 public class DataBookFactory {
 
 	/**

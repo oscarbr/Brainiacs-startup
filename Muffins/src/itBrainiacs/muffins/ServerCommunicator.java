@@ -20,18 +20,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * @author Rikard Andersson mail@rikardandersson.se
- * @version 0.1
- * @since 2012-04-25
+ * 
+ * Utility for handling server communication
+ *
  */
-
 public class ServerCommunicator {
 
 	/**
 	 * Static method. Called when a book is to be added to the database.
 	 * 
 	 * @param book
-	 *            the book
+	 *            the DataBook book to be added
 	 * @return True if the add was successfull
 	 */
 	public static String addBook(DataBook book) {
@@ -45,7 +44,7 @@ public class ServerCommunicator {
 	 * Static method. Called when the user wants to search for a book.
 	 * 
 	 * @param book
-	 *            the book
+	 *            the DataBook book to be added
 	 * @return JSONObject with the search results. Null if there was an error.
 	 */
 	public static LinkedList<DataBook> searchBooks(DataBook book) {
@@ -70,7 +69,7 @@ public class ServerCommunicator {
 	 *            the json request
 	 * @param url
 	 *            the url
-	 * @return the string
+	 * @return the stream string
 	 */
 	private static String requestResponsFromServer(JSONObject jsonRequest,
 			String url) {
