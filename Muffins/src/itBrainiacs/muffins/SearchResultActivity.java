@@ -18,12 +18,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.TextView;
 
+/**
+ * Activity initiated when a searchquery is made, showing a list of the books retrieved from the database
+ *
+ */
 public class SearchResultActivity extends ListActivity {
 	ArrayList<String> shownList;
 	ArrayList<DataBook> bookList;
 
 	/**
-	 * TODO
+	 * Initializing the activity
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -68,7 +72,7 @@ public class SearchResultActivity extends ListActivity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			/**
-			 * TODO
+			 * Allows for interaction with an item in the list for more information
 			 */
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {

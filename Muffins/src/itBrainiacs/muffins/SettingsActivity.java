@@ -170,6 +170,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 
 
 	/**
+	 * Method from the interface OnClickListener. Called when the any button
+	 * that has this class as a listener is pressed
+	 * 
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
 	public void onClick(View view) {

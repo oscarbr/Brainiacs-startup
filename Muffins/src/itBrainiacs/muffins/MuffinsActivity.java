@@ -9,7 +9,7 @@ import android.widget.TabHost;
 public class MuffinsActivity extends TabActivity {
 
 	/**
-	 * Called when the activity is first created.
+	 * Initializing the activity.
 	 * 
 	 * @param savedInstanceState
 	 *            the saved instance state

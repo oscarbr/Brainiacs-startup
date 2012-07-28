@@ -15,6 +15,8 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 /**
+ * Activity in which you can search the database for books with certain parameters
+ * 
  * implementing OnClickListener in order to catch events where buttons are
  * clicked and something needs to happen
  */
@@ -59,9 +61,8 @@ public class SearchActivity extends Activity implements OnClickListener {
 		searchBooks();
 	}
 
-	/* Method to be called when executing a search */
 	/**
-	 * Search books.
+	 * Method to be called when executing a search 
 	 */
 	private void searchBooks() {
 		/* Fetching the text filled in by the user in the fields */

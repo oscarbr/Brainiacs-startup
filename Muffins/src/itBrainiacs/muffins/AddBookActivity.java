@@ -16,9 +16,8 @@ import android.widget.Toast;
 import java.lang.Character;
 import java.util.Calendar;
 
-
 /**
- *  Activity class for adding a book
+ *  Activity class for adding a new book to the database
  */
 public class AddBookActivity extends Activity implements OnClickListener {
 
@@ -30,11 +29,12 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	private EditText courseET;
 	private EditText priceET;
 	private EditText commentET;
-	private Button takePictureButton;
+	// private Button takePictureButton;
 	private Button searchBookButton;
 	private Button addButton;
 
 	DataBook newBook;
+	
 	/*
 	 * To be implemented. To allow the poster of the book to edit/delete
 	 * 
@@ -49,9 +49,8 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 */
 	private final static int USER_DETAIL_REQUEST = 1;
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * Initializing the activity.
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
@@ -202,7 +201,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 * 
 	 * @param s
 	 *            the string to be checked
-	 * @return true if no non-digit characters were found
+	 * @return true if all characters of the string were digits
 	 */
 	private boolean onlyDigits(String s) {
 		for (int i = 0; i < s.length(); i++) {

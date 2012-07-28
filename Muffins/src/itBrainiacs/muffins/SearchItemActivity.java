@@ -9,11 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Activity showing a specific book selected from the list retrieved when searching for books.
+ */
 public class SearchItemActivity extends Activity implements OnClickListener {
 
 	/**
-	 * TODO (non-Javadoc)
-	 * 
+	 * Initializing the activity
+	 *  
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,8 @@ public class SearchItemActivity extends Activity implements OnClickListener {
 		TextView comment = (TextView) findViewById(R.id.commentTW);
 		TextView isbn = (TextView) findViewById(R.id.isbnTW);
 		TextView course = (TextView) findViewById(R.id.courseTW);
-		TextView email= (TextView) findViewById(R.id.emailTW);
-		TextView phone= (TextView) findViewById(R.id.phoneTW);
+		TextView email = (TextView) findViewById(R.id.emailTW);
+		TextView phone = (TextView) findViewById(R.id.phoneTW);
 
 		Intent i = getIntent();
 		if (i.getCategories().contains("showInfo")) {
@@ -75,7 +78,8 @@ public class SearchItemActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * TODO
+	 * Method from the interface OnClickListener. Called when the any button
+	 * that has this class as a listener is pressed
 	 * 
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
