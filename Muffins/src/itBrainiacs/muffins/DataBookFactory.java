@@ -14,6 +14,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+// Class for handling DataBooks and json
 public class DataBookFactory {
 
 	/**
@@ -21,7 +22,7 @@ public class DataBookFactory {
 	 * JSONObject.
 	 * 
 	 * @param jsonArray
-	 *            the json array
+	 *            the json array to be parsed
 	 * @return LinkedList<DataBook> with the books in the search results. Empty
 	 *         list if the JSONObject doesnt contain any books
 	 */
@@ -172,7 +173,7 @@ public class DataBookFactory {
 	 * Static method returning a JSONObject of a DataBook.
 	 * 
 	 * @param book
-	 *            the book
+	 *            string book to be parsed to json
 	 * @return JSONObject representation of book.
 	 */
 	public static JSONObject dataBookToJSON(DataBook book) {
@@ -299,7 +300,7 @@ public class DataBookFactory {
 	 * object.
 	 * 
 	 * @param isbn
-	 *            the isbn
+	 *            string isbn number
 	 * @return DataBook with the book in the search results.
 	 */
 	// TODO Check behavior if multiple books are found
@@ -328,7 +329,7 @@ public class DataBookFactory {
 	 * Static method for parsing json string from Libris to a DataBook object.
 	 * 
 	 * @param json
-	 *            the json
+	 *            string json to be parsed
 	 * @return DataBook object with title, creater, publisher, date & language
 	 */
 	public static DataBook parseLibris(String json) {

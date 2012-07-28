@@ -16,6 +16,8 @@ import android.widget.Toast;
 import java.lang.Character;
 import java.util.Calendar;
 
+
+// Activity class for adding a book
 public class AddBookActivity extends Activity implements OnClickListener {
 
 	/* Variables to act as hooks to views specified in the layout-XML */
@@ -75,14 +77,11 @@ public class AddBookActivity extends Activity implements OnClickListener {
 		addButton.setOnClickListener(this);
 	}
 
-	/*
+	/**
 	 * Method from the interface OnClickListener. Called when the any button
 	 * that has this class as a listener is pressed
-	 */
-
-	/**
-	 * (non-Javadoc)
-	 * 
+	 *
+	 * @param view the view
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
 	public void onClick(View view) {
@@ -200,7 +199,7 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 * Checks to see that the string contains only digits.
 	 * 
 	 * @param s
-	 *            the s
+	 *            the string to be checked
 	 * @return true if no non-digit characters were found
 	 */
 	private boolean onlyDigits(String s) {
@@ -224,10 +223,13 @@ public class AddBookActivity extends Activity implements OnClickListener {
 	 */
 
 	/**
-	 * (non-Javadoc)
-	 * 
+	 * Checks if the user details are set and attempts to add book to server database.
+	 *
+	 * @param requestCode the request code
+	 * @param resultCode the result code
+	 * @param data the data
 	 * @see android.app.Activity#onActivityResult(int, int,
-	 *      android.content.Intent)
+	 * android.content.Intent)
 	 */
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == USER_DETAIL_REQUEST) {
