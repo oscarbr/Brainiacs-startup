@@ -412,9 +412,8 @@ public class DataBook implements Parcelable {
 			this.comment = comment;
 	}
 
-	/*
-	 * TODO (non-Javadoc)
-	 * 
+	/**
+	 * Used by the Parcelable-interface to identify which type of object to create from the parcel
 	 * @see android.os.Parcelable#describeContents()
 	 */
 	public int describeContents() {
@@ -514,6 +513,10 @@ public class DataBook implements Parcelable {
 			phone = null;
 	}
 
+	/**
+	 * Methods used by the Parcelable-interface
+	 * @see android.os.Parcelable
+	 */
 	public static final Parcelable.Creator<DataBook> CREATOR = new Parcelable.Creator<DataBook>() {
 
 		public DataBook createFromParcel(Parcel in) {
