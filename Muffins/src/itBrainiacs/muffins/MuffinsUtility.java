@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/** Utility class for Muffins application */
 public class MuffinsUtility {
 
 	/**
@@ -12,7 +13,7 @@ public class MuffinsUtility {
 	 * String
 	 * 
 	 * @param InputStream
-	 *            is
+	 *            to be converted
 	 * @return String string
 	 */
 	public static String convertStreamToString(InputStream is) {
