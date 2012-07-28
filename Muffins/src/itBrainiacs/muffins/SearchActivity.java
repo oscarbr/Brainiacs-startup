@@ -1,7 +1,5 @@
 package itBrainiacs.muffins;
 
-//TESTING TO COMMENT TO GET THIS SHIT WORKING!
-
 import java.util.LinkedList;
 
 import android.app.Activity;
