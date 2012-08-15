@@ -15,159 +15,110 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 /** 
- * Class for handling DataBooks and json 
+ * Class for handling the conversion between DataBooks and JSONObjects in both directions.
+ * Also contains methods for searching Libris for books based on ISBN and returns matching
+ * DataBooks. 
  */
 public class DataBookFactory {
 
 	/**
 	 * Static method returning a List of all the books contained in a
-	 * JSONObject.
+	 * JSONObject as DataBooks.
 	 * 
-	 * @param jsonArray
-	 *            the json array to be parsed
+	 * @param jsonArray the JSONArray to be parsed
 	 * @return LinkedList<DataBook> with the books in the search results. Empty
-	 *         list if the JSONObject doesnt contain any books
+	 *         list if the JSONObject doesn't contain any books
 	 */
 	public static LinkedList<DataBook> jsonToDataBooks(JSONArray jsonArray) {
 
+		// Instasiate the list as a LinkedList (Linked best because of iterating over it later)
 		LinkedList<DataBook> dataBooks = new LinkedList<DataBook>();
 
 		JSONObject jsonObject;
 		DataBook book;
 
 		// This for-loop iterates over the JSONObject elements in the
-		// JSON-string returned by the server
+		// JSONArray given as an parameter
 		for (int i = 0; i < jsonArray.length(); i++) {
 
+			/*
+			 * This try-catch is to catch JSONExceptions thrown by getJSONObject()
+			 * Also any JSONExceptions that might be thrown by the get() calls
+			 * in all the IF-statements.
+			 * 
+			 * The IF-statements are necessary to keep the get() calls from throwing
+			 * exceptions if the key checked for doesn't exist. Should the exception be thrown
+			 * the properties after the one where the exception occurred will be skipped.
+			 * The IF-statement prevents this.
+			 */
 			try {
 				jsonObject = jsonArray.getJSONObject(i);
 				book = new DataBook();
 
+				// Check if the JSONObject have a value to the key "title"
 				if (jsonObject.has("title")) {
-					try {
-						book.setTitle(jsonObject.get("title").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					/* Set the title of DataBook to the value connected to the 
+					 * "title" key in the JSONObject
+					 */
+					book.setTitle(jsonObject.get("title").toString());
 				}
+
+				//The following IF-statments are the same as above but different property
 				if (jsonObject.has("author")) {
-					try {
-						book.setAuthor(jsonObject.get("author").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setAuthor(jsonObject.get("author").toString());
 				}
 				if (jsonObject.has("price")) {
-					try {
-						book.setPrice(jsonObject.get("price").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setPrice(jsonObject.get("price").toString());
 				}
 				if (jsonObject.has("expires")) {
-					try {
-						book.setExpires(jsonObject.get("expires").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setExpires(jsonObject.get("expires").toString());
 				}
 				if (jsonObject.has("isbn")) {
-					try {
-						book.setIsbn(jsonObject.get("isbn").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setIsbn(jsonObject.get("isbn").toString());
 				}
 				if (jsonObject.has("publisher")) {
-					try {
-						book.setPublisher(jsonObject.get("publisher")
-								.toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setPublisher(jsonObject.get("publisher").toString());
 				}
 				if (jsonObject.has("edition")) {
-					try {
-						book.setEdition(jsonObject.get("edition").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setEdition(jsonObject.get("edition").toString());
 				}
 				if (jsonObject.has("publYear")) {
-					try {
-						book.setPublYear(jsonObject.get("publYear").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setPublYear(jsonObject.get("publYear").toString());
 				}
 				if (jsonObject.has("course")) {
-					try {
-						book.setCourse(jsonObject.get("course").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setCourse(jsonObject.get("course").toString());
 				}
 				if (jsonObject.has("comment")) {
-					try {
-						book.setComment(jsonObject.get("comment").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setComment(jsonObject.get("comment").toString());
 				}
 				if (jsonObject.has("bookType")) {
-					try {
-						book.setBookType(jsonObject.get("bookType").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setBookType(jsonObject.get("bookType").toString());
 				}
 				if (jsonObject.has("period")) {
-					try {
-						book.setPeriod(jsonObject.get("period").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setPeriod(jsonObject.get("period").toString());
 				}
 				if (jsonObject.has("isbn")) {
-					try {
-						book.setIsbn(jsonObject.get("isbn").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setIsbn(jsonObject.get("isbn").toString());
 				}
 				if (jsonObject.has("email")) {
-					try {
-						book.setEmail(jsonObject.get("email").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setEmail(jsonObject.get("email").toString());
 				}
 				if (jsonObject.has("phone")) {
-					try {
-						book.setPhone(jsonObject.get("phone").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setPhone(jsonObject.get("phone").toString());
 				}
 				if (jsonObject.has("saleID")) {
-					try {
-						book.setSaleID(jsonObject.get("saleID").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setSaleID(jsonObject.get("saleID").toString());
 				}
 				if (jsonObject.has("language")) {
-					try {
-						book.setLanguage(jsonObject.get("language").toString());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					book.setLanguage(jsonObject.get("language").toString());
 				}
+				// The DataBook is done, add it to the list
 				dataBooks.add(book);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
+		// Returning the list of databooks
 		return dataBooks;
 	}
 
@@ -182,8 +133,15 @@ public class DataBookFactory {
 
 		JSONObject jsonBook = new JSONObject();
 
+		/*
+		 * Several IF-statements to check for properties of the DataBook
+		 * As long as the methods are different for each property, this is necessary.
+		 */
+		// Check if there is a specific value for the author in the DataBook
 		if (book.getAuthor() != null) {
 			try {
+				 // Assign the author value of the provided DataBook to the JSONObject
+				 // representation of that book.
 				jsonBook.put("author", book.getAuthor());
 			} catch (JSONException e) {
 				e.printStackTrace();

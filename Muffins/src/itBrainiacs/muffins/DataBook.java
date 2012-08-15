@@ -3,9 +3,14 @@ package itBrainiacs.muffins;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/** Entity class for creating a DataBook object */
+/** 
+ * Entity class for creating a DataBook object 
+ * A DataBook is a representation of the advertisement of a book.
+ * It contains data of both the book and the sale conditions.
+ */
 public class DataBook implements Parcelable {
 
+	// The attributes an advertisment can have 
 	private String title;
 	private String author;
 	private String publisher;
@@ -22,6 +27,7 @@ public class DataBook implements Parcelable {
 	private String saleID;
 	private String comment;
 	
+	// Information about the seller
 	private String name;
 	private String email;
 	private String phone;
