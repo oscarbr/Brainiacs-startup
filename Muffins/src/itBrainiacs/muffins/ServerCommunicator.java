@@ -20,11 +20,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * @author Rikard Andersson mail@rikardandersson.se
- * @version 0.1
- * @since 2012-04-25
+ * Utility Class for handling server communication
  */
-
 public class ServerCommunicator {
 
 	/**

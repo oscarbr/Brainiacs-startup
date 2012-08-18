@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/** 
+ * Utility Class for Muffins application 
+ */
 public class MuffinsUtility {
 
 	/**
